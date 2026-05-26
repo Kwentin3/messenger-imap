@@ -10,6 +10,10 @@ Repository: `https://github.com/Kwentin3/messenger-imap`
 
 Branch: `blueprint/invite-onboarding-distribution-mvp`
 
+Invite Blueprint content commit: `738e0404bb2420a117f2b89f4415d4189c040228`
+
+Invite Blueprint PR: `https://github.com/Kwentin3/messenger-imap/pull/5`
+
 ## 1. Executive Summary
 
 PR #3 and PR #4 were reviewed for docs-only scope, artifact safety, and secret safety.
@@ -19,6 +23,8 @@ PR #3, Corporate Control Plane MVP Blueprint, was merged into `main`.
 PR #4, Corporate Directory MVP Blueprint, was a stacked PR on top of PR #3. Its content was fast-forwarded into `main` after PR #3. GitHub could not retarget PR #4 to `main` because there were no remaining commits between `main` and the PR head. PR #4 was therefore closed with an explanatory comment; its content is present in `main`.
 
 After the merge, the Invite Onboarding & Distribution MVP Blueprint was drafted on a new branch from updated `main`.
+
+PR #5 was opened from `blueprint/invite-onboarding-distribution-mvp` to `main` and is mergeable at the time of this report update.
 
 ## 2. PR Review And Merge Summary
 
@@ -32,6 +38,9 @@ After the merge, the Invite Onboarding & Distribution MVP Blueprint was drafted 
 | PR #4 URL | `https://github.com/Kwentin3/messenger-imap/pull/4` |
 | PR #4 branch | `blueprint/corporate-directory-mvp` |
 | Main after PR #3/#4 consolidation | `937edaf00aee096411b977cba9e4a4095fab58e5` |
+| Invite Blueprint branch | `blueprint/invite-onboarding-distribution-mvp` |
+| Invite Blueprint commit | `738e0404bb2420a117f2b89f4415d4189c040228` |
+| Invite Blueprint PR | `https://github.com/Kwentin3/messenger-imap/pull/5` |
 
 ## 3. Review Checks Performed
 
