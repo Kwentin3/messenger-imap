@@ -186,7 +186,39 @@ The admin view must not show secrets or raw logs.
 - What report schema should be used by the Blueprint?
 - How should background diagnostics be separated from foreground diagnostics?
 
-## 14. MVP / Later / Non-goals Summary
+## 14. Product Review Refinements
+
+These refinements are product requirements from [Product PRD Review Addendum](../PRODUCT_PRD_REVIEW_ADDENDUM.md).
+
+### Diagnostics While Control Plane Is Unavailable
+
+Diagnostic evidence can be collected locally even if the Control Plane is unavailable in whitelist or restricted-network mode.
+
+Product behavior:
+
+- standalone Android Diagnostics APK remains a valid field tool;
+- in-client diagnostics may run locally if implemented;
+- sanitized reports may be exported manually;
+- report upload to Control Plane can be delayed until sync is available;
+- admin diagnostic status may remain stale until reports are uploaded or referenced.
+
+### Email Verification Is Separate
+
+Email verification code/challenge is distinct from transport diagnostics.
+
+Rules:
+
+- IMAP/SMTP login success supports transport readiness evidence;
+- send/receive correlation supports provider/network evidence;
+- local diagnostic pass does not activate membership;
+- local diagnostic pass does not activate external relationship;
+- membership/external relationship activation requires email ownership verification and Control Plane policy checks.
+
+### Scope Reminder
+
+MVP-0a standalone diagnostics are accepted evidence for foreground Android transport validation. In-client diagnostics minimal scope remains TBD and must not imply production-ready background reliability or provider-wide whitelist proof.
+
+## 15. MVP / Later / Non-goals Summary
 
 MVP covers accepted standalone evidence, provider diagnostic status, a Check Transport product function, sanitized reports, and admin/support visibility.
 

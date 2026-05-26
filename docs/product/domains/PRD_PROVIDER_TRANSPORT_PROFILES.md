@@ -200,7 +200,43 @@ Diagnostic status should include the relevant network context and report referen
 - How should failed provider statuses be shown without creating support noise?
 - Should provider profile data be global, organization-specific, or layered?
 
-## 15. MVP / Later / Non-goals Summary
+## 15. Product Review Refinements
+
+These refinements are product requirements from [Product PRD Review Addendum](../PRODUCT_PRD_REVIEW_ADDENDUM.md).
+
+### Organization / Workspace Scope
+
+Provider profiles and provider diagnostic status are scoped by organization/workspace.
+
+Required scoping:
+
+- `organizationId` and/or `workspaceId`;
+- provider family/profile ID;
+- network context such as Wi-Fi, normal mobile, operator, region, and whitelist context where evidence exists;
+- diagnostic report reference;
+- last verified time and evidence status.
+
+Manual/custom profiles must also be organization-scoped. A custom profile accepted for one workspace is not automatically accepted globally.
+
+### Control Plane Stale Mode
+
+The Control Plane may be unreachable in whitelist or restricted-network mode while provider IMAP/SMTP transport still works.
+
+Product behavior:
+
+- cached provider profiles may be used while stale if policy allows;
+- provider profile changes are delayed until Control Plane sync;
+- new organization policy changes do not apply until sync;
+- diagnostics may run locally and upload later;
+- UI should distinguish provider transport availability from Control Plane availability.
+
+### Email Verification Separation
+
+Provider login and diagnostics prove transport readiness. They do not prove product-level mailbox ownership for enrollment.
+
+Email ownership verification uses the invite verification code/challenge flow. Provider transport diagnostics can support troubleshooting and onboarding readiness, but must not replace invite activation or membership/external relationship verification.
+
+## 16. MVP / Later / Non-goals Summary
 
 MVP covers Mail.ru / VK Mail baseline, manual/custom profiles, candidate Yandex/Rambler handling, diagnostic status, and admin/client provider profile use.
 

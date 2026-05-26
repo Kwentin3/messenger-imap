@@ -339,7 +339,98 @@ MVP branding should be minimal:
 - What exact UI warning is required for chats with external contacts?
 - Should external contacts use the same APK and app mode as employees?
 
-## 17. MVP / Later / Non-goals Summary
+## 17. Product Review Refinements
+
+These refinements are product requirements from [Product PRD Review Addendum](../PRODUCT_PRD_REVIEW_ADDENDUM.md).
+
+### Control Plane Unavailable / Stale Mode UX
+
+The Android client must expect Control Plane unavailability in whitelist or restricted-network mode.
+
+Required UX states:
+
+- last successful Control Plane sync;
+- last successful directory sync;
+- stale directory warning;
+- stale policy warning;
+- pending invite activation when Control Plane is unavailable;
+- delayed diagnostic/report upload when Control Plane is unavailable;
+- cached app release policy if already known.
+
+The client may continue IMAP/SMTP messaging with known active contacts if transport works and local policy allows it. It must not imply that stale directory state is fresh.
+
+### Email Verification Code Entry
+
+The client must support a verification code/challenge entry flow for internal and external invites.
+
+Rules:
+
+- invite token entry does not equal membership;
+- email verification does not equal membership by itself;
+- IMAP/SMTP login success is transport readiness evidence, not the product ownership proof;
+- activation requires Control Plane verification and policy acceptance.
+
+Later, the app may read a challenge through IMAP only if a secure design is approved.
+
+### Workspace Scope
+
+The client must not assume a global single organization data model.
+
+MVP may choose one active workspace in UI, but client state must be scoped by organization/workspace for membership, visible directory, external relationships, provider profile policy, diagnostics, invites, and cached release policy.
+
+### Managed Group Stale Roster Behavior
+
+Managed group sends must use the current active roster from directory/control-plane state.
+
+If roster state is stale beyond policy threshold:
+
+- the client should block or warn before a managed group send;
+- historical local participants must not be treated as managed roster authority;
+- historical chats that include revoked members should show a warning;
+- new managed sends to revoked members must be blocked or require explicit non-managed/manual override according to policy.
+
+### App Release Version Policy
+
+The client must support release lifecycle warnings:
+
+- `minSupportedVersion`;
+- `forceUpgradeBelowVersion`;
+- `deprecatedVersion`;
+- `blockedVersion`;
+- channel: `internal`, `beta`, `stable`;
+- APK SHA-256 and signing note as metadata.
+
+When Control Plane is available, the app should warn or block according to policy. When unavailable, it may use last cached policy.
+
+APK-by-email is Android emergency fallback only. It is not primary distribution and does not imply trust or membership. iOS is out of current scope.
+
+### Trust / Identity Status UI
+
+UI must distinguish:
+
+- app installed;
+- invite present;
+- email ownership verified;
+- pending internal member;
+- active internal member;
+- suspended/revoked internal member;
+- pending/active/revoked external contact;
+- imported directory/local contact;
+- cryptographically verified contact if SecureJoin or equivalent is later used.
+
+Imported contact is not cryptographically verified by default. External active contact does not equal internal membership.
+
+### External Reassignment UX
+
+If an external contact is reassigned because the old manager leaves or loses access:
+
+- old manager loses access after sync/enforcement;
+- employee UI should show the reassigned contact according to visibility scope;
+- external contact should see updated assigned person/team where policy allows;
+- no internal HR reason should be shown to the external contact;
+- exact old chat/history behavior is Blueprint scope.
+
+## 18. MVP / Later / Non-goals Summary
 
 MVP covers invite enrollment, external invite handling, provider setup, basic diagnostics, directory sync, internal/external directory separation, one-to-one chats, basic groups, attachments, and voice messages.
 

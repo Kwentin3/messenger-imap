@@ -6,6 +6,8 @@ Status: high-level product documentation index.
 
 Root document: [Corporate IMAP Messenger Root PRD](PRD_ROOT_CORPORATE_IMAP_MESSENGER.md)
 
+Review addendum: [Product PRD Review Addendum](PRODUCT_PRD_REVIEW_ADDENDUM.md)
+
 ## Domain Map
 
 | Domain | PRD file | Purpose | MVP priority | Owner TBD | Key dependencies | Status |
@@ -29,17 +31,21 @@ The MVP requires all seven domains to work together:
 - Diagnostics provide evidence for provider trust and whitelist-ready status.
 - Distribution and enrollment keep APK access separate from organization membership.
 - External Contacts & Guest Access keeps client/counterparty communication separate from employee membership and prevents internal directory exposure to guests.
+- Product PRD Review Addendum defines cross-domain refinements for Control Plane stale mode, email verification, workspace scoping, managed group enforcement, trust/RBAC, invite abuse, and app release lifecycle.
 
 ## Later / Deferred Themes
 
 - Production-grade background and locked-screen reliability.
 - Signed directory updates and stronger replay protection.
+- Signed IMAP/system-account directory/policy fallback if selected after MVP.
+- Multi-workspace UI if deferred from MVP.
 - Broader provider/operator/region validation matrix.
 - Advanced policy management.
 - External organizations, project rooms, and CRM/helpdesk integrations.
 - Full managed distribution or app store strategy.
 - Audio transcription and richer media processing.
 - Additional platforms.
+- iOS distribution path.
 
 ## Non-goals for This PRD Package
 
@@ -52,6 +58,8 @@ The MVP requires all seven domains to work together:
 - No changes to chatmail/core.
 - No promise that all providers are whitelist-ready.
 - No production-ready claim.
+- No assumption that Control Plane is reachable in whitelist mode.
+- No iOS support in current scope.
 
 ## Cross-Document Conventions
 

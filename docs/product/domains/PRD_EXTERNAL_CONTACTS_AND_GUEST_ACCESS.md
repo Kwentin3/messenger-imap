@@ -377,7 +377,73 @@ Risk controls:
 - Should organization-wide external contacts require approval?
 - What audit retention period is required for external relationship events?
 
-## 22. MVP / Later / Non-goals Summary
+## 22. Product Review Refinements
+
+These refinements are product requirements from [Product PRD Review Addendum](../PRODUCT_PRD_REVIEW_ADDENDUM.md).
+
+### External Email Ownership Verification
+
+External relationship activation requires proof that the external contact controls the target mailbox.
+
+Preferred flow:
+
+1. Control Plane sends a verification code/challenge to the external email.
+2. External contact enters the code in the app.
+3. Control Plane validates the code against the external invite.
+4. Activation proceeds only if invite, email, policy, and external relationship checks pass.
+
+IMAP/SMTP login can support transport readiness but does not replace product-level ownership proof.
+
+### Control Plane Unavailable
+
+External contact activation requires Control Plane availability in MVP.
+
+If Control Plane is unavailable:
+
+- external invite opening may show pending state;
+- APK installation or provider setup may happen if possible;
+- external relationship activation is delayed;
+- external visible directory sync is delayed;
+- external contact must not receive internal directory data from cache or fallback state.
+
+### Stale External Directory Behavior
+
+External contacts can receive only their scoped visible directory, never the internal corporate directory.
+
+If external visible directory state is stale:
+
+- the app should show a stale warning where appropriate;
+- communication with previously allowed employee/team may continue if policy and transport allow it;
+- new external relationship activation, reassignment, revoke, and visibility changes are delayed until sync;
+- stale cache must not expand external visibility.
+
+### Reassignment UX
+
+When an assigned manager leaves or loses access:
+
+- the external relationship remains organization-owned;
+- admin can reassign the external contact to another employee or team;
+- old manager loses access after sync/enforcement;
+- external contact sees updated assigned person/team where policy allows;
+- external contact must not see internal HR reason;
+- old chat may become historical, unavailable, or show a transfer notice; exact behavior is Blueprint scope.
+
+### External Invite Abuse
+
+External invite safety must cover forwarding, screenshot leak, wrong recipient, expired replay, and repeated failed attempts.
+
+Requirements:
+
+- expiry;
+- `maxUses`;
+- expected email binding where possible;
+- rate limits;
+- failed attempt audit;
+- invite revoke;
+- revoke all active invites by issuer/admin action;
+- admin/support visibility into suspicious external invite activity.
+
+## 23. MVP / Later / Non-goals Summary
 
 MVP covers external contact entity, one-to-one external invite, external relationship, external directory section, visible external badges, assigned employee visibility, admin revoke/archive/reassign, and strict no internal-directory exposure.
 

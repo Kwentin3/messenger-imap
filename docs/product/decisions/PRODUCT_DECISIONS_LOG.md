@@ -33,14 +33,23 @@ This log records accepted product decisions that shape the PRD package. It is no
 | 2026-05-26 | External invite creates ExternalRelationship, not Membership. | External contacts need scoped communication without employee rights. | Control plane, Android client, and directory must model ExternalRelationship separately from Membership. | Define exact lifecycle fields and sync payload. |
 | 2026-05-26 | External contacts do not receive internal corporate directory. | Directory exposure to external parties is a major confidentiality risk. | External users receive only allowed contact/team/room visibility. | Define scoped visible directory behavior. |
 | 2026-05-26 | External contacts belong to the organization and can be reassigned. | Client relationships must survive manager departure and remain under organization control. | Admins can revoke, archive, suspend, or reassign external contacts. | Define reassignment notification and audit details. |
+| 2026-05-26 | Control Plane may be unavailable in whitelist mode; stale cache mode is required. | Restricted mobile networks may allow IMAP/SMTP provider transport but block the Control Plane. | Messaging may continue through IMAP/SMTP while directory, policy, invite, revoke, release, and diagnostic upload sync become stale. | Define stale/expired thresholds and blocked actions. |
+| 2026-05-26 | Primary directory sync is Control Plane HTTPS; signed IMAP/system-account sync is later fallback. | Control Plane remains the authoritative product path, while IMAP fallback requires signing and replay protection. | MVP should not depend on IMAP-based control updates unless explicitly selected. | Design signed fallback protocol only after MVP scope decision. |
+| 2026-05-26 | Email ownership proof uses verification code/challenge. | Entering an email or passing IMAP/SMTP login is not enough for product-level ownership proof. | Membership and external relationship activation require verified email and invite policy checks. | Decide whether later IMAP challenge reading is allowed. |
+| 2026-05-26 | Multi-workspace must not be blocked by the data model. | One user may be internal member in one organization and external contact in another. | Directory, invites, membership, provider profile, diagnostics, policy, and external relationships are scoped by organization/workspace. | Decide one active workspace UI vs multi-workspace UI for MVP. |
+| 2026-05-26 | Managed groups must enforce current active roster. | Local historical chat membership may include revoked members. | Managed sends use current directory roster; stale roster sends warn/block; revoked members are not active recipients. | Define exact client UI and override behavior. |
+| 2026-05-26 | Trust and identity states must be explicit. | App installed, invite present, email verified, active member, external contact, imported contact, and cryptographic verification are different states. | UI and policy must not conflate these states. | Decide SecureJoin/equivalent indicators for MVP. |
+| 2026-05-26 | Control Plane RBAC matrix is required. | Admin roles need product-level permission boundaries before Blueprint. | Owner, Admin, Manager, Support/IT, and Auditor permissions must be designed from the matrix. | Convert product matrix into exact permissions in Blueprint. |
+| 2026-05-26 | APK-by-email Android emergency fallback is accepted, not primary. | Some emergency scenarios may allow mail but not normal APK download. | Android APK can be distributed by email as fallback, but install does not imply membership and release metadata/signing still matter. | Define operator guidance and support warnings. |
+| 2026-05-26 | iOS is out of current scope. | Current evidence and distribution assumptions are Android-first. | iOS distribution requires separate App Store/TestFlight/MDM-like path later. | Revisit after Android MVP scope is stable. |
 
 ## MVP Impact
 
-The decisions define an MVP that includes Android-first onboarding, provider profiles, invite-based activation, control-plane directory authority, external contacts/guest access, basic diagnostics, Mail.ru / VK Mail baseline, manual/custom profile support, and safe directory sync.
+The decisions define an MVP that includes Android-first onboarding, provider profiles, invite-based activation, email ownership verification, control-plane directory authority, stale cache behavior, external contacts/guest access, basic diagnostics, Mail.ru / VK Mail baseline, manual/custom profile support, and safe directory sync.
 
 ## Later Impact
 
-Deferred work includes background reliability, signed directory updates, broader provider/operator validation, audio transcription, advanced policy, and production distribution strategy.
+Deferred work includes background reliability, signed IMAP/system-account directory/policy updates, broader provider/operator validation, audio transcription, advanced policy, multi-workspace UI if not selected for MVP, iOS distribution, and production distribution strategy.
 
 ## Non-goals Confirmed by Decisions
 
@@ -54,6 +63,8 @@ Deferred work includes background reliability, signed directory updates, broader
 - No external contact as employee by default.
 - No internal directory exposure to external contacts.
 - No secrets in diagnostics or docs.
+- No assumption that Control Plane works in whitelist mode.
+- No iOS support in current scope.
 
 ## Open Decision Themes
 
@@ -62,6 +73,12 @@ Deferred work includes background reliability, signed directory updates, broader
 - First MVP provider list beyond Mail.ru / VK Mail.
 - Directory authority and canonical payload.
 - Invite policy and activation rules.
+- Stale/expired directory thresholds and allowed offline actions.
+- Email verification UX and later IMAP challenge reading.
+- One active workspace UI vs multi-workspace UI.
+- Trust/identity state display and cryptographic verification indicators.
+- RBAC-to-permission mapping.
+- App release lifecycle policy.
 - External invite policy, visibility scopes, and reassignment behavior.
 - Background reliability target.
 - Branding, package identity, and distribution channel.

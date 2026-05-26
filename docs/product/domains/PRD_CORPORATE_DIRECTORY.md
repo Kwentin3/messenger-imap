@@ -371,7 +371,75 @@ Later trust requirements:
 - How should directory stale-state warnings differ for external users?
 - Which external contact types should be first-class labels in MVP?
 
-## 18. MVP / Later / Non-goals Summary
+## 18. Product Review Refinements
+
+These refinements are product requirements from [Product PRD Review Addendum](../PRODUCT_PRD_REVIEW_ADDENDUM.md).
+
+### Stale Directory Mode
+
+The directory must support cached operation because the Control Plane may be unavailable in whitelist or restricted-network mode.
+
+Required concepts:
+
+- `lastControlPlaneSyncAt`;
+- `lastDirectorySyncAt`;
+- `directoryStaleAfter`;
+- `directoryExpiredAfter`;
+- `staleDirectoryWarning`;
+- `stalePolicyWarning`.
+
+Product behavior:
+
+- a cached directory may be used for known active contacts while transport works;
+- the client must make stale state visible when directory age exceeds policy;
+- expired directory state should block sensitive actions such as starting a new managed group or sending to a managed group with an uncertain roster;
+- sync must resume on next Control Plane availability;
+- invite activation, revocation application, reassignment, and release policy refresh remain delayed until sync unless a later signed fallback exists.
+
+### Directory Sync Fallback
+
+Primary directory sync is through the HTTPS Control Plane.
+
+Later fallback may distribute signed directory/policy updates through an IMAP/SMTP system account. That fallback is not MVP default. It must be signed, versioned, replay-protected, organization/workspace-scoped, and explicitly designed before automatic client application.
+
+### Canonical Hash Rules
+
+Directory hash must be deterministic and scoped:
+
+- use stable UTF-8 JSON canonicalization;
+- include `organizationId` and/or `workspaceId`;
+- sort arrays by stable IDs such as `memberId`, `externalContactId`, `groupId`, and `relationshipId`;
+- lowercase and normalize emails before hashing;
+- normalize null/empty values by a documented rule;
+- include only fields that affect directory semantics;
+- include member status, external contact status, visibility scope, managed group membership, assigned owner/team, and directory-visible profile fields;
+- exclude volatile fields such as `generatedAt`, server time, request ID, pagination cursors, transient sync metadata, and retry counters;
+- use SHA-256 unless a later compliance decision changes it.
+
+### Multi-Workspace Scope
+
+Directory snapshots are scoped by organization/workspace. The PRD must not assume a single global organization.
+
+All directory records, memberships, external contacts, external relationships, managed groups, policy references, and directory hash inputs must carry `organizationId` and/or `workspaceId`. MVP may allow one active workspace in the UI, but the directory model must not block future multi-workspace support.
+
+### Managed Group Enforcement After Revoke
+
+Managed groups must use the current active roster from the directory/control-plane snapshot.
+
+Rules:
+
+- revoked or suspended members are removed from managed rosters after sync;
+- historical local chat participants are not roster authority;
+- sending to a managed group must use the current active roster, not stale historical local membership;
+- if the roster is stale beyond policy threshold, sending should be blocked or require explicit policy override;
+- historical messages may remain visible but must not imply active membership;
+- if a historical chat includes a revoked member, the client should show a warning.
+
+### Trust Identity Note
+
+Directory active status is not the same as cryptographic identity verification. Imported contacts are not cryptographically verified by default. Any SecureJoin or equivalent trust indicator must be documented as a distinct state from directory membership.
+
+## 19. MVP / Later / Non-goals Summary
 
 MVP covers centrally managed directory, version/hash manifests, client cache, member statuses, revocation behavior, managed groups, separate external contact section, visible directory filtering, external badges, and no silent unsafe import.
 

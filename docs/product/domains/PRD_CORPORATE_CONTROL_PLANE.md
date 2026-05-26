@@ -372,7 +372,106 @@ Organization can recommend or restrict provider profiles, but whitelist-ready st
 - What APK hosting path is acceptable for internal testing?
 - How much audit retention is required?
 
-## 15. MVP / Later / Non-goals Summary
+## 15. Product Review Refinements
+
+These refinements are product requirements from [Product PRD Review Addendum](../PRODUCT_PRD_REVIEW_ADDENDUM.md).
+
+### Control Plane Availability
+
+The Control Plane is required for organization authority, but it may be unreachable in mobile whitelist or restricted-network mode.
+
+Product rules:
+
+- IMAP/SMTP messaging may continue when provider transport is reachable;
+- directory, policy, invite, revoke, release metadata, external relationship, audit upload, and diagnostic upload sync may be delayed;
+- clients must cache the last known directory and policy state;
+- admin and client UX must expose stale/expired state where relevant;
+- activation of internal invites and external invites requires Control Plane availability in MVP;
+- signed IMAP/system-account distribution of directory/policy updates is later fallback scope.
+
+### RBAC Matrix
+
+This is the product-level permission baseline. Exact permission names and enforcement points belong to later Blueprints.
+
+| Action | Owner | Admin | Manager | Support/IT | Auditor |
+| --- | --- | --- | --- | --- | --- |
+| Create organization | yes | no | no | no | no |
+| Manage admins | yes | policy | no | no | read-only |
+| Create internal invite | yes | yes | policy | policy | no |
+| Create external invite | yes | yes | policy | policy | no |
+| Approve member | yes | yes | policy | policy | no |
+| Suspend/revoke member | yes | yes | policy | policy | no |
+| Publish directory | yes | yes | no | policy | read-only |
+| Edit directory fields | yes | yes | policy | policy | read-only |
+| Manage managed groups | yes | yes | policy | policy | read-only |
+| Reassign external contact | yes | yes | policy | policy | read-only |
+| Revoke/archive external contact | yes | yes | policy | policy | read-only |
+| Change provider profiles | yes | yes | no | policy | read-only |
+| Publish APK release | yes | yes | no | policy | read-only |
+| View diagnostics | yes | yes | policy | yes | read-only |
+| Export diagnostic report | yes | yes | policy | policy | read-only |
+| View audit log | yes | yes | no | policy | read-only |
+
+Legend: `policy` means the organization can allow or restrict the action; `read-only` means view without mutation.
+
+### Email Verification Challenge
+
+Membership activation and external relationship activation require proof of mailbox ownership.
+
+The preferred product flow is:
+
+1. Control Plane sends a verification code or challenge to the expected email.
+2. User enters the code in the app.
+3. Control Plane validates the code and checks `allowedEmail` / `allowedDomain` constraints against the verified email.
+4. Activation proceeds only if invite, policy, membership/external relationship, and provider constraints pass.
+
+IMAP/SMTP login success can support transport readiness but does not replace product-level email ownership proof.
+
+### Invite Abuse, Rate Limit, And Audit
+
+Control Plane must support:
+
+- invite expiry and `maxUses`;
+- expected email/domain constraints where applicable;
+- failed attempt audit;
+- rate limits for repeated failed code/invite attempts;
+- invite revocation;
+- revoke-all-active-invites-by-issuer admin action;
+- admin/support visibility into suspicious invite activity;
+- later alerting for suspicious invite activity.
+
+Audit events should include failed invite attempts, failed email verification attempts, successful verification, activation, invite revoke, invite expiry, member revoke/suspend, external contact revoke/archive/reassign, and release policy publication.
+
+### App Release Lifecycle
+
+APK release management must include:
+
+- `appReleaseVersion`;
+- `minSupportedVersion`;
+- `forceUpgradeBelowVersion`;
+- `deprecatedVersion`;
+- `blockedVersion`;
+- release channel: `internal`, `beta`, `stable`;
+- APK SHA-256;
+- release date;
+- signing info or signature note;
+- rollback status;
+- update warning/force-upgrade policy.
+
+APK-by-email is allowed only as an Android emergency fallback and must not become the primary distribution path. iOS support and iOS distribution are out of current scope.
+
+### External Contact Reassignment Support
+
+When an assigned manager leaves or loses access:
+
+- the external relationship remains organization-owned;
+- admin can reassign the contact to another employee or team;
+- the old manager loses access after sync/enforcement;
+- the external contact sees the new assigned contact/team where policy allows;
+- no internal HR reason should be exposed to the external contact;
+- exact chat/history behavior must be defined in Blueprint.
+
+## 16. MVP / Later / Non-goals Summary
 
 MVP covers organization, members, internal invites, external contacts, one-to-one external invites, external contact reassignment/revocation, directory authority, basic groups, provider profiles, APK metadata, diagnostic status, and audit events.
 

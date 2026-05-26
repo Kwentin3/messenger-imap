@@ -15,6 +15,8 @@ Date: 2026-05-14
 - [Provider Transport Profiles PRD](domains/PRD_PROVIDER_TRANSPORT_PROFILES.md)
 - [Diagnostics & Transport Verification PRD](domains/PRD_DIAGNOSTICS_AND_TRANSPORT_VERIFICATION.md)
 - [External Contacts & Guest Access PRD](domains/PRD_EXTERNAL_CONTACTS_AND_GUEST_ACCESS.md)
+- [Product PRD Review Addendum](PRODUCT_PRD_REVIEW_ADDENDUM.md)
+- [Product PRD Refinement Report](PRODUCT_PRD_REFINEMENT_REPORT.md)
 - [Product Decisions Log](decisions/PRODUCT_DECISIONS_LOG.md)
 - [Product Context Handoff](handoff/PRODUCT_CONTEXT_HANDOFF.md)
 
@@ -30,6 +32,19 @@ Date: 2026-05-14
 - Diagnostics & Transport Verification;
 - External Contacts & Guest Access.
 
+Review addendum created:
+
+- Control Plane stale/offline behavior;
+- email verification;
+- multi-workspace scoping;
+- managed group enforcement;
+- trust/identity states;
+- RBAC matrix;
+- canonical directory hash rules;
+- invite abuse controls;
+- external contact reassignment UX;
+- app release lifecycle.
+
 ## 3. Какие документы наиболее детализированы
 
 Наиболее детализированы:
@@ -37,6 +52,7 @@ Date: 2026-05-14
 - Root PRD, потому что фиксирует общую продуктовую рамку, принципы, MVP, риски, roadmap и открытые решения.
 - Corporate Directory PRD, потому что корпоративная адресная книга является ключевой B2B-функцией и требует явных правил по source of truth, version/hash, member statuses и revoked employee behavior.
 - External Contacts & Guest Access PRD, потому что реальная B2B-коммуникация требует клиентов/поставщиков/партнеров/подрядчиков без превращения их в сотрудников и без раскрытия внутренней адресной книги.
+- Product PRD Review Addendum, потому что перед Blueprint фиксирует cross-domain уточнения: Control Plane может быть недоступен в whitelist mode, stale cache обязателен, email verification отделена от transport diagnostics, RBAC и trust states должны быть явными.
 
 Остальные доменные PRD достаточно детализированы для дальнейшего обсуждения и подготовки Blueprint, но намеренно не превращены в технические спецификации.
 
@@ -48,6 +64,12 @@ Date: 2026-05-14
 - GPL/MPL compliance и модель распространения;
 - первый MVP provider set после Mail.ru / VK Mail baseline;
 - directory authority model и canonical payload для hash;
+- stale/expired directory thresholds и поведение при недоступном Control Plane;
+- email verification UX и возможность later IMAP challenge reading;
+- one active workspace UI vs multi-workspace UI;
+- trust/identity state model и SecureJoin-equivalent indicators;
+- Control Plane RBAC-to-permission mapping;
+- app release lifecycle policy;
 - invite policy и правила activation;
 - external invite policy, visibility scopes и правила reassignment;
 - background / locked-screen reliability target;
@@ -63,6 +85,7 @@ Date: 2026-05-14
 - принять решение по GPL/MPL distribution acceptability;
 - подготовить Android IMAP Messenger MVP Blueprint;
 - подготовить Corporate Control Plane Blueprint;
+- учесть в Blueprints stale Control Plane mode, email verification, workspace scoping, trust states, RBAC, invite abuse controls и app release lifecycle;
 - включить External Contacts & Guest Access в будущие Blueprint;
 - при необходимости подготовить отдельный Directory Blueprint;
 - определить MVP-объём in-client diagnostics;
@@ -79,6 +102,10 @@ Date: 2026-05-14
 - не писались детальные API-specs;
 - не создавалась Mail.ru-only архитектура;
 - не делался вывод, что все провайдеры работают в whitelist-контекстах;
+- не предполагалось, что Control Plane доступен в whitelist-контекстах;
+- не смешивались transport diagnostics и email ownership proof;
+- не включался iOS в текущий scope;
+- не делался APK-by-email primary distribution flow;
 - не обещался production-ready продукт;
 - не смешивались internal membership и external relationship;
 - не предполагалось, что external contacts получают internal corporate directory;
@@ -86,11 +113,11 @@ Date: 2026-05-14
 
 ## 7. MVP / Later / Non-goals Summary
 
-MVP зафиксирован как Android-first корпоративный мессенджер с invite onboarding, external contact invite handling, provider profiles, Mail.ru / VK Mail baseline, manual/custom profiles, базовой диагностикой, one-to-one chats, basic groups, corporate directory sync, external contacts section и control-plane администрированием.
+MVP зафиксирован как Android-first корпоративный мессенджер с invite onboarding, email verification, external contact invite handling, provider profiles, Mail.ru / VK Mail baseline, manual/custom profiles, базовой диагностикой, one-to-one chats, basic groups, corporate directory sync with stale cache behavior, external contacts section и control-plane администрированием.
 
-Later scope включает background reliability, signed directory updates, external organizations/project rooms, расширенную provider/operator validation matrix, advanced policies, distribution strategy, audio transcription и дополнительные платформы.
+Later scope включает background reliability, signed IMAP/system-account directory/policy fallback, external organizations/project rooms, multi-workspace UI if deferred, расширенную provider/operator validation matrix, advanced policies, distribution strategy, iOS strategy, audio transcription и дополнительные платформы.
 
-Non-goals включают video calls, real-time voice calls, production-grade background guarantees, full MDM, silent unsafe address book import, all-provider whitelist proof, превращение external contacts в employees, раскрытие internal directory внешним контактам и IMAP/SMTP transport rewrite.
+Non-goals включают video calls, real-time voice calls, production-grade background guarantees, full MDM, silent unsafe address book import, all-provider whitelist proof, iOS support in current scope, превращение external contacts в employees, раскрытие internal directory внешним контактам и IMAP/SMTP transport rewrite.
 
 ## 8. External Contacts open questions
 
@@ -104,3 +131,17 @@ Non-goals включают video calls, real-time voice calls, production-grade 
 - как именно уведомлять клиента при reassignment менеджера;
 - требуется ли CRM/helpdesk integration в ранних пилотах;
 - используют ли external contacts тот же APK и тот же app mode, что сотрудники.
+
+## 9. PRD Review Refinement open questions
+
+Оставшиеся вопросы после review refine:
+
+- какие значения `directoryStaleAfter` и `directoryExpiredAfter` выбрать для MVP;
+- какие действия блокировать при stale/expired Control Plane state;
+- использовать ли one active workspace UI в MVP или сразу multi-workspace UI;
+- разрешать ли later IMAP challenge reading для email verification;
+- какие роли получают право создавать external invites по умолчанию;
+- нужен ли admin approval для broad external visibility scopes;
+- какие exact permission keys соответствуют RBAC matrix;
+- какие версии считать deprecated/blocked/minSupported в app release lifecycle;
+- как показывать SecureJoin-equivalent verification, если она входит в MVP.

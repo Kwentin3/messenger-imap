@@ -18,6 +18,7 @@ Related documents:
 - [Provider Transport Profiles PRD](domains/PRD_PROVIDER_TRANSPORT_PROFILES.md)
 - [Diagnostics & Transport Verification PRD](domains/PRD_DIAGNOSTICS_AND_TRANSPORT_VERIFICATION.md)
 - [External Contacts & Guest Access PRD](domains/PRD_EXTERNAL_CONTACTS_AND_GUEST_ACCESS.md)
+- [Product PRD Review Addendum](PRODUCT_PRD_REVIEW_ADDENDUM.md)
 - [Product Decisions Log](decisions/PRODUCT_DECISIONS_LOG.md)
 - [Product Context Handoff](handoff/PRODUCT_CONTEXT_HANDOFF.md)
 
@@ -32,6 +33,8 @@ IMAP/SMTP is chosen because email infrastructure is mature, widely deployed, and
 Android-first is chosen because the current diagnostic evidence and near-term field use case are Android mobile-first. The first product stages should optimize for Android app distribution, sideload realities, mobile credential handling, foreground transport validation, and later background reliability.
 
 A Corporate Control Plane is required because an IMAP/SMTP messenger alone is not a corporate product. The organization needs a trusted source of membership, invites, provider profiles, directory records, policies, app releases, and diagnostic status. The control plane is not a message server; messages still flow through IMAP/SMTP providers.
+
+The Control Plane may be unavailable in mobile whitelist or restricted-network mode. In that state, IMAP/SMTP messaging may continue if provider transport works, but directory, policy, invite, revoke, release metadata, and diagnostic upload sync can become stale until the Control Plane is reachable again.
 
 The product must distinguish internal membership from external communication. An internal invite creates organization membership. An external invite creates an external relationship with a client, supplier, partner, contractor, or other counterparty. External contacts must not receive the internal corporate directory or appear as employees.
 
@@ -133,8 +136,12 @@ Accepted evidence does not mean:
 - Corporate directory is the core B2B product feature.
 - External contacts are separated from internal members and do not receive the internal corporate directory.
 - Control plane manages trust, policies, membership, provider defaults, app releases, and directory authority.
+- Control plane may be unavailable in whitelist mode; the client must support visible stale directory and stale policy state.
 - Messages use IMAP/SMTP transport.
 - Control plane is not the message server.
+- Email ownership proof is required for membership or external relationship activation; IMAP/SMTP login is transport readiness evidence, not product-level ownership proof.
+- Organization/workspace scoping is mandatory for membership, directory, invites, provider profiles, diagnostics, policies, and external relationships.
+- Managed groups must send using current active roster, not stale historical local membership.
 - Diagnostic reports must be sanitized.
 - No app passwords, real credentials, raw AUTH payloads, raw logcat, or sensitive message payloads in reports.
 - No silent unsafe address book import.
@@ -184,11 +191,14 @@ The high-level MVP should include:
 - Attachments.
 - Voice/audio messages if available through reused capabilities.
 - Corporate directory sync from the control plane.
+- Local cached directory with visible stale/expired state when Control Plane sync is unavailable.
+- Email verification code flow for internal membership and external relationship activation.
 - External contacts section with one-to-one external invite and visible external badge.
 - External invite that creates an external relationship, not internal membership.
 - Admin portal for members, invites, directory, basic groups, app releases, and diagnostic status.
 - Admin control for external contact revoke/archive/reassign.
 - APK download flow.
+- Android APK-by-email emergency fallback as a non-primary distribution option.
 - Basic diagnostic gate for provider setup.
 - Sanitized diagnostic report export or reference to standalone diagnostic evidence.
 
@@ -201,6 +211,7 @@ Later stages may include:
 - background and locked-screen reliability hardening;
 - larger field diagnostic campaigns by provider, operator, region, and network mode;
 - signed directory update distribution;
+- signed directory/policy update distribution through an IMAP/SMTP system account as later/fallback scope;
 - stronger directory trust and rollback model;
 - advanced policy controls;
 - richer admin audit and support workflows;
@@ -225,6 +236,7 @@ The first MVP explicitly excludes:
 - treating external contacts as employees by default;
 - exposing the internal corporate directory to external contacts;
 - full app store distribution strategy;
+- iOS support and iOS distribution path;
 - proof that all providers work in whitelist environments;
 - rewriting IMAP/SMTP transport;
 - modifying chatmail/core internals without a specific Blueprint-level justification;
@@ -242,6 +254,8 @@ Android Client
 
 This diagram is conceptual, not a protocol specification. The Android client communicates with IMAP/SMTP providers for messages and with the Corporate Control Plane for organization state.
 
+Control Plane sync is the primary MVP path for organization state. In restricted whitelist mode, the Control Plane may be unavailable while IMAP/SMTP remains available; clients must rely on cached directory/policy state, show stale warnings, and delay activation or administrative state changes until sync resumes. Signed directory/policy updates via an IMAP/SMTP system account are later/fallback scope.
+
 **Mail Transport Layer**  
 Provides IMAP/SMTP connectivity, authentication, message send/receive, folders, and transport status. The MVP should reuse proven Delta Chat / chatmail capabilities where possible.
 
@@ -253,6 +267,8 @@ Owns organization management, invites, membership, directory authority, managed 
 
 **Directory Authority**  
 Defines the canonical corporate directory snapshot, version, hash, member statuses, and active group membership rules.
+
+Directory hash payloads must be canonical, scoped by `organizationId`/`workspaceId`, sorted by stable IDs, normalized for email case and empty/null handling, and free of volatile fields such as server time, request ID, or pagination metadata.
 
 **Diagnostics Layer**  
 Validates whether a provider profile works in a specific network context. Results must be evidence-based and sanitized.
@@ -297,8 +313,16 @@ A provider website being reachable does not prove IMAP/SMTP endpoints are reacha
 **Address book trust**  
 Corporate directory distribution can mislead users if authenticity, versioning, and member statuses are not clear.
 
+**Control Plane stale state**
+
+If Control Plane sync is blocked while IMAP/SMTP works, users may continue messaging with stale directory or policy state. The client must make stale/expired state visible and restrict sensitive actions such as new managed group sends or invite activation when required.
+
 **External directory exposure**  
 If external contacts are accidentally treated as members, the product can leak internal employee directory data, internal groups, or organizational structure to clients and counterparties.
+
+**Invite and verification abuse**
+
+Forwarded invite links, screenshots, expired invite reuse, wrong-email activation attempts, and repeated failed attempts require expiry, rate limits, audit, revocation, and email ownership verification.
 
 **Revoked employee limitations**  
 Revocation can remove members from active directory state and managed groups, but cannot guarantee erasure of previously seen information.
@@ -307,7 +331,7 @@ Revocation can remove members from active directory state and managed groups, bu
 Android background behavior, battery policies, OEM restrictions, and locked-screen delivery are not proven by MVP-0a foreground diagnostics.
 
 **APK distribution**  
-Sideloading has friction, warnings, source permissions, update risks, and support burden.
+Sideloading has friction, warnings, source permissions, update risks, and support burden. APK-by-email is Android emergency fallback only, not the primary distribution model and not a membership signal.
 
 **Credential security**  
 IMAP/SMTP app passwords or credentials must be protected. Reports must never include secrets or raw authentication data.
@@ -318,8 +342,13 @@ IMAP/SMTP app passwords or credentials must be protected. Reports must never inc
 - GPL distribution acceptability and compliance model.
 - First MVP provider set beyond Mail.ru / VK Mail baseline.
 - Directory authority model and trust boundary.
+- Control Plane stale/expired thresholds and blocked action policy.
 - Invite policy for individual, domain, group, and one-time invites.
+- Email verification UX and whether later IMAP challenge reading is allowed.
+- MVP workspace model: one active workspace UI vs multi-workspace UI, while keeping all state scoped.
+- Trust/identity state UI for invite, email verified, active member, external contact, imported contact, and SecureJoin-equivalent verification.
 - External contact invite policy, default visibility scope, approval rules, and reassignment behavior.
+- App release lifecycle policy including minimum, deprecated, blocked, rollback, and force-upgrade thresholds.
 - Background reliability target for first field trial.
 - Branding, package identity, and distribution path.
 - Whether Android system contacts permission is allowed or avoided.
@@ -335,8 +364,25 @@ IMAP/SMTP app passwords or credentials must be protected. Reports must never inc
 - [Provider Transport Profiles PRD](domains/PRD_PROVIDER_TRANSPORT_PROFILES.md)
 - [Diagnostics & Transport Verification PRD](domains/PRD_DIAGNOSTICS_AND_TRANSPORT_VERIFICATION.md)
 - [External Contacts & Guest Access PRD](domains/PRD_EXTERNAL_CONTACTS_AND_GUEST_ACCESS.md)
+- [Product PRD Review Addendum](PRODUCT_PRD_REVIEW_ADDENDUM.md)
 
-## 16. MVP / Later / Non-goals Summary
+## 16. Product Review Refinements
+
+The product review addendum refines the baseline PRD package with these mandatory product constraints:
+
+- Control Plane may be unavailable in whitelist or restricted-network mode.
+- IMAP/SMTP messages may continue while Control Plane state is stale.
+- Directory, policy, invite, revoke, release metadata, and diagnostic upload sync require Control Plane availability unless later signed IMAP/system-account fallback is designed.
+- Membership and external relationship activation require email ownership proof through a verification code/challenge.
+- All organization-scoped state must carry `organizationId` and/or `workspaceId`; MVP may still choose one active workspace UI.
+- Managed groups must enforce current active roster and not rely on stale historical local group membership after revoke.
+- Trust states must distinguish installed app, invite present, email verified, active internal member, external contact, imported contact, and cryptographic verification.
+- Control Plane RBAC must be explicit for owner, admin, manager, support/IT, and auditor roles.
+- Invite abuse controls must include expiry, max uses, expected email/domain constraints, rate limits, audit, and revocation.
+- App release metadata must include lifecycle fields such as minimum supported version, forced upgrade threshold, blocked/deprecated versions, channel, APK SHA-256, signing note, and rollback status.
+- Android APK-by-email is emergency fallback only; iOS is out of current scope.
+
+## 17. MVP / Later / Non-goals Summary
 
 MVP focuses on Android client, invite enrollment, provider profiles, Mail.ru / VK Mail baseline, custom profiles, one-to-one messaging, basic groups, corporate directory sync, external contacts with one-to-one guest access, admin management, APK distribution, and basic diagnostics.
 

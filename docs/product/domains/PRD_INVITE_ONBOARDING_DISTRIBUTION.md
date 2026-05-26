@@ -291,7 +291,72 @@ The SHA-256 is for release integrity communication and support. The later Bluepr
 - Should APK SHA-256 be user-visible, support-visible, or both?
 - What is the first acceptable distribution channel for field testing?
 
-## 16. MVP / Later / Non-goals Summary
+## 16. Product Review Refinements
+
+These refinements are product requirements from [Product PRD Review Addendum](../PRODUCT_PRD_REVIEW_ADDENDUM.md).
+
+### Email Verification Code Flow
+
+Invite enrollment must prove mailbox ownership before activating membership or an external relationship.
+
+Product flow:
+
+1. User opens an internal organization invite or external contact invite.
+2. App validates invite format locally and asks Control Plane to resolve the invite.
+3. Control Plane sends a verification code/challenge to the expected email address.
+4. User enters the verification code in the app.
+5. Control Plane verifies the code and checks `allowedEmail` / `allowedDomain` constraints against the verified email.
+6. Activation proceeds only after invite validity, email ownership, and policy checks pass.
+
+IMAP/SMTP login success proves transport readiness for a configured mailbox but does not replace product-level ownership proof.
+
+Later, the app may read a verification challenge through IMAP if a secure design is approved. That is not assumed for MVP.
+
+### Control Plane Required For Activation
+
+Invite activation requires Control Plane availability in MVP.
+
+If the Control Plane is unavailable in whitelist or restricted-network mode:
+
+- APK installation can still happen if the artifact is available;
+- provider setup or local diagnostics may proceed where useful;
+- internal membership activation is delayed;
+- external relationship activation is delayed;
+- directory sync is delayed;
+- app should show clear pending/stale state instead of implying active membership.
+
+### Invite Abuse Controls
+
+Invite flows must account for:
+
+- invite forwarding;
+- external invite forwarding;
+- screenshot leak;
+- expired invite replay;
+- wrong email using invite;
+- repeated failed code/invite attempts;
+- external invite sent to the wrong person.
+
+Requirements:
+
+- expiry;
+- `maxUses`;
+- expected email/domain binding where possible;
+- rate limits;
+- failed attempt audit;
+- admin revoke invite;
+- admin revoke all active invites by issuer when needed;
+- suspicious activity visibility for admin/support, with alerting later.
+
+### Installation Under Limited Internet
+
+Normal internet is usually required for the Android APK download/install flow.
+
+APK-by-email is acceptable only as an Android emergency fallback. It is not the primary distribution path and does not imply organization membership. The app must still complete invite resolution, email verification, provider setup, policy checks, and directory sync when Control Plane is reachable.
+
+iOS support is out of current scope. iOS would need a separate App Store, TestFlight, MDM-like, or enterprise distribution path later.
+
+## 17. MVP / Later / Non-goals Summary
 
 MVP covers individual internal invite, one-to-one external contact invite, landing page, explicit APK download, deep link or fallback code, provider setup, diagnostics, membership activation, external relationship activation, and first directory sync.
 
