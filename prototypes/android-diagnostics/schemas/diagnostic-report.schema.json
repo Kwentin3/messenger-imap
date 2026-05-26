@@ -1,0 +1,144 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/android-imap-diagnostics/diagnostic-report.schema.json",
+  "title": "Android IMAP Diagnostics Report",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "timestampUtc",
+    "runId",
+    "mvpStage",
+    "scenario",
+    "deliveryTestMode",
+    "app",
+    "device",
+    "network",
+    "provider",
+    "timeoutPolicy",
+    "checks",
+    "result",
+    "fieldValidity"
+  ],
+  "properties": {
+    "schemaVersion": {"const": 1},
+    "timestampUtc": {"type": "string"},
+    "runId": {"type": "string"},
+    "mvpStage": {"const": "mvp_0a"},
+    "scenario": {"const": "foreground"},
+    "deliveryTestMode": {
+      "enum": ["single_account_smoke", "two_account_canonical", "cross_provider"]
+    },
+    "app": {
+      "type": "object",
+      "required": ["name", "version", "buildType", "buildNumber"],
+      "properties": {
+        "name": {"type": "string"},
+        "version": {"type": "string"},
+        "buildType": {"type": "string"},
+        "buildNumber": {"type": "string"}
+      }
+    },
+    "device": {
+      "type": "object",
+      "required": ["manufacturer", "model", "androidVersion", "sdk"],
+      "properties": {
+        "manufacturer": {"type": "string"},
+        "model": {"type": "string"},
+        "androidVersion": {"type": "string"},
+        "sdk": {"type": "integer"}
+      }
+    },
+    "network": {
+      "type": "object",
+      "required": [
+        "type",
+        "manualMode",
+        "operatorManual",
+        "region",
+        "batteryOptimizationIgnored",
+        "foregroundState",
+        "vpnActiveBestEffort"
+      ],
+      "properties": {
+        "type": {"type": "string"},
+        "manualMode": {
+          "enum": ["wifi_control", "normal_mobile", "whitelist_restricted"]
+        },
+        "operatorManual": {"type": "string"},
+        "carrierNameBestEffort": {"type": ["string", "null"]},
+        "mccMncBestEffort": {"type": ["string", "null"]},
+        "region": {"type": "string"},
+        "batteryOptimizationIgnored": {"type": "boolean"},
+        "foregroundState": {"const": "foreground"},
+        "vpnActiveBestEffort": {"type": "boolean"},
+        "vpnValidityWarningShown": {"type": "boolean"}
+      }
+    },
+    "provider": {
+      "type": "object",
+      "required": [
+        "name",
+        "senderEmailDomain",
+        "receiverEmailDomain",
+        "maskedSenderEmail",
+        "maskedReceiverEmail",
+        "imap",
+        "smtp",
+        "debugOverrideUsed"
+      ],
+      "properties": {
+        "name": {"enum": ["mailru", "vkmail", "yandex"]},
+        "senderEmailDomain": {"type": "string"},
+        "receiverEmailDomain": {"type": "string"},
+        "maskedSenderEmail": {"type": "string"},
+        "maskedReceiverEmail": {"type": "string"},
+        "imap": {"$ref": "#/$defs/endpoint"},
+        "smtp": {"$ref": "#/$defs/endpoint"},
+        "debugOverrideUsed": {"type": "boolean"}
+      }
+    },
+    "timeoutPolicy": {"type": "object"},
+    "checks": {
+      "type": "array",
+      "items": {"type": "object"}
+    },
+    "messageCorrelation": {"type": ["object", "null"]},
+    "result": {
+      "enum": [
+        "transport_pass",
+        "partial_pass",
+        "fail",
+        "diagnostic_only",
+        "inconclusive",
+        "provider_fail",
+        "network_whitelist_fail",
+        "auth_fail",
+        "spam_junk_fail"
+      ]
+    },
+    "errorSummary": {"type": ["string", "null"]},
+    "fieldValidity": {
+      "type": "object",
+      "required": ["validForWhitelistConclusion", "invalidationReasons"],
+      "properties": {
+        "validForWhitelistConclusion": {"type": "boolean"},
+        "invalidationReasons": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      }
+    },
+    "notes": {"type": "string"}
+  },
+  "$defs": {
+    "endpoint": {
+      "type": "object",
+      "required": ["host", "port", "security"],
+      "properties": {
+        "host": {"type": "string"},
+        "port": {"type": "integer"},
+        "security": {"const": "tls"}
+      }
+    }
+  }
+}

@@ -1,0 +1,106 @@
+﻿# Product PRD Package Report
+
+Date: 2026-05-14
+
+## 1. Какие документы созданы
+
+Создан пакет PRD для Corporate IMAP Messenger в `docs/product/`:
+
+- [Root PRD](PRD_ROOT_CORPORATE_IMAP_MESSENGER.md)
+- [Domain PRD Index](DOMAIN_PRD_INDEX.md)
+- [Android Messenger Client PRD](domains/PRD_ANDROID_MESSENGER_CLIENT.md)
+- [Corporate Control Plane PRD](domains/PRD_CORPORATE_CONTROL_PLANE.md)
+- [Corporate Directory PRD](domains/PRD_CORPORATE_DIRECTORY.md)
+- [Invite Onboarding & Distribution PRD](domains/PRD_INVITE_ONBOARDING_DISTRIBUTION.md)
+- [Provider Transport Profiles PRD](domains/PRD_PROVIDER_TRANSPORT_PROFILES.md)
+- [Diagnostics & Transport Verification PRD](domains/PRD_DIAGNOSTICS_AND_TRANSPORT_VERIFICATION.md)
+- [External Contacts & Guest Access PRD](domains/PRD_EXTERNAL_CONTACTS_AND_GUEST_ACCESS.md)
+- [Product Decisions Log](decisions/PRODUCT_DECISIONS_LOG.md)
+- [Product Context Handoff](handoff/PRODUCT_CONTEXT_HANDOFF.md)
+
+## 2. Какие домены покрыты
+
+Покрыты семь продуктовых доменов:
+
+- Android Messenger Client;
+- Corporate Control Plane;
+- Corporate Directory;
+- Invite Onboarding & Distribution;
+- Provider Transport Profiles;
+- Diagnostics & Transport Verification;
+- External Contacts & Guest Access.
+
+## 3. Какие документы наиболее детализированы
+
+Наиболее детализированы:
+
+- Root PRD, потому что фиксирует общую продуктовую рамку, принципы, MVP, риски, roadmap и открытые решения.
+- Corporate Directory PRD, потому что корпоративная адресная книга является ключевой B2B-функцией и требует явных правил по source of truth, version/hash, member statuses и revoked employee behavior.
+- External Contacts & Guest Access PRD, потому что реальная B2B-коммуникация требует клиентов/поставщиков/партнеров/подрядчиков без превращения их в сотрудников и без раскрытия внутренней адресной книги.
+
+Остальные доменные PRD достаточно детализированы для дальнейшего обсуждения и подготовки Blueprint, но намеренно не превращены в технические спецификации.
+
+## 4. Какие открытые решения повторяются чаще всего
+
+Чаще всего повторяются:
+
+- thin Delta Chat Android fork vs custom shell over chatmail/core;
+- GPL/MPL compliance и модель распространения;
+- первый MVP provider set после Mail.ru / VK Mail baseline;
+- directory authority model и canonical payload для hash;
+- invite policy и правила activation;
+- external invite policy, visibility scopes и правила reassignment;
+- background / locked-screen reliability target;
+- branding, package identity и distribution channel;
+- граница между standalone diagnostics и in-client Check Transport.
+
+## 5. Что рекомендуется сделать следующим шагом
+
+Рекомендуемые следующие шаги:
+
+- провести review PRD-пакета;
+- принять решение по fork vs custom shell;
+- принять решение по GPL/MPL distribution acceptability;
+- подготовить Android IMAP Messenger MVP Blueprint;
+- подготовить Corporate Control Plane Blueprint;
+- включить External Contacts & Guest Access в будущие Blueprint;
+- при необходимости подготовить отдельный Directory Blueprint;
+- определить MVP-объём in-client diagnostics;
+- спланировать полевую проверку дополнительных провайдеров и сетевых контекстов.
+
+## 6. Что намеренно не делалось
+
+Намеренно не делалось:
+
+- не писался код;
+- не форкался Delta Chat Android;
+- не менялся chatmail/core;
+- не создавались UI-макеты;
+- не писались детальные API-specs;
+- не создавалась Mail.ru-only архитектура;
+- не делался вывод, что все провайдеры работают в whitelist-контекстах;
+- не обещался production-ready продукт;
+- не смешивались internal membership и external relationship;
+- не предполагалось, что external contacts получают internal corporate directory;
+- не добавлялись секреты, реальные email, app passwords или raw logs.
+
+## 7. MVP / Later / Non-goals Summary
+
+MVP зафиксирован как Android-first корпоративный мессенджер с invite onboarding, external contact invite handling, provider profiles, Mail.ru / VK Mail baseline, manual/custom profiles, базовой диагностикой, one-to-one chats, basic groups, corporate directory sync, external contacts section и control-plane администрированием.
+
+Later scope включает background reliability, signed directory updates, external organizations/project rooms, расширенную provider/operator validation matrix, advanced policies, distribution strategy, audio transcription и дополнительные платформы.
+
+Non-goals включают video calls, real-time voice calls, production-grade background guarantees, full MDM, silent unsafe address book import, all-provider whitelist proof, превращение external contacts в employees, раскрытие internal directory внешним контактам и IMAP/SMTP transport rewrite.
+
+## 8. External Contacts open questions
+
+Оставшиеся вопросы по новому домену:
+
+- кто может приглашать внешних контактов в MVP;
+- нужен ли admin approval для external invite или только для широких visibility scopes;
+- какой default visibility scope: inviter_only или assigned_employee;
+- нужна ли email ownership verification для внешнего контакта;
+- нужны ли external project rooms в MVP или later;
+- как именно уведомлять клиента при reassignment менеджера;
+- требуется ли CRM/helpdesk integration в ранних пилотах;
+- используют ли external contacts тот же APK и тот же app mode, что сотрудники.

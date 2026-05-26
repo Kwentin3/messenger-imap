@@ -1,0 +1,25 @@
+plugins {
+    id "com.android.application"
+}
+
+android {
+    namespace "com.example.imapdiag"
+    compileSdk 36
+
+    defaultConfig {
+        applicationId "com.example.imapdiag"
+        minSdk 21
+        targetSdk 36
+        versionCode 1
+        versionName "0.0.1"
+    }
+
+    buildFeatures {
+        buildConfig true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}

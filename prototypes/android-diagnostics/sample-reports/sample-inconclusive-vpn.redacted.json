@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "timestampUtc": "2026-05-13T14:50:00Z",
+  "runId": "44444444-4444-4444-8444-444444444444",
+  "mvpStage": "mvp_0a",
+  "scenario": "foreground",
+  "deliveryTestMode": "two_account_canonical",
+  "app": {"name": "android-imap-diagnostics", "version": "0.0.1", "buildType": "debug", "buildNumber": "1"},
+  "device": {"manufacturer": "Example", "model": "ExamplePhone", "androidVersion": "15", "sdk": 35},
+  "network": {"type": "vpn", "manualMode": "whitelist_restricted", "operatorManual": "example_operator", "carrierNameBestEffort": null, "mccMncBestEffort": null, "region": "example-region", "batteryOptimizationIgnored": false, "foregroundState": "foreground", "vpnActiveBestEffort": true, "vpnValidityWarningShown": true},
+  "provider": {"name": "vkmail", "senderEmailDomain": "example.test", "receiverEmailDomain": "example.test", "maskedSenderEmail": "***@example.test", "maskedReceiverEmail": "***@example.test", "imap": {"host": "imap.mail.ru", "port": 993, "security": "tls"}, "smtp": {"host": "smtp.mail.ru", "port": 465, "security": "tls"}, "debugOverrideUsed": false},
+  "timeoutPolicy": {"dnsResolveMs": 5000, "tcpConnectMs": 10000, "tlsHandshakeMs": 15000, "imapGreetingMs": 10000, "imapLoginMs": 20000, "imapSelectMs": 15000, "imapIdleEnterExitMs": 20000, "smtpGreetingMs": 10000, "smtpAuthMs": 20000, "smtpSendAcceptedMs": 30000, "receiveCorrelationMs": 120000, "receivePollingIntervalMs": 5000, "idleObserveWindowMs": 60000, "modifiedFromDefault": false},
+  "checks": [{"name": "imap_tls_handshake", "protocol": "imap", "status": "ok", "latencyMs": 350}],
+  "messageCorrelation": null,
+  "result": "diagnostic_only",
+  "errorSummary": null,
+  "fieldValidity": {"validForWhitelistConclusion": false, "invalidationReasons": ["vpn_active"]},
+  "notes": "synthetic sample"
+}

@@ -1,0 +1,47 @@
+# Local upstream / worktree references
+imap-messenger-research/upstream/
+worktrees/
+
+# Local runtime state
+imap-messenger-research/rpc-smoke-accounts/
+rpc-smoke-accounts/
+*.db
+*.db-shm
+*.db-wal
+
+# Build outputs
+.gradle/
+build/
+app/build/
+**/.gradle/
+**/build/
+**/app/build/
+
+# Android binaries
+*.apk
+*.aab
+*.ap_
+*.idsig
+
+# Local config / secrets
+local.properties
+.env
+.env.*
+!.env.example
+*.keystore
+*.jks
+*.pem
+*.key
+
+# JavaScript dependencies
+node_modules/
+**/node_modules/
+
+# Logs and raw runtime captures
+*.log
+logcat*.txt
+*logcat*
+
+# OS/editor noise
+.DS_Store
+Thumbs.db

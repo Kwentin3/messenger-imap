@@ -1,0 +1,332 @@
+{
+  "schemaVersion": 1,
+  "timestampUtc": "2026-05-13T19:54:13Z",
+  "runId": "6957317b-399f-492a-9131-1b43eee8d86b",
+  "mvpStage": "mvp_0a",
+  "scenario": "foreground",
+  "deliveryTestMode": "two_account_canonical",
+  "app": {
+    "name": "android-imap-diagnostics",
+    "version": "0.0.1",
+    "buildType": "debug",
+    "buildNumber": "1"
+  },
+  "device": {
+    "manufacturer": "HUAWEI",
+    "model": "CET-LX9",
+    "androidVersion": "12",
+    "sdk": 31
+  },
+  "network": {
+    "type": "mobile",
+    "manualMode": "normal_mobile",
+    "operatorManual": "mts",
+    "carrierNameBestEffort": null,
+    "mccMncBestEffort": null,
+    "region": "Krasnodar kray",
+    "batteryOptimizationIgnored": false,
+    "foregroundState": "foreground",
+    "vpnActiveBestEffort": false,
+    "vpnValidityWarningShown": false
+  },
+  "provider": {
+    "name": "mailru",
+    "senderEmailDomain": "mail.ru",
+    "receiverEmailDomain": "mail.ru",
+    "maskedSenderEmail": "***@mail.ru",
+    "maskedReceiverEmail": "***@mail.ru",
+    "imap": {
+      "host": "imap.mail.ru",
+      "port": 993,
+      "security": "tls"
+    },
+    "smtp": {
+      "host": "smtp.mail.ru",
+      "port": 465,
+      "security": "tls"
+    },
+    "debugOverrideUsed": false
+  },
+  "timeoutPolicy": {
+    "dnsResolveMs": 5000,
+    "tcpConnectMs": 10000,
+    "tlsHandshakeMs": 15000,
+    "imapGreetingMs": 10000,
+    "imapLoginMs": 20000,
+    "imapSelectMs": 15000,
+    "imapIdleEnterExitMs": 20000,
+    "smtpGreetingMs": 10000,
+    "smtpAuthMs": 20000,
+    "smtpSendAcceptedMs": 30000,
+    "receiveCorrelationMs": 120000,
+    "receivePollingIntervalMs": 5000,
+    "idleObserveWindowMs": 60000,
+    "modifiedFromDefault": false
+  },
+  "checks": [
+    {
+      "name": "imap_dns",
+      "protocol": "imap",
+      "endpoint": {
+        "host": "imap.mail.ru",
+        "port": 993
+      },
+      "status": "ok",
+      "latencyMs": 97,
+      "errorCategory": null,
+      "errorMessageRedacted": null,
+      "tlsInfo": null,
+      "dnsInfo": {
+        "resolvedAddressCount": 1,
+        "addressFamilies": [
+          "IPv4"
+        ],
+        "resolvedAddresses": [
+          "217.69.139.90"
+        ]
+      }
+    },
+    {
+      "name": "imap_tcp",
+      "protocol": "imap",
+      "endpoint": {
+        "host": "imap.mail.ru",
+        "port": 993
+      },
+      "status": "ok",
+      "latencyMs": 60,
+      "errorCategory": null,
+      "errorMessageRedacted": null,
+      "tlsInfo": null,
+      "dnsInfo": null
+    },
+    {
+      "name": "imap_tls_handshake",
+      "protocol": "imap",
+      "endpoint": {
+        "host": "imap.mail.ru",
+        "port": 993
+      },
+      "status": "ok",
+      "latencyMs": 230,
+      "errorCategory": null,
+      "errorMessageRedacted": null,
+      "tlsInfo": {
+        "protocol": "TLSv1.2",
+        "cipherSuite": "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+        "subject": "CN=*.mail.ru,O=VK LLC,L=Moscow,ST=Moscow,C=RU",
+        "issuer": "CN=GlobalSign RSA OV SSL CA 2018,O=GlobalSign nv-sa,C=BE",
+        "validFrom": "Fri Oct 17 12:12:14 GMT+03:00 2025",
+        "validTo": "Wed Nov 18 12:12:13 GMT+03:00 2026"
+      },
+      "dnsInfo": null
+    },
+    {
+      "name": "imap_greeting",
+      "protocol": "imap",
+      "endpoint": {
+        "host": "imap.mail.ru",
+        "port": 993
+      },
+      "status": "ok",
+      "latencyMs": 96,
+      "errorCategory": null,
+      "errorMessageRedacted": null,
+      "tlsInfo": null,
+      "dnsInfo": null
+    },
+    {
+      "name": "imap_login",
+      "protocol": "imap",
+      "endpoint": {
+        "host": "imap.mail.ru",
+        "port": 993
+      },
+      "status": "ok",
+      "latencyMs": 108,
+      "errorCategory": null,
+      "errorMessageRedacted": null,
+      "tlsInfo": null,
+      "dnsInfo": null
+    },
+    {
+      "name": "imap_select_inbox",
+      "protocol": "imap",
+      "endpoint": {
+        "host": "imap.mail.ru",
+        "port": 993
+      },
+      "status": "ok",
+      "latencyMs": 76,
+      "errorCategory": null,
+      "errorMessageRedacted": null,
+      "tlsInfo": null,
+      "dnsInfo": null
+    },
+    {
+      "name": "imap_idle_enter_exit",
+      "protocol": "imap",
+      "endpoint": {
+        "host": "imap.mail.ru",
+        "port": 993
+      },
+      "status": "ok",
+      "latencyMs": 125,
+      "errorCategory": null,
+      "errorMessageRedacted": null,
+      "tlsInfo": null,
+      "dnsInfo": null
+    },
+    {
+      "name": "smtp_dns",
+      "protocol": "smtp",
+      "endpoint": {
+        "host": "smtp.mail.ru",
+        "port": 465
+      },
+      "status": "ok",
+      "latencyMs": 78,
+      "errorCategory": null,
+      "errorMessageRedacted": null,
+      "tlsInfo": null,
+      "dnsInfo": {
+        "resolvedAddressCount": 3,
+        "addressFamilies": [
+          "IPv6",
+          "IPv4"
+        ],
+        "resolvedAddresses": [
+          "2a00:1148:1000:101:5:3:0:33",
+          "217.69.139.160",
+          "94.100.180.160"
+        ]
+      }
+    },
+    {
+      "name": "smtp_tcp",
+      "protocol": "smtp",
+      "endpoint": {
+        "host": "smtp.mail.ru",
+        "port": 465
+      },
+      "status": "ok",
+      "latencyMs": 62,
+      "errorCategory": null,
+      "errorMessageRedacted": null,
+      "tlsInfo": null,
+      "dnsInfo": null
+    },
+    {
+      "name": "smtp_tls_handshake",
+      "protocol": "smtp",
+      "endpoint": {
+        "host": "smtp.mail.ru",
+        "port": 465
+      },
+      "status": "ok",
+      "latencyMs": 241,
+      "errorCategory": null,
+      "errorMessageRedacted": null,
+      "tlsInfo": {
+        "protocol": "TLSv1.2",
+        "cipherSuite": "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+        "subject": "CN=*.mail.ru,O=VK LLC,L=Moscow,ST=Moscow,C=RU",
+        "issuer": "CN=GlobalSign RSA OV SSL CA 2018,O=GlobalSign nv-sa,C=BE",
+        "validFrom": "Fri Oct 17 12:12:14 GMT+03:00 2025",
+        "validTo": "Wed Nov 18 12:12:13 GMT+03:00 2026"
+      },
+      "dnsInfo": null
+    },
+    {
+      "name": "smtp_greeting",
+      "protocol": "smtp",
+      "endpoint": {
+        "host": "smtp.mail.ru",
+        "port": 465
+      },
+      "status": "ok",
+      "latencyMs": 102,
+      "errorCategory": null,
+      "errorMessageRedacted": null,
+      "tlsInfo": null,
+      "dnsInfo": null
+    },
+    {
+      "name": "smtp_ehlo",
+      "protocol": "smtp",
+      "endpoint": {
+        "host": "smtp.mail.ru",
+        "port": 465
+      },
+      "status": "ok",
+      "latencyMs": 57,
+      "errorCategory": null,
+      "errorMessageRedacted": null,
+      "tlsInfo": null,
+      "dnsInfo": null
+    },
+    {
+      "name": "smtp_auth",
+      "protocol": "smtp",
+      "endpoint": {
+        "host": "smtp.mail.ru",
+        "port": 465
+      },
+      "status": "ok",
+      "latencyMs": 91,
+      "errorCategory": null,
+      "errorMessageRedacted": null,
+      "tlsInfo": null,
+      "dnsInfo": null
+    },
+    {
+      "name": "smtp_test_send",
+      "protocol": "smtp",
+      "endpoint": {
+        "host": "smtp.mail.ru",
+        "port": 465
+      },
+      "status": "ok",
+      "latencyMs": 2098,
+      "errorCategory": null,
+      "errorMessageRedacted": null,
+      "tlsInfo": null,
+      "dnsInfo": null
+    },
+    {
+      "name": "receive_by_message_id",
+      "protocol": "imap",
+      "endpoint": {
+        "host": "imap.mail.ru",
+        "port": 993
+      },
+      "status": "ok",
+      "latencyMs": 143,
+      "errorCategory": null,
+      "errorMessageRedacted": null,
+      "tlsInfo": null,
+      "dnsInfo": null
+    }
+  ],
+  "messageCorrelation": {
+    "messageId": "<imapdiag-5e31c936-75e0-4c7d-91de-25c93fe22771@diagnostics.invalid>",
+    "sendAccepted": true,
+    "sendLatencyMs": 0,
+    "received": true,
+    "receiveLatencyMs": 145,
+    "folder": "INBOX",
+    "spamOrJunk": false,
+    "pollAttempts": 1,
+    "finalStatus": "received"
+  },
+  "result": "transport_pass",
+  "errorSummary": null,
+  "fieldValidity": {
+    "validForWhitelistConclusion": false,
+    "invalidationReasons": [
+      "manual_mode_not_whitelist",
+      "provider_preflight_not_confirmed"
+    ]
+  },
+  "notes": ""
+}
