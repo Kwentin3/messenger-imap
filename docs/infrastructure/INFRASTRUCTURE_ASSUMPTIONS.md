@@ -123,16 +123,31 @@ TODO before deployment:
 Future deployment assumptions:
 
 - deployment may use Docker Compose or a Portainer stack;
-- candidate root project path: `/opt/messenger-imap`;
+- candidate root project path: `/opt/stacks/messenger-imap`;
 - container names should be prefixed with `messenger-imap-`;
 - Docker network must be shared with Traefik where reverse-proxy routing is needed;
-- no direct public port exposure except through Traefik;
+- new `messenger-imap` web/API services should be routed through Traefik;
+- no direct host port publishing for web/API/database by default;
+- any direct host port exposure requires explicit Deployment Blueprint justification;
 - logs should be available through Docker logs;
 - later integration with existing observability/logging can be added if available;
 - application configuration should be env-based;
 - real secrets must not be stored in git.
 
-These assumptions are not a deploy instruction. The actual stack file, service names, image tags, storage paths, and rollback procedure belong in a later Deployment Blueprint / runbook.
+These assumptions are not a deploy instruction. `/opt/stacks/messenger-imap` is a candidate deployment path, not an approved deployment path. `traefik-net` is a candidate Docker network, not automatically approved. The Deployment Blueprint must explicitly approve path, network, stack name, data layout, backup, and rollback plan before deployment.
+
+## 7.1 Database Isolation Rule
+
+Future `messenger-imap` Control Plane should use its own database/container/volume by default.
+
+Rules:
+
+- do not reuse the existing `postgres-dev` database/container without an explicit architecture and data-isolation decision;
+- database storage must be isolated from unrelated services;
+- database credentials must be stored outside git;
+- database should not expose public host ports by default;
+- any direct database host port exposure requires explicit Deployment Blueprint justification;
+- backup and restore procedure must be defined before production use.
 
 ## 8. Environment Model
 
@@ -201,6 +216,13 @@ Future secret storage options:
 
 The exact option is a deployment/security decision and must be documented before production use.
 
+APK signing key policy:
+
+- APK signing key must not be stored on the deploy host by default;
+- build/signing pipeline is TBD;
+- APK signing secrets must not be stored in repo, server docs, `.env`, compose files, or Traefik labels;
+- future release process must document where signing occurs and how hashes/signing info are published.
+
 ## 11. APK Distribution Assumptions
 
 APK binaries must not be committed to git.
@@ -211,6 +233,14 @@ Possible APK distribution channels:
 - backend download endpoint;
 - object storage;
 - emergency email attachment for Android only.
+
+MVP recommendation:
+
+- Control Plane stores release metadata;
+- release metadata may point to GitHub Releases or controlled backend/object storage;
+- if GitHub Releases are used, Control Plane should store version, URL, SHA-256, size, channel, release date, and signing info;
+- backend download endpoint can proxy or redirect to release storage later;
+- APK binary must not be committed to git.
 
 Each APK release should record:
 

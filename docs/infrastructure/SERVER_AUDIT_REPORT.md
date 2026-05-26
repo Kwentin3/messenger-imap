@@ -16,6 +16,8 @@ A read-only audit was performed for the current deployment host intended for fut
 
 The server is reachable by key-based SSH as `roman`. Docker is available. Traefik is already running as container `traefik`, attached to Docker network `traefik-net`, and publishing host ports 80 and 443. Multiple existing services and compose stacks are running on the same host, so future `messenger-imap` deployment must be non-destructive and must integrate with existing Traefik routing without replacing existing configuration.
 
+This audit is a point-in-time snapshot. Existing containers are treated as production-like unless the owner explicitly classifies them otherwise. No config files, secret files, `.env` files, ACME storage, container environment variables, private keys, or database contents were inspected.
+
 No deployment actions were performed. No containers were restarted, stopped, removed, edited, or recreated.
 
 ## 2. Commands Executed
@@ -218,9 +220,10 @@ Recommendations for future `messenger-imap` deployment:
 - prefer `/opt/stacks/messenger-imap` as candidate project path;
 - prefix containers with `messenger-imap-`;
 - attach web/API service to `traefik-net`;
-- do not publish direct host ports for web/API containers;
+- do not publish direct host ports for web/API/database containers by default;
+- any direct host port exposure requires explicit Deployment Blueprint justification;
 - scope Traefik routers/services/middlewares to `messenger-imap`;
-- do not modify existing Traefik config without a separate deployment runbook and rollback plan.
+- do not modify existing Traefik config without a separate Deployment Blueprint, backup, and rollback plan.
 
 ## 13. Candidate Deployment Path
 
@@ -244,6 +247,8 @@ Alternative:
 
 This alternative is less aligned with the visible compose-stack convention, but may still be acceptable if the server owner prefers it.
 
+Important: `/opt/stacks/messenger-imap` is a candidate deployment path, not an approved deployment path. Deployment Blueprint must explicitly approve the path, stack name, ownership, backup location, and rollback plan before deployment.
+
 ## 14. Candidate Docker Network
 
 Candidate network:
@@ -259,6 +264,24 @@ Rationale:
 - future `messenger-imap` web/API service likely needs Traefik access.
 
 The database should not be exposed publicly. It may use an internal app-specific network plus a Traefik-facing network for the web/API service, depending on the final compose design.
+
+Important: `traefik-net` is a candidate Docker network for reverse-proxy access, not automatically approved. Deployment Blueprint must explicitly approve the network plan, including whether the app uses a separate internal database network.
+
+Database isolation rule:
+
+- future `messenger-imap` Control Plane should use its own database/container/volume by default;
+- do not reuse existing `postgres-dev` without explicit architecture and data-isolation decision;
+- database credentials must stay outside git;
+- database must not expose public host ports unless explicitly justified.
+
+APK signing and storage rule:
+
+- APK signing key must not be stored on the deploy host by default;
+- build/signing pipeline is TBD;
+- signing secrets must not be stored in repo, server docs, `.env`, or compose files;
+- MVP Control Plane can store release metadata and point to GitHub Releases or controlled backend/object storage;
+- if GitHub Releases are used, metadata should include version, URL, SHA-256, size, channel, release date, and signing info;
+- backend download endpoint can proxy or redirect to release storage later.
 
 ## 15. Unknowns And Follow-Up Questions
 
@@ -278,6 +301,8 @@ The database should not be exposed publicly. It may use an internal app-specific
 - Who should have SSH access for deployment and support?
 - What rollback policy is expected for failed app/backend releases?
 - Where should APK signing keys be stored?
+- Where does APK signing happen, and how is signing metadata published?
+- Should the Control Plane use GitHub Releases URLs, backend storage, object storage, or a redirect/proxy model for APK downloads?
 
 ## 16. Safety Notes: What Was Not Inspected
 
@@ -317,3 +342,5 @@ Specifically, this audit did not:
 - deploy `messenger-imap`.
 
 This report is read-only discovery evidence for future infrastructure Blueprint work.
+
+Deployment must start with a separate Deployment Blueprint and backup/rollback plan. This audit does not approve any deployment path, Docker network, stack name, database reuse, host port exposure, signing flow, or storage layout.
