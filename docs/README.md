@@ -15,5 +15,6 @@ This directory contains the canonical project documentation.
 Key infrastructure document:
 
 - [Infrastructure Assumptions](infrastructure/INFRASTRUCTURE_ASSUMPTIONS.md)
+- [Server Audit Report](infrastructure/SERVER_AUDIT_REPORT.md)
 
 `docs/out/` is intentionally not imported into this repository. Output-buffer documents from the workspace were either omitted as duplicates or copied into canonical locations before import.

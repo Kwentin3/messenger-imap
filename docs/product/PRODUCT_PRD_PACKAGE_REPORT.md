@@ -18,6 +18,7 @@ Date: 2026-05-14
 - [Product PRD Review Addendum](PRODUCT_PRD_REVIEW_ADDENDUM.md)
 - [Product PRD Refinement Report](PRODUCT_PRD_REFINEMENT_REPORT.md)
 - [Infrastructure Assumptions](../infrastructure/INFRASTRUCTURE_ASSUMPTIONS.md)
+- [Server Audit Report](../infrastructure/SERVER_AUDIT_REPORT.md)
 - [Product Decisions Log](decisions/PRODUCT_DECISIONS_LOG.md)
 - [Product Context Handoff](handoff/PRODUCT_CONTEXT_HANDOFF.md)
 
@@ -46,6 +47,7 @@ Review addendum created:
 - external contact reassignment UX;
 - app release lifecycle.
 - infrastructure assumptions for `messenger-imap.speechbattle.com`, public IP `146.19.211.30`, internal deploy host `192.168.7.64`, existing Traefik, and future non-destructive server audit.
+- read-only server audit identifying Traefik container `traefik`, shared Docker network `traefik-net`, existing compose stacks, and `/opt/stacks` as likely deployment convention.
 
 ## 3. Какие документы наиболее детализированы
 
@@ -88,7 +90,7 @@ Review addendum created:
 - подготовить Android IMAP Messenger MVP Blueprint;
 - подготовить Corporate Control Plane Blueprint;
 - учесть в Blueprints stale Control Plane mode, email verification, workspace scoping, trust states, RBAC, invite abuse controls и app release lifecycle;
-- выполнить read-only infrastructure audit и подготовить `docs/infrastructure/SERVER_AUDIT_REPORT.md`;
+- использовать `docs/infrastructure/SERVER_AUDIT_REPORT.md` как input для Deployment Blueprint;
 - после выбора Control Plane stack подготовить `docs/blueprints/DEPLOYMENT_BLUEPRINT.md`;
 - включить External Contacts & Guest Access в будущие Blueprint;
 - при необходимости подготовить отдельный Directory Blueprint;

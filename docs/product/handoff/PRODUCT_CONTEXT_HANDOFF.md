@@ -11,6 +11,7 @@ Primary references:
 - [Product Decisions Log](../decisions/PRODUCT_DECISIONS_LOG.md)
 - [Domain PRD Index](../DOMAIN_PRD_INDEX.md)
 - [Infrastructure Assumptions](../../infrastructure/INFRASTRUCTURE_ASSUMPTIONS.md)
+- [Server Audit Report](../../infrastructure/SERVER_AUDIT_REPORT.md)
 
 ## 1. What We Are Building
 
@@ -22,7 +23,7 @@ The product is not a generic email client and not a new message server. Users ge
 
 The product now also includes External Contacts & Guest Access. Clients, suppliers, partners, contractors, and other counterparties can be invited into scoped external relationships without becoming employees or receiving the internal corporate directory.
 
-Infrastructure context is now recorded for future Control Plane and deployment work. The public hostname is `messenger-imap.speechbattle.com`, DNS resolves to `146.19.211.30`, the internal deploy host is `192.168.7.64`, SSH context is `roman@192.168.7.64`, and Traefik already exists on the server. Future deployment work must be non-destructive and must not disrupt existing services.
+Infrastructure context is now recorded for future Control Plane and deployment work. The public hostname is `messenger-imap.speechbattle.com`, DNS resolves to `146.19.211.30`, the internal deploy host is `192.168.7.64`, SSH context is `roman@192.168.7.64`, and Traefik already exists on the server. A read-only server audit identified Traefik container `traefik`, shared Docker network `traefik-net`, and `/opt/stacks` as the likely stack convention. Future deployment work must be non-destructive and must not disrupt existing services.
 
 ## 2. What Has Already Been Proven
 
@@ -99,6 +100,7 @@ Product package:
 - [Product PRD Review Addendum](../PRODUCT_PRD_REVIEW_ADDENDUM.md)
 - [Product Decisions Log](../decisions/PRODUCT_DECISIONS_LOG.md)
 - [Infrastructure Assumptions](../../infrastructure/INFRASTRUCTURE_ASSUMPTIONS.md)
+- [Server Audit Report](../../infrastructure/SERVER_AUDIT_REPORT.md)
 
 ## 6. Main Unresolved Decisions
 
@@ -152,7 +154,7 @@ Product package:
 5. Write Corporate Control Plane Blueprint with RBAC, invite abuse controls, verification challenges, stale sync behavior, audit, and release lifecycle.
 6. Write Directory Blueprint with canonical hash payload, stale/expired behavior, workspace scope, managed roster enforcement, and signed fallback boundaries.
 7. Include External Contacts & Guest Access reassignment, stale visible directory, and external verification in future Blueprints.
-8. Perform read-only infrastructure audit and create `docs/infrastructure/SERVER_AUDIT_REPORT.md`.
+8. Use `docs/infrastructure/SERVER_AUDIT_REPORT.md` as input for deployment planning.
 9. Define in-client diagnostics MVP scope versus standalone diagnostics.
 10. Define first field trial provider/network validation plan.
 11. After Control Plane stack selection, write `docs/blueprints/DEPLOYMENT_BLUEPRINT.md`.
