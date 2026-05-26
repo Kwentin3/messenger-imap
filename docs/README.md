@@ -10,11 +10,16 @@ This directory contains the canonical project documentation.
 - `product/`: root PRD, domain PRDs, product decisions, and product context.
 - `reports/`: dated reports, validation notes, and bootstrap reports.
 - `research/`: provider, transport, Delta Chat / Chatmail, and diagnostic evidence research.
+- `roadmap/`: execution roadmap between PRD package and technical Blueprints.
 - `upstream/`: upstream project references and license notes.
 
 Key infrastructure document:
 
 - [Infrastructure Assumptions](infrastructure/INFRASTRUCTURE_ASSUMPTIONS.md)
 - [Server Audit Report](infrastructure/SERVER_AUDIT_REPORT.md)
+
+Key roadmap document:
+
+- [Project Roadmap](roadmap/PROJECT_ROADMAP.md)
 
 `docs/out/` is intentionally not imported into this repository. Output-buffer documents from the workspace were either omitted as duplicates or copied into canonical locations before import.

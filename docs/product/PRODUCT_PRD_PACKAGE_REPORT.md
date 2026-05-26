@@ -19,6 +19,7 @@ Date: 2026-05-14
 - [Product PRD Refinement Report](PRODUCT_PRD_REFINEMENT_REPORT.md)
 - [Infrastructure Assumptions](../infrastructure/INFRASTRUCTURE_ASSUMPTIONS.md)
 - [Server Audit Report](../infrastructure/SERVER_AUDIT_REPORT.md)
+- [Project Roadmap](../roadmap/PROJECT_ROADMAP.md)
 - [Product Decisions Log](decisions/PRODUCT_DECISIONS_LOG.md)
 - [Product Context Handoff](handoff/PRODUCT_CONTEXT_HANDOFF.md)
 
@@ -48,6 +49,7 @@ Review addendum created:
 - app release lifecycle.
 - infrastructure assumptions for `messenger-imap.speechbattle.com`, public IP `146.19.211.30`, internal deploy host `192.168.7.64`, existing Traefik, and future non-destructive server audit.
 - read-only server audit identifying Traefik container `traefik`, shared Docker network `traefik-net`, existing compose stacks, and `/opt/stacks` as likely deployment convention.
+- project roadmap that moves the PRD package into Blueprint planning and fixes the Blueprint order.
 
 ## 3. Какие документы наиболее детализированы
 
@@ -85,6 +87,8 @@ Review addendum created:
 Рекомендуемые следующие шаги:
 
 - провести review PRD-пакета;
+- review and accept `docs/roadmap/PROJECT_ROADMAP.md`;
+- подготовить `docs/blueprints/CORPORATE_CONTROL_PLANE_MVP_BLUEPRINT.md` как следующий обязательный Blueprint;
 - принять решение по fork vs custom shell;
 - принять решение по GPL/MPL distribution acceptability;
 - подготовить Android IMAP Messenger MVP Blueprint;

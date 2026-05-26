@@ -12,6 +12,7 @@ Primary references:
 - [Domain PRD Index](../DOMAIN_PRD_INDEX.md)
 - [Infrastructure Assumptions](../../infrastructure/INFRASTRUCTURE_ASSUMPTIONS.md)
 - [Server Audit Report](../../infrastructure/SERVER_AUDIT_REPORT.md)
+- [Project Roadmap](../../roadmap/PROJECT_ROADMAP.md)
 
 ## 1. What We Are Building
 
@@ -24,6 +25,8 @@ The product is not a generic email client and not a new message server. Users ge
 The product now also includes External Contacts & Guest Access. Clients, suppliers, partners, contractors, and other counterparties can be invited into scoped external relationships without becoming employees or receiving the internal corporate directory.
 
 Infrastructure context is now recorded for future Control Plane and deployment work. The public hostname is `messenger-imap.speechbattle.com`, DNS resolves to `146.19.211.30`, the internal deploy host is `192.168.7.64`, SSH context is `roman@192.168.7.64`, and Traefik already exists on the server. A read-only server audit identified Traefik container `traefik`, shared Docker network `traefik-net`, and `/opt/stacks` as the likely stack convention. Future deployment work must be non-destructive and must not disrupt existing services.
+
+The Project Roadmap is the controlling document between the PRD package and technical Blueprints. It fixes the stage order, MVP boundary, blockers, do-not-start-yet list, and near-term Blueprint sequence.
 
 ## 2. What Has Already Been Proven
 
@@ -101,6 +104,7 @@ Product package:
 - [Product Decisions Log](../decisions/PRODUCT_DECISIONS_LOG.md)
 - [Infrastructure Assumptions](../../infrastructure/INFRASTRUCTURE_ASSUMPTIONS.md)
 - [Server Audit Report](../../infrastructure/SERVER_AUDIT_REPORT.md)
+- [Project Roadmap](../../roadmap/PROJECT_ROADMAP.md)
 
 ## 6. Main Unresolved Decisions
 
@@ -147,17 +151,12 @@ Product package:
 
 ## 8. Next Recommended Work
 
-1. Review PRDs with product, engineering, support, and legal/compliance stakeholders.
-2. Decide thin Delta Chat Android fork vs custom shell over chatmail/core.
-3. Decide GPL/MPL distribution acceptability and source compliance path.
-4. Write Android IMAP Messenger MVP Blueprint with stale Control Plane UX, email verification, workspace scope, trust states, managed group enforcement, and release policy.
-5. Write Corporate Control Plane Blueprint with RBAC, invite abuse controls, verification challenges, stale sync behavior, audit, and release lifecycle.
-6. Write Directory Blueprint with canonical hash payload, stale/expired behavior, workspace scope, managed roster enforcement, and signed fallback boundaries.
-7. Include External Contacts & Guest Access reassignment, stale visible directory, and external verification in future Blueprints.
-8. Use `docs/infrastructure/SERVER_AUDIT_REPORT.md` as input for deployment planning.
-9. Define in-client diagnostics MVP scope versus standalone diagnostics.
-10. Define first field trial provider/network validation plan.
-11. After Control Plane stack selection, write `docs/blueprints/DEPLOYMENT_BLUEPRINT.md`.
+1. Review and accept [Project Roadmap](../../roadmap/PROJECT_ROADMAP.md).
+2. Write `docs/blueprints/CORPORATE_CONTROL_PLANE_MVP_BLUEPRINT.md`.
+3. Write Corporate Directory MVP Blueprint.
+4. Decide thin Delta Chat Android fork vs custom shell over chatmail/core, or define a focused spike.
+5. Use `docs/infrastructure/SERVER_AUDIT_REPORT.md` as input for deployment planning.
+6. After Control Plane stack assumptions are known, write `docs/blueprints/DEPLOYMENT_BLUEPRINT.md`.
 
 ## 9. MVP / Later / Non-goals Framing
 
