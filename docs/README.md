@@ -30,9 +30,12 @@ Key Blueprint documents:
 - [Corporate Directory MVP Blueprint Report](blueprints/CORPORATE_DIRECTORY_MVP_BLUEPRINT_REPORT.md)
 - [Invite Onboarding & Distribution MVP Blueprint](blueprints/INVITE_ONBOARDING_DISTRIBUTION_MVP_BLUEPRINT.md)
 - [Invite Onboarding & Distribution MVP Blueprint Report](blueprints/INVITE_ONBOARDING_DISTRIBUTION_MVP_BLUEPRINT_REPORT.md)
+- [Android Client MVP Blueprint](blueprints/ANDROID_CLIENT_MVP_BLUEPRINT.md)
+- [Android Client MVP Blueprint Report](blueprints/ANDROID_CLIENT_MVP_BLUEPRINT_REPORT.md)
 
 Recent delivery reports:
 
 - [PR #3 / PR #4 Merge And Invite Blueprint Delivery Report](reports/2026-05-26/PR3_PR4_MERGE_AND_INVITE_BLUEPRINT_DELIVERY.report.md)
+- [Android Client MVP Blueprint Delivery Report](reports/2026-05-26/ANDROID_CLIENT_MVP_BLUEPRINT_DELIVERY.report.md)
 
 `docs/out/` is intentionally not imported into this repository. Output-buffer documents from the workspace were either omitted as duplicates or copied into canonical locations before import.

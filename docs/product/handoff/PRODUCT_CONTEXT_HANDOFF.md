@@ -32,8 +32,9 @@ Current Blueprint status as of 2026-05-26:
 
 - Corporate Control Plane MVP Blueprint is merged into `main`.
 - Corporate Directory MVP Blueprint content is merged into `main`.
-- Invite Onboarding & Distribution MVP Blueprint is drafted for review.
-- The next recommended Blueprint after Invite review is Android Client MVP Blueprint.
+- Invite Onboarding & Distribution MVP Blueprint is merged into `main`.
+- Android Client MVP Blueprint is drafted for review.
+- The next recommended work after Android review is a fork-vs-shell implementation spike and Provider / Diagnostics MVP Blueprint.
 
 ## 2. What Has Already Been Proven
 
@@ -118,6 +119,7 @@ Blueprint package:
 - [Corporate Control Plane MVP Blueprint](../../blueprints/CORPORATE_CONTROL_PLANE_MVP_BLUEPRINT.md)
 - [Corporate Directory MVP Blueprint](../../blueprints/CORPORATE_DIRECTORY_MVP_BLUEPRINT.md)
 - [Invite Onboarding & Distribution MVP Blueprint](../../blueprints/INVITE_ONBOARDING_DISTRIBUTION_MVP_BLUEPRINT.md)
+- [Android Client MVP Blueprint](../../blueprints/ANDROID_CLIENT_MVP_BLUEPRINT.md)
 
 ## 6. Main Unresolved Decisions
 
@@ -164,9 +166,9 @@ Blueprint package:
 
 ## 8. Next Recommended Work
 
-1. Review and accept [Invite Onboarding & Distribution MVP Blueprint](../../blueprints/INVITE_ONBOARDING_DISTRIBUTION_MVP_BLUEPRINT.md).
-2. Write Android Client MVP Blueprint using Control Plane, Directory, and Invite Blueprints as inputs.
-3. Decide thin Delta Chat Android fork vs custom shell over chatmail/core, or define a focused spike.
+1. Review and accept [Android Client MVP Blueprint](../../blueprints/ANDROID_CLIENT_MVP_BLUEPRINT.md).
+2. Run a focused thin Delta Chat Android fork vs custom shell over chatmail/core spike.
+3. Write Provider / Diagnostics MVP Blueprint.
 4. Keep Deployment Blueprint blocked until Control Plane stack assumptions are concrete.
 5. Use `docs/infrastructure/SERVER_AUDIT_REPORT.md` as input for deployment planning only after deployment design starts.
 
