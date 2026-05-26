@@ -192,7 +192,7 @@ Current artifact:
 
 Status: drafted, not yet accepted.
 
-### Stage 5. Corporate Directory MVP Blueprint
+### Stage 5. Corporate Directory MVP Blueprint - DRAFTED
 
 Purpose:
 
@@ -209,6 +209,13 @@ Define:
 - managed groups;
 - revoke behavior;
 - stale directory behavior.
+
+Current artifact:
+
+- [Corporate Directory MVP Blueprint](../blueprints/CORPORATE_DIRECTORY_MVP_BLUEPRINT.md)
+- [Corporate Directory MVP Blueprint Report](../blueprints/CORPORATE_DIRECTORY_MVP_BLUEPRINT_REPORT.md)
+
+Status: drafted as a stacked follow-up on the Control Plane Blueprint branch. Control Plane Blueprint PR #3 is still open, so Directory acceptance should follow Control Plane acceptance.
 
 ### Stage 6. Invite Onboarding & Distribution Blueprint
 
@@ -325,7 +332,7 @@ Only after the relevant Blueprints are accepted.
 Ordered Blueprint sequence:
 
 1. Review and accept Corporate Control Plane MVP Blueprint.
-2. Corporate Directory MVP Blueprint.
+2. Review and accept Corporate Directory MVP Blueprint.
 3. Invite Onboarding & Distribution Blueprint.
 4. Android Client MVP Blueprint.
 5. External Contacts & Guest Access Blueprint.
@@ -424,7 +431,7 @@ MVP should not include:
 
 1. Review and accept this roadmap.
 2. Review and accept Corporate Control Plane MVP Blueprint.
-3. Write Corporate Directory MVP Blueprint.
+3. Review and accept Corporate Directory MVP Blueprint.
 4. Decide fork vs shell path, or define a focused spike to decide it.
 5. Write Deployment Blueprint after Control Plane stack assumptions are known.
 
@@ -445,6 +452,7 @@ Roadmap phase is complete when:
 - [Product Context Handoff](../product/handoff/PRODUCT_CONTEXT_HANDOFF.md)
 - [Product PRD Review Addendum](../product/PRODUCT_PRD_REVIEW_ADDENDUM.md)
 - [Corporate Control Plane MVP Blueprint](../blueprints/CORPORATE_CONTROL_PLANE_MVP_BLUEPRINT.md)
+- [Corporate Directory MVP Blueprint](../blueprints/CORPORATE_DIRECTORY_MVP_BLUEPRINT.md)
 - [Infrastructure Assumptions](../infrastructure/INFRASTRUCTURE_ASSUMPTIONS.md)
 - [Server Audit Report](../infrastructure/SERVER_AUDIT_REPORT.md)
 - [Android Diagnostics MVP-0a Closure](../reports/2026-05-13/ANDROID_DIAGNOSTICS_MVP0A_CLOSURE.report.md)

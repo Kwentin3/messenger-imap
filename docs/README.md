@@ -26,5 +26,7 @@ Key Blueprint documents:
 
 - [Corporate Control Plane MVP Blueprint](blueprints/CORPORATE_CONTROL_PLANE_MVP_BLUEPRINT.md)
 - [Corporate Control Plane MVP Blueprint Report](blueprints/CORPORATE_CONTROL_PLANE_MVP_BLUEPRINT_REPORT.md)
+- [Corporate Directory MVP Blueprint](blueprints/CORPORATE_DIRECTORY_MVP_BLUEPRINT.md)
+- [Corporate Directory MVP Blueprint Report](blueprints/CORPORATE_DIRECTORY_MVP_BLUEPRINT_REPORT.md)
 
 `docs/out/` is intentionally not imported into this repository. Output-buffer documents from the workspace were either omitted as duplicates or copied into canonical locations before import.
