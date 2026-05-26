@@ -10,6 +10,7 @@ Primary references:
 - [Product PRD Review Addendum](../PRODUCT_PRD_REVIEW_ADDENDUM.md)
 - [Product Decisions Log](../decisions/PRODUCT_DECISIONS_LOG.md)
 - [Domain PRD Index](../DOMAIN_PRD_INDEX.md)
+- [Infrastructure Assumptions](../../infrastructure/INFRASTRUCTURE_ASSUMPTIONS.md)
 
 ## 1. What We Are Building
 
@@ -20,6 +21,8 @@ Working Russian description: Корпоративный IMAP/SMTP-мессенд
 The product is not a generic email client and not a new message server. Users get a messenger-style Android experience. Administrators get organization membership, invites, directory, provider profiles, app releases, policies, and diagnostic status.
 
 The product now also includes External Contacts & Guest Access. Clients, suppliers, partners, contractors, and other counterparties can be invited into scoped external relationships without becoming employees or receiving the internal corporate directory.
+
+Infrastructure context is now recorded for future Control Plane and deployment work. The public hostname is `messenger-imap.speechbattle.com`, DNS resolves to `146.19.211.30`, the internal deploy host is `192.168.7.64`, SSH context is `roman@192.168.7.64`, and Traefik already exists on the server. Future deployment work must be non-destructive and must not disrupt existing services.
 
 ## 2. What Has Already Been Proven
 
@@ -73,6 +76,8 @@ Yandex, Rambler, and manual/custom IMAP/SMTP profiles remain candidate/custom pa
 - Trust states must distinguish installed app, invite present, email verified, active member, external contact, imported contact, and cryptographic verification.
 - APK-by-email is Android emergency fallback only, not the primary flow.
 - iOS is out of current scope.
+- Deployment must integrate with existing Traefik without breaking existing services.
+- Real secrets, SSH private keys, `.env` files, APK signing keys, provider passwords, and raw logs must not be committed.
 - Diagnostic reports must be sanitized.
 - No silent unsafe address book import.
 - Do not modify chatmail/core unless justified by Blueprint.
@@ -93,6 +98,7 @@ Product package:
 - [External Contacts & Guest Access PRD](../domains/PRD_EXTERNAL_CONTACTS_AND_GUEST_ACCESS.md)
 - [Product PRD Review Addendum](../PRODUCT_PRD_REVIEW_ADDENDUM.md)
 - [Product Decisions Log](../decisions/PRODUCT_DECISIONS_LOG.md)
+- [Infrastructure Assumptions](../../infrastructure/INFRASTRUCTURE_ASSUMPTIONS.md)
 
 ## 6. Main Unresolved Decisions
 
@@ -129,6 +135,9 @@ Product package:
 - Do not use stale historical group roster as managed group authority.
 - Do not treat APK-by-email as primary distribution.
 - Do not include iOS in current scope.
+- Do not change Traefik, containers, DNS, firewall, or server files during documentation work.
+- Do not run deployment actions before a read-only server audit and deployment Blueprint.
+- Do not store SSH keys, `.env`, passwords, tokens, APK signing keys, or database credentials in git.
 - Do not merge diagnostics into the messenger without a design.
 - Do not write UI mockups or detailed API specs from this PRD package.
 - Do not include secrets, real accounts, app passwords, raw logs, or raw AUTH.
@@ -143,8 +152,10 @@ Product package:
 5. Write Corporate Control Plane Blueprint with RBAC, invite abuse controls, verification challenges, stale sync behavior, audit, and release lifecycle.
 6. Write Directory Blueprint with canonical hash payload, stale/expired behavior, workspace scope, managed roster enforcement, and signed fallback boundaries.
 7. Include External Contacts & Guest Access reassignment, stale visible directory, and external verification in future Blueprints.
-8. Define in-client diagnostics MVP scope versus standalone diagnostics.
-9. Define first field trial provider/network validation plan.
+8. Perform read-only infrastructure audit and create `docs/infrastructure/SERVER_AUDIT_REPORT.md`.
+9. Define in-client diagnostics MVP scope versus standalone diagnostics.
+10. Define first field trial provider/network validation plan.
+11. After Control Plane stack selection, write `docs/blueprints/DEPLOYMENT_BLUEPRINT.md`.
 
 ## 9. MVP / Later / Non-goals Framing
 

@@ -17,6 +17,7 @@ Date: 2026-05-14
 - [External Contacts & Guest Access PRD](domains/PRD_EXTERNAL_CONTACTS_AND_GUEST_ACCESS.md)
 - [Product PRD Review Addendum](PRODUCT_PRD_REVIEW_ADDENDUM.md)
 - [Product PRD Refinement Report](PRODUCT_PRD_REFINEMENT_REPORT.md)
+- [Infrastructure Assumptions](../infrastructure/INFRASTRUCTURE_ASSUMPTIONS.md)
 - [Product Decisions Log](decisions/PRODUCT_DECISIONS_LOG.md)
 - [Product Context Handoff](handoff/PRODUCT_CONTEXT_HANDOFF.md)
 
@@ -44,6 +45,7 @@ Review addendum created:
 - invite abuse controls;
 - external contact reassignment UX;
 - app release lifecycle.
+- infrastructure assumptions for `messenger-imap.speechbattle.com`, public IP `146.19.211.30`, internal deploy host `192.168.7.64`, existing Traefik, and future non-destructive server audit.
 
 ## 3. Какие документы наиболее детализированы
 
@@ -86,6 +88,8 @@ Review addendum created:
 - подготовить Android IMAP Messenger MVP Blueprint;
 - подготовить Corporate Control Plane Blueprint;
 - учесть в Blueprints stale Control Plane mode, email verification, workspace scoping, trust states, RBAC, invite abuse controls и app release lifecycle;
+- выполнить read-only infrastructure audit и подготовить `docs/infrastructure/SERVER_AUDIT_REPORT.md`;
+- после выбора Control Plane stack подготовить `docs/blueprints/DEPLOYMENT_BLUEPRINT.md`;
 - включить External Contacts & Guest Access в будущие Blueprint;
 - при необходимости подготовить отдельный Directory Blueprint;
 - определить MVP-объём in-client diagnostics;
@@ -110,6 +114,10 @@ Review addendum created:
 - не смешивались internal membership и external relationship;
 - не предполагалось, что external contacts получают internal corporate directory;
 - не добавлялись секреты, реальные email, app passwords или raw logs.
+- не выполнялся deploy;
+- не менялся Traefik;
+- не менялись существующие сервисы/контейнеры;
+- не добавлялись `.env`, SSH keys, APK signing keys или server credentials.
 
 ## 7. MVP / Later / Non-goals Summary
 
