@@ -16,13 +16,15 @@ Corporate IMAP Messenger has moved from research, transport diagnostics, and pro
 
 The main risk now is scope creep: starting Android UI, Delta Chat fork work, deployment, APK distribution, or backend implementation before the product architecture boundaries are clear. This roadmap fixes the execution order and keeps the project focused between PRD and implementation.
 
-The next key artifact is:
+The current key Blueprint artifact is:
 
 ```text
 docs/blueprints/CORPORATE_CONTROL_PLANE_MVP_BLUEPRINT.md
 ```
 
 Corporate Control Plane comes first because it owns organization/workspace authority, membership, invites, email verification, directory source of truth, provider profile policy, release metadata, diagnostics evidence references, audit, and stale-mode policy.
+
+Current status: drafted. Review and acceptance are still pending.
 
 ## 2. Accepted Baseline
 
@@ -160,7 +162,7 @@ Exit criteria:
 - blocking decisions listed;
 - no implementation started prematurely.
 
-### Stage 4. Corporate Control Plane MVP Blueprint - NEXT
+### Stage 4. Corporate Control Plane MVP Blueprint - DRAFTED
 
 Purpose:
 
@@ -182,6 +184,13 @@ Define backend/admin portal/source-of-truth for:
 Why first:
 
 All other domains depend on Control Plane.
+
+Current artifact:
+
+- [Corporate Control Plane MVP Blueprint](../blueprints/CORPORATE_CONTROL_PLANE_MVP_BLUEPRINT.md)
+- [Corporate Control Plane MVP Blueprint Report](../blueprints/CORPORATE_CONTROL_PLANE_MVP_BLUEPRINT_REPORT.md)
+
+Status: drafted, not yet accepted.
 
 ### Stage 5. Corporate Directory MVP Blueprint
 
@@ -315,7 +324,7 @@ Only after the relevant Blueprints are accepted.
 
 Ordered Blueprint sequence:
 
-1. Corporate Control Plane MVP Blueprint.
+1. Review and accept Corporate Control Plane MVP Blueprint.
 2. Corporate Directory MVP Blueprint.
 3. Invite Onboarding & Distribution Blueprint.
 4. Android Client MVP Blueprint.
@@ -414,7 +423,7 @@ MVP should not include:
 ## 11. Near-Term Action Plan
 
 1. Review and accept this roadmap.
-2. Write Corporate Control Plane MVP Blueprint.
+2. Review and accept Corporate Control Plane MVP Blueprint.
 3. Write Corporate Directory MVP Blueprint.
 4. Decide fork vs shell path, or define a focused spike to decide it.
 5. Write Deployment Blueprint after Control Plane stack assumptions are known.
@@ -435,6 +444,7 @@ Roadmap phase is complete when:
 - [Product Decisions Log](../product/decisions/PRODUCT_DECISIONS_LOG.md)
 - [Product Context Handoff](../product/handoff/PRODUCT_CONTEXT_HANDOFF.md)
 - [Product PRD Review Addendum](../product/PRODUCT_PRD_REVIEW_ADDENDUM.md)
+- [Corporate Control Plane MVP Blueprint](../blueprints/CORPORATE_CONTROL_PLANE_MVP_BLUEPRINT.md)
 - [Infrastructure Assumptions](../infrastructure/INFRASTRUCTURE_ASSUMPTIONS.md)
 - [Server Audit Report](../infrastructure/SERVER_AUDIT_REPORT.md)
 - [Android Diagnostics MVP-0a Closure](../reports/2026-05-13/ANDROID_DIAGNOSTICS_MVP0A_CLOSURE.report.md)
