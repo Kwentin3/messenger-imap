@@ -10,11 +10,17 @@ Repository: `https://github.com/Kwentin3/messenger-imap`
 
 Branch: `blueprint/android-client-mvp`
 
+Android Blueprint content commit: `8361e9a0f13bc1fcf9a9e2edfa8f20efc1a343ec`
+
+Android Blueprint PR: `https://github.com/Kwentin3/messenger-imap/pull/6`
+
 ## 1. Executive Summary
 
 PR #5, Invite Onboarding & Distribution MVP Blueprint, was merged into `main` before Android Blueprint work started.
 
 The Android Client MVP Blueprint was then drafted from updated `main` on `blueprint/android-client-mvp`. The Blueprint converts current product and architecture documentation into a client-side MVP architecture frame without writing Android code.
+
+PR #6 was opened from `blueprint/android-client-mvp` to `main`.
 
 ## 2. Upstream PR Status
 
@@ -25,6 +31,9 @@ The Android Client MVP Blueprint was then drafted from updated `main` on `bluepr
 | PR #5 | Merged |
 | PR #5 URL | `https://github.com/Kwentin3/messenger-imap/pull/5` |
 | `main` before Android branch | `84ce167f249edb9c027e76039ee3ff0896627fb3` |
+| Android Blueprint branch | `blueprint/android-client-mvp` |
+| Android Blueprint content commit | `8361e9a0f13bc1fcf9a9e2edfa8f20efc1a343ec` |
+| Android Blueprint PR | `https://github.com/Kwentin3/messenger-imap/pull/6` |
 
 ## 3. What Was Created
 
