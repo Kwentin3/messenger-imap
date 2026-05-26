@@ -10,7 +10,7 @@ Project: `messenger-imap`
 
 Repository: `https://github.com/Kwentin3/messenger-imap`
 
-Branching note: this Blueprint is drafted as a stacked follow-up from `blueprint/control-plane-mvp` because PR #3 is still open and the Directory Blueprint depends on the Control Plane Blueprint content.
+Merge note: this Blueprint was originally drafted as a stacked follow-up from `blueprint/control-plane-mvp`. PR #3 and the Directory content were later fast-forwarded into `main`; the Blueprint now serves as the merged Directory baseline for the next Invite Onboarding Blueprint.
 
 Source documents:
 

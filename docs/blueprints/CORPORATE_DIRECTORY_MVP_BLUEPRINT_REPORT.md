@@ -6,7 +6,7 @@ Status: Draft
 
 Project: `messenger-imap`
 
-Branching note: this report was drafted on `blueprint/corporate-directory-mvp`, stacked on `blueprint/control-plane-mvp` because PR #3 is still open.
+Merge note: this report was drafted on `blueprint/corporate-directory-mvp`, originally stacked on `blueprint/control-plane-mvp`. The Directory Blueprint content has since been fast-forwarded into `main`.
 
 ## 1. What Was Created
 

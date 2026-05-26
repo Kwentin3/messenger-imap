@@ -19,12 +19,12 @@ The main risk now is scope creep: starting Android UI, Delta Chat fork work, dep
 The current key Blueprint artifact is:
 
 ```text
-docs/blueprints/CORPORATE_CONTROL_PLANE_MVP_BLUEPRINT.md
+docs/blueprints/INVITE_ONBOARDING_DISTRIBUTION_MVP_BLUEPRINT.md
 ```
 
-Corporate Control Plane comes first because it owns organization/workspace authority, membership, invites, email verification, directory source of truth, provider profile policy, release metadata, diagnostics evidence references, audit, and stale-mode policy.
+Corporate Control Plane and Corporate Directory are already merged baselines. Invite Onboarding & Distribution is the current drafted Blueprint because it connects invite authority, APK distribution handoff, email verification, provider setup, diagnostics gate, activation, and first directory sync.
 
-Current status: drafted. Review and acceptance are still pending.
+Current status: Invite Onboarding & Distribution MVP Blueprint drafted; review and acceptance are still pending.
 
 ## 2. Accepted Baseline
 
@@ -162,7 +162,7 @@ Exit criteria:
 - blocking decisions listed;
 - no implementation started prematurely.
 
-### Stage 4. Corporate Control Plane MVP Blueprint - DRAFTED
+### Stage 4. Corporate Control Plane MVP Blueprint - MERGED / BASELINE
 
 Purpose:
 
@@ -190,9 +190,9 @@ Current artifact:
 - [Corporate Control Plane MVP Blueprint](../blueprints/CORPORATE_CONTROL_PLANE_MVP_BLUEPRINT.md)
 - [Corporate Control Plane MVP Blueprint Report](../blueprints/CORPORATE_CONTROL_PLANE_MVP_BLUEPRINT_REPORT.md)
 
-Status: drafted, not yet accepted.
+Status: merged into `main` as current Control Plane Blueprint baseline.
 
-### Stage 5. Corporate Directory MVP Blueprint - DRAFTED
+### Stage 5. Corporate Directory MVP Blueprint - MERGED / BASELINE
 
 Purpose:
 
@@ -215,9 +215,9 @@ Current artifact:
 - [Corporate Directory MVP Blueprint](../blueprints/CORPORATE_DIRECTORY_MVP_BLUEPRINT.md)
 - [Corporate Directory MVP Blueprint Report](../blueprints/CORPORATE_DIRECTORY_MVP_BLUEPRINT_REPORT.md)
 
-Status: drafted as a stacked follow-up on the Control Plane Blueprint branch. Control Plane Blueprint PR #3 is still open, so Directory acceptance should follow Control Plane acceptance.
+Status: merged into `main` as current Directory Blueprint baseline.
 
-### Stage 6. Invite Onboarding & Distribution Blueprint
+### Stage 6. Invite Onboarding & Distribution Blueprint - DRAFTED
 
 Purpose:
 
@@ -232,6 +232,13 @@ Define:
 - internal invite vs external invite;
 - release metadata;
 - APK distribution.
+
+Current artifact:
+
+- [Invite Onboarding & Distribution MVP Blueprint](../blueprints/INVITE_ONBOARDING_DISTRIBUTION_MVP_BLUEPRINT.md)
+- [Invite Onboarding & Distribution MVP Blueprint Report](../blueprints/INVITE_ONBOARDING_DISTRIBUTION_MVP_BLUEPRINT_REPORT.md)
+
+Status: drafted, not yet accepted.
 
 ### Stage 7. Android Client MVP Blueprint
 
@@ -331,9 +338,9 @@ Only after the relevant Blueprints are accepted.
 
 Ordered Blueprint sequence:
 
-1. Review and accept Corporate Control Plane MVP Blueprint.
-2. Review and accept Corporate Directory MVP Blueprint.
-3. Invite Onboarding & Distribution Blueprint.
+1. Corporate Control Plane MVP Blueprint.
+2. Corporate Directory MVP Blueprint.
+3. Review and accept Invite Onboarding & Distribution MVP Blueprint.
 4. Android Client MVP Blueprint.
 5. External Contacts & Guest Access Blueprint.
 6. Provider / Diagnostics Blueprint Slice.
@@ -417,10 +424,10 @@ MVP should not include:
 | Scope creep | Blueprints and MVP become too broad to execute | Follow roadmap order and do-not-start-yet list | Current |
 | GPL compliance | Wrong fork/distribution path can block release | Legal/license review before modified Android distribution | Open |
 | Control Plane unavailable in whitelist | Invite, directory, release, and policy sync can be stale | Stale mode, delayed sync, future signed fallback later | Accepted PRD refine |
-| Stale directory misuse | Users may message outdated members/groups | Stale warnings, expired thresholds, managed roster enforcement | Blueprint needed |
-| Invite abuse | Wrong user may activate or attempt invite replay | Expiry, max uses, email verification, rate limits, audit | Blueprint needed |
+| Stale directory misuse | Users may message outdated members/groups | Stale warnings, expired thresholds, managed roster enforcement | Directory Blueprint baseline |
+| Invite abuse | Wrong user may activate or attempt invite replay | Expiry, max uses, email verification, rate limits, audit | Invite Blueprint drafted |
 | Revoked member in historical chats | User confusion or accidental sends | Historical warning and current managed roster sends | Blueprint needed |
-| APK distribution friction | Users cannot install/update reliably | Release metadata, download route, emergency Android email fallback | Blueprint needed |
+| APK distribution friction | Users cannot install/update reliably | Release metadata, download route, emergency Android email fallback | Invite Blueprint drafted |
 | Signing key handling | Compromised APK trust chain | Define signing pipeline, keep signing keys out of repo/deploy host by default | Open |
 | Provider auth changes | Baseline provider may break | Provider profiles, diagnostics evidence, provider-agnostic design | Ongoing |
 | Background reliability | MVP may overpromise delivery | Keep background reliability deferred until MVP-0b | Deferred |
@@ -429,10 +436,10 @@ MVP should not include:
 
 ## 11. Near-Term Action Plan
 
-1. Review and accept this roadmap.
-2. Review and accept Corporate Control Plane MVP Blueprint.
-3. Review and accept Corporate Directory MVP Blueprint.
-4. Decide fork vs shell path, or define a focused spike to decide it.
+1. Review and accept Invite Onboarding & Distribution MVP Blueprint.
+2. Write Android Client MVP Blueprint.
+3. Decide fork vs shell path, or define a focused spike to decide it.
+4. Write Provider / Diagnostics Blueprint Slice after the Android boundary is clearer.
 5. Write Deployment Blueprint after Control Plane stack assumptions are known.
 
 ## 12. Success Criteria For Roadmap Phase
@@ -453,6 +460,7 @@ Roadmap phase is complete when:
 - [Product PRD Review Addendum](../product/PRODUCT_PRD_REVIEW_ADDENDUM.md)
 - [Corporate Control Plane MVP Blueprint](../blueprints/CORPORATE_CONTROL_PLANE_MVP_BLUEPRINT.md)
 - [Corporate Directory MVP Blueprint](../blueprints/CORPORATE_DIRECTORY_MVP_BLUEPRINT.md)
+- [Invite Onboarding & Distribution MVP Blueprint](../blueprints/INVITE_ONBOARDING_DISTRIBUTION_MVP_BLUEPRINT.md)
 - [Infrastructure Assumptions](../infrastructure/INFRASTRUCTURE_ASSUMPTIONS.md)
 - [Server Audit Report](../infrastructure/SERVER_AUDIT_REPORT.md)
 - [Android Diagnostics MVP-0a Closure](../reports/2026-05-13/ANDROID_DIAGNOSTICS_MVP0A_CLOSURE.report.md)

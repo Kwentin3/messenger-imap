@@ -28,6 +28,13 @@ Infrastructure context is now recorded for future Control Plane and deployment w
 
 The Project Roadmap is the controlling document between the PRD package and technical Blueprints. It fixes the stage order, MVP boundary, blockers, do-not-start-yet list, and near-term Blueprint sequence.
 
+Current Blueprint status as of 2026-05-26:
+
+- Corporate Control Plane MVP Blueprint is merged into `main`.
+- Corporate Directory MVP Blueprint content is merged into `main`.
+- Invite Onboarding & Distribution MVP Blueprint is drafted for review.
+- The next recommended Blueprint after Invite review is Android Client MVP Blueprint.
+
 ## 2. What Has Already Been Proven
 
 MVP-0a diagnostics are accepted.
@@ -106,6 +113,12 @@ Product package:
 - [Server Audit Report](../../infrastructure/SERVER_AUDIT_REPORT.md)
 - [Project Roadmap](../../roadmap/PROJECT_ROADMAP.md)
 
+Blueprint package:
+
+- [Corporate Control Plane MVP Blueprint](../../blueprints/CORPORATE_CONTROL_PLANE_MVP_BLUEPRINT.md)
+- [Corporate Directory MVP Blueprint](../../blueprints/CORPORATE_DIRECTORY_MVP_BLUEPRINT.md)
+- [Invite Onboarding & Distribution MVP Blueprint](../../blueprints/INVITE_ONBOARDING_DISTRIBUTION_MVP_BLUEPRINT.md)
+
 ## 6. Main Unresolved Decisions
 
 - Thin Delta Chat Android fork vs custom Android shell over chatmail/core.
@@ -151,12 +164,11 @@ Product package:
 
 ## 8. Next Recommended Work
 
-1. Review and accept [Project Roadmap](../../roadmap/PROJECT_ROADMAP.md).
-2. Write `docs/blueprints/CORPORATE_CONTROL_PLANE_MVP_BLUEPRINT.md`.
-3. Write Corporate Directory MVP Blueprint.
-4. Decide thin Delta Chat Android fork vs custom shell over chatmail/core, or define a focused spike.
-5. Use `docs/infrastructure/SERVER_AUDIT_REPORT.md` as input for deployment planning.
-6. After Control Plane stack assumptions are known, write `docs/blueprints/DEPLOYMENT_BLUEPRINT.md`.
+1. Review and accept [Invite Onboarding & Distribution MVP Blueprint](../../blueprints/INVITE_ONBOARDING_DISTRIBUTION_MVP_BLUEPRINT.md).
+2. Write Android Client MVP Blueprint using Control Plane, Directory, and Invite Blueprints as inputs.
+3. Decide thin Delta Chat Android fork vs custom shell over chatmail/core, or define a focused spike.
+4. Keep Deployment Blueprint blocked until Control Plane stack assumptions are concrete.
+5. Use `docs/infrastructure/SERVER_AUDIT_REPORT.md` as input for deployment planning only after deployment design starts.
 
 ## 9. MVP / Later / Non-goals Framing
 
