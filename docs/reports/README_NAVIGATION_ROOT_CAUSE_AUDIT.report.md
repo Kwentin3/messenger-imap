@@ -12,6 +12,8 @@ The APK link was not visible from the user-facing root README because the README
 
 There is a second repository-level visibility issue: the current default branch for `Kwentin3/messenger-imap` is `bootstrap/project-import`, not `main`. GitHub shows the default branch on the repository landing page. Therefore, even a merge to `main` will not automatically update the default landing page unless the default branch is changed to `main` or the same README update is landed into the default branch.
 
+Local workspace note: the README fix was originally prepared through temporary worktrees under `C:\work\...`, then those temporary worktrees were removed after the PRs were opened. That left the main local checkout `d:\Users\Roman\Desktop\Проекты\messenger-imap` on the older `docs/android-internal-smoke-apk-release` branch, which made the local root README appear stale. The local checkout has since been corrected to `docs/root-readme-navigation-fix`, where the root README contains the APK link.
+
 ## 2. Current README State In `messenger-imap/main`
 
 `messenger-imap/main` root `README.md` is stale:
@@ -41,6 +43,12 @@ There is a second repository-level visibility issue: the current default branch 
 
 Meta repository:
 
+- [PR #15: Fix root README navigation and APK links](https://github.com/Kwentin3/messenger-imap/pull/15)
+  - head: `docs/root-readme-navigation-fix`
+  - base: `main`
+  - status: open
+  - current correction PR containing the updated root README, `docs/README.md`, root-cause audit, and navigation update report.
+
 - [PR #14: Update root README navigation and APK links](https://github.com/Kwentin3/messenger-imap/pull/14)
   - head: `docs/root-readme-navigation`
   - base: `main`
@@ -54,6 +62,12 @@ Meta repository:
   - contains the internal smoke release report and Android execution documents, but it is stacked and not merged into `main`.
 
 Android repository:
+
+- [PR #3: Add internal smoke APK link to root README](https://github.com/Kwentin3/messenger-imap-android/pull/3)
+  - head: `docs/root-readme-apk-link-fix`
+  - base: `main`
+  - status: open
+  - current correction PR containing the project-specific Android README block above the upstream README.
 
 - [PR #2: Add internal smoke APK link to root README](https://github.com/Kwentin3/messenger-imap-android/pull/2)
   - head: `docs/root-readme-apk-link`
@@ -74,6 +88,8 @@ The user does not see the APK link because the visible README is read from `main
 For `messenger-imap`, the situation is compounded by the default branch being `bootstrap/project-import`, not `main`. The root repository page will keep showing that default branch until the branch setting changes or the update is landed there.
 
 For `messenger-imap-android`, `main` still has the upstream README. The project-specific APK block exists in `feature/release-metadata-warning` and `docs/root-readme-apk-link`, but neither branch is merged.
+
+For the local workspace, the earlier confusion came from checking the main checkout while it was still on `docs/android-internal-smoke-apk-release`, not on `docs/root-readme-navigation-fix`. The fix branch itself was already pushed, but the active folder did not show it until the branch was checked out in the main local directory.
 
 ## 6. What Needs To Be Corrected
 
