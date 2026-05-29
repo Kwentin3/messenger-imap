@@ -80,4 +80,4 @@ docs/blueprints/ANDROID_CLIENT_MVP_BLUEPRINT.md
 
 Reason:
 
-Control Plane, Directory, and Invite Onboarding now define the authority and onboarding contracts that the Android client must consume. The Android Blueprint should decide how the app presents invite entry, provider setup, diagnostics, first directory sync, stale state, internal/external contact separation, and the fork-vs-shell implementation path.
+Control Plane, Directory, and Invite Onboarding now define the authority and onboarding contracts that the Android client must consume. The Android Blueprint should be reviewed under the accepted thin Delta Chat Android fork assumption and decide how the app presents invite entry, provider setup, diagnostics, first directory sync, stale state, and internal/external contact separation.

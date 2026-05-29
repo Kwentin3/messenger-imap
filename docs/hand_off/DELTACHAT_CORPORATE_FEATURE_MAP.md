@@ -62,4 +62,4 @@ Whitelist-ready status is evidence-based only. A provider brand or website being
 
 ## Safe next step
 
-Use this feature map as input to `docs/blueprints/ANDROID_IMAP_MESSENGER_MVP_BLUEPRINT.md`. The Blueprint should decide fork vs custom shell and define the product-layer models for provider profiles, diagnostic gates, corporate contact import, and MVP onboarding.
+Use this feature map as input to Android Client and Provider/Diagnostics planning. The MVP path is now a thin Delta Chat Android fork; follow-up Blueprints/plans should define product-layer models for provider profiles, diagnostic gates, corporate contact import, and MVP onboarding.

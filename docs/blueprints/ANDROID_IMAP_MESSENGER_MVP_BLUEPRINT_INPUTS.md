@@ -89,7 +89,7 @@ Key references:
 ## Human decisions required
 
 - Is GPLv3+ Android client distribution acceptable for the business model?
-- Should the MVP be a thin Delta Chat Android fork or a custom shell over chatmail/core?
+- Thin Delta Chat Android fork is selected for MVP; decide fork intake plan, repository visibility, package identity, signing, and upstream merge strategy.
 - Is Mail.ru/VK Mail enough as first field baseline, or must Yandex/Rambler be tested before UI work starts?
 - Should the MVP require Android contacts permission, or avoid it entirely?
 - Is manual vCard import sufficient for MVP corporate directory, or is managed config required immediately?
@@ -183,7 +183,7 @@ Do not change:
 
 Branding should be staged:
 
-1. Blueprint decides fork/shell and license path.
+1. Blueprint follows the accepted thin Delta Chat Android fork path and defines license/compliance tasks.
 2. Internal build can use minimal resource-level branding.
 3. Package ID, icons, app name, notification identity, and store metadata require a distribution plan.
 4. Full UI rebrand should follow functional onboarding/provider/contact decisions.
@@ -215,8 +215,8 @@ Observed licenses:
 
 Blueprint implications:
 
-- Thin Android fork is likely simplest technically but highest GPL compliance visibility.
-- Custom shell over MPL core may provide different boundaries but still needs engineering and legal review.
+- Thin Android fork is selected for MVP and has GPL compliance visibility.
+- Custom shell over MPL core is rejected for MVP but may remain a later fallback if the thin fork fails.
 - Any distribution of modified Android binaries needs a source/compliance plan.
 - This is an engineering input only, not legal advice.
 
@@ -224,7 +224,7 @@ Blueprint implications:
 
 The next Blueprint should answer:
 
-- Which base architecture to use: thin fork, custom shell, or own minimal client.
+- How to execute the thin fork intake and isolate corporate modules.
 - How provider profiles and diagnostic status are modeled.
 - How onboarding works for presets and manual/custom provider.
 - How corporate contacts are imported without breaking trust semantics.

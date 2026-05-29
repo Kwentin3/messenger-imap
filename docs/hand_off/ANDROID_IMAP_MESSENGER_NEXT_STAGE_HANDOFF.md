@@ -99,7 +99,7 @@ Pros: mature messenger UI, existing chat workflow, existing IMAP/SMTP messenger 
 
 Option B: custom Android shell over chatmail/core.
 
-Pros: reuse of a known mail-messenger core and potentially less UI baggage than a full fork. Cons: integration/JNI/build complexity, core assumptions may not match provider-agnostic whitelist diagnostics, licensing review still required.
+Pros: reuse of a known mail-messenger core and potentially less UI baggage than a full fork. Cons: integration/JNI/build complexity, core assumptions may not match provider-agnostic whitelist diagnostics, licensing review still required. Current status: rejected for MVP by the accepted thin Delta Chat Android fork decision.
 
 Option C: own minimal messenger over IMAP/SMTP.
 
@@ -145,7 +145,7 @@ The blueprint should explicitly separate MVP foreground messaging from later bac
 
 ## 10. Open questions for next stage
 
-- Use a Delta Chat Android fork or a custom shell?
+- Use a Delta Chat Android fork or a custom shell? Resolved for MVP: thin Delta Chat Android fork.
 - Use chatmail/core or own thin IMAP/SMTP logic?
 - How should credentials be stored?
 - How should background receive work?
@@ -155,4 +155,4 @@ The blueprint should explicitly separate MVP foreground messaging from later bac
 - Is iOS support required later?
 - What are the legal implications of GPL/MPL dependencies and forks?
 
-These questions should be answered before committing to a fork, core integration or custom protocol implementation.
+The fork route is now answered for MVP. Remaining questions still need implementation planning before Android fork changes go beyond the build-only intake slice.

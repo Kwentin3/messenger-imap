@@ -222,7 +222,7 @@ Policy:
 
 - Create PR from `bootstrap/project-import` to `main` if not automatically created.
 - Review PRD package with product/engineering/legal stakeholders.
-- Decide thin Delta Chat Android fork vs custom shell over chatmail/core.
+- Historical bootstrap follow-up: decide thin Delta Chat Android fork vs custom shell over chatmail/core. Resolved for MVP on 2026-05-29: thin Delta Chat Android fork.
 - Decide GPL/MPL distribution compliance path.
 - Write Android IMAP Messenger MVP Blueprint.
 - Write Corporate Control Plane Blueprint.

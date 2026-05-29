@@ -256,7 +256,7 @@ Accepted decisions found in `docs/product/decisions/PRODUCT_DECISIONS_LOG.md` an
 
 | Topic | Current state |
 |---|---|
-| Thin Delta Chat Android fork vs custom shell over chatmail/core | Open |
+| Thin Delta Chat Android fork vs custom shell over chatmail/core | Historical status was open; resolved for MVP on 2026-05-29: thin Delta Chat Android fork |
 | GPL/MPL compliance and distribution model | Open; legal review needed before modified Android distribution |
 | First MVP provider list beyond Mail.ru / VK Mail | Open |
 | VK Mail runtime evidence | Not yet separately verified |

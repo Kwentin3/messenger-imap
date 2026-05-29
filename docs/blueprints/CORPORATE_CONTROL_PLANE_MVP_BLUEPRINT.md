@@ -1057,8 +1057,8 @@ Do not include yet:
 - Audit retention.
 - External relationship reassignment chat/history behavior.
 - Whether domain invites are MVP or later.
-- Exact approach to thin Delta Chat Android fork vs custom Android shell.
 - GPL/MPL compliance path for future Android distribution.
+- Android fork integration assumptions after accepted thin-fork decision.
 
 ## 21. Acceptance Criteria For This Blueprint
 

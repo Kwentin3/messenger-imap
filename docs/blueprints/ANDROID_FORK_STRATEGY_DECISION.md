@@ -2,13 +2,13 @@
 
 Date: 2026-05-13
 
-Status: preliminary engineering decision for the next Blueprint.
+Status: Accepted as MVP thin-fork direction by `docs/decisions/IMPLEMENTATION_FORK_STRATEGY_DECISION.md`.
 
 ## Context
 
 MVP-0a diagnostics confirmed Mail.ru as the first accepted IMAP/SMTP transport baseline. The next stage is an Android-first corporate messenger architecture using Delta Chat / Chatmail as a possible base.
 
-The immediate need is a manageable fork/workspace baseline, not a rebrand or deep transport rewrite.
+The accepted MVP path is a manageable thin Delta Chat Android fork, not a rebrand, custom shell, or deep transport rewrite.
 
 ## Options
 
@@ -78,7 +78,7 @@ Use a conservative two-step strategy:
 
 When GitHub fork access is available:
 
-- create an owned fork of `https://github.com/deltachat/deltachat-android.git`;
+- create an owned fork at `Kwentin3/messenger-imap-android` from `https://github.com/deltachat/deltachat-android.git`;
 - set `origin` in the working clone/worktree route to the owned fork;
 - keep `upstream=https://github.com/deltachat/deltachat-android.git`;
 - push `research/corporate-imap-messenger-baseline` only after the Blueprint defines the first safe change.

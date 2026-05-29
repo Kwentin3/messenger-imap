@@ -12,7 +12,7 @@ Define the high-level product requirements for the Android-first messenger clien
 
 The Android client is the employee-facing and guest-facing product surface. It must let an invited employee enroll into an organization, configure an IMAP/SMTP provider profile, verify transport, sync the corporate directory, and use messenger-style communication. It must also let external contacts join through external invites without receiving internal membership or the internal corporate directory.
 
-This document does not choose the implementation path between a thin Delta Chat Android fork and a custom Android shell over chatmail/core. Existing Delta Chat Android / chatmail capabilities should be reused where the later Blueprint shows a safe and compliant path.
+Implementation strategy decision update: MVP uses a thin fork of Delta Chat Android. Custom Android shell over `chatmail/core` is rejected for MVP, and `chatmail/core` changes require a separate Blueprint. Existing Delta Chat Android / chatmail capabilities should be reused through a safe, compliant, thin fork path.
 
 ## 2. Context
 
@@ -39,7 +39,7 @@ The missing product layer is corporate: invite enrollment, trusted membership, m
 
 ## 4. Non-goals
 
-- No final decision between thin Delta Chat Android fork and custom shell.
+- No custom Android shell over `chatmail/core` in MVP.
 - No rewrite of IMAP/SMTP transport.
 - No modification of chatmail/core without Blueprint-level justification.
 - No Mail.ru-only architecture.
@@ -49,7 +49,7 @@ The missing product layer is corporate: invite enrollment, trusted membership, m
 - No silent arbitrary contact import.
 - No internal directory exposure to external contacts.
 - No assumption that every invite creates employee membership.
-- No full UI rebrand before legal, fork/shell, and distribution decisions.
+- No full UI rebrand before legal, package ID, branding, signing, and distribution decisions.
 - No raw logcat or secret export as diagnostic evidence.
 
 ## 5. User Roles
@@ -276,7 +276,7 @@ MVP branding should be minimal:
 - internal app name;
 - internal icon if needed;
 - organization-specific strings only where safe;
-- no broad rebrand before fork/shell, legal, package ID, and distribution decisions.
+- no broad rebrand before legal, package ID, signing, and distribution decisions.
 
 ## 13. MVP Scope
 
@@ -327,8 +327,8 @@ MVP branding should be minimal:
 
 ## 16. Open Questions
 
-- Thin Delta Chat Android fork or custom shell over chatmail/core?
 - What secure credential storage policy is required for MVP?
+- What is the Android fork intake plan for `Kwentin3/messenger-imap-android`?
 - Will MVP avoid Android system contacts permission entirely?
 - Are starter groups admin-managed from control plane or created by users?
 - What exact in-client diagnostic scope is required in the first MVP?
@@ -436,4 +436,4 @@ MVP covers invite enrollment, external invite handling, provider setup, basic di
 
 Later covers background reliability, advanced diagnostics, signed directory trust, external project rooms, richer policies, branding, transcription, and broader validation.
 
-Non-goals exclude transport rewrite, final fork/shell decision inside this PRD, video calls, real-time voice calls, silent contact import, internal directory exposure to external contacts, and production-grade background guarantees.
+Non-goals exclude transport rewrite, custom shell over `chatmail/core` for MVP, video calls, real-time voice calls, silent contact import, internal directory exposure to external contacts, and production-grade background guarantees.

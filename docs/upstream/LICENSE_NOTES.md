@@ -18,9 +18,18 @@ This note summarizes license/compliance considerations from the workspace resear
 
 The initial repository import does not vendor-copy upstream source. It imports project documentation, sanitized evidence, and the standalone Android Diagnostics prototype source.
 
+## Current Implementation Decision
+
+The MVP Android implementation path is a thin fork of Delta Chat Android in a future separate repository:
+
+```text
+Kwentin3/messenger-imap-android
+```
+
+The current repository `Kwentin3/messenger-imap` remains product/meta/docs/control-plane coordination and must not vendor-copy the Android fork.
+
 ## Required Before Product Distribution
 
-- Decide thin Delta Chat Android fork vs custom shell vs another route.
 - Review GPL/MPL obligations.
 - Define source publication path for modified GPL-covered Android binaries if a fork is distributed.
 - Define attribution and notice handling.

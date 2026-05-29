@@ -12,7 +12,7 @@ Review addendum: [Product PRD Review Addendum](PRODUCT_PRD_REVIEW_ADDENDUM.md)
 
 | Domain | PRD file | Purpose | MVP priority | Owner TBD | Key dependencies | Status |
 |---|---|---|---|---|---|---|
-| Android Messenger Client | [PRD_ANDROID_MESSENGER_CLIENT.md](domains/PRD_ANDROID_MESSENGER_CLIENT.md) | Defines the Android-first user client, onboarding, provider setup, messaging, directory use, diagnostics entry points, and credential/security expectations. | P0 | TBD | Provider profiles, invite onboarding, corporate directory, diagnostics, fork/shell decision | Draft PRD |
+| Android Messenger Client | [PRD_ANDROID_MESSENGER_CLIENT.md](domains/PRD_ANDROID_MESSENGER_CLIENT.md) | Defines the Android-first user client, onboarding, provider setup, messaging, directory use, diagnostics entry points, and credential/security expectations. | P0 | TBD | Provider profiles, invite onboarding, corporate directory, diagnostics, accepted thin Delta Chat Android fork decision | Draft PRD |
 | Corporate Control Plane | [PRD_CORPORATE_CONTROL_PLANE.md](domains/PRD_CORPORATE_CONTROL_PLANE.md) | Defines the admin/backend product for organizations, members, invites, directory, provider profiles, app releases, policies, and diagnostic status. | P0 | TBD | Directory authority, invite policy, app distribution, admin roles | Draft PRD |
 | Corporate Directory | [PRD_CORPORATE_DIRECTORY.md](domains/PRD_CORPORATE_DIRECTORY.md) | Defines the centrally managed directory, member statuses, version/hash sync, revocation behavior, managed groups, and local cache rules. | P0 | TBD | Control plane, membership lifecycle, client sync, trust model | Draft PRD |
 | Invite Onboarding & Distribution | [PRD_INVITE_ONBOARDING_DISTRIBUTION.md](domains/PRD_INVITE_ONBOARDING_DISTRIBUTION.md) | Defines assisted one-shot onboarding, invite tokens, APK download, deep link/fallback code, enrollment, membership activation, and external relationship activation. | P0 | TBD | Control plane, Android client, provider setup, diagnostics, app release management, external contacts | Draft PRD |
@@ -54,7 +54,7 @@ The MVP requires all seven domains to work together:
 - No UI mockups.
 - No detailed API specification.
 - No database schema.
-- No fork of Delta Chat Android.
+- No Delta Chat Android fork changes beyond the documented intake slice.
 - No changes to chatmail/core.
 - No promise that all providers are whitelist-ready.
 - No production-ready claim.

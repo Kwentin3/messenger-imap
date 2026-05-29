@@ -42,6 +42,8 @@ This log records accepted product decisions that shape the PRD package. It is no
 | 2026-05-26 | Control Plane RBAC matrix is required. | Admin roles need product-level permission boundaries before Blueprint. | Owner, Admin, Manager, Support/IT, and Auditor permissions must be designed from the matrix. | Convert product matrix into exact permissions in Blueprint. |
 | 2026-05-26 | APK-by-email Android emergency fallback is accepted, not primary. | Some emergency scenarios may allow mail but not normal APK download. | Android APK can be distributed by email as fallback, but install does not imply membership and release metadata/signing still matter. | Define operator guidance and support warnings. |
 | 2026-05-26 | iOS is out of current scope. | Current evidence and distribution assumptions are Android-first. | iOS distribution requires separate App Store/TestFlight/MDM-like path later. | Revisit after Android MVP scope is stable. |
+| 2026-05-29 | MVP uses thin Delta Chat Android fork. | Existing Delta Chat Android client and Chatmail capabilities are the fastest credible MVP base and reduce product risk. | Create future Android fork repo `Kwentin3/messenger-imap-android`; keep current repo as product/meta/docs/control-plane coordination; reject custom Android shell over `chatmail/core` for MVP; do not modify `chatmail/core` as first step. | Plan GPL/source distribution, fork intake, package identity, signing, and upstream merge strategy. |
+| 2026-05-29 | Control Plane backend working hypothesis is Node.js / TypeScript + PostgreSQL. | This stack is fast for MVP, fits web/admin/API work, has good JSON ergonomics, and fits Docker/Traefik/PostgreSQL deployment assumptions. | Future Control Plane implementation planning can use this as a working assumption. | Confirm before implementation lock; keep own database/container/volume rule. |
 
 ## MVP Impact
 
@@ -68,8 +70,8 @@ Deferred work includes background reliability, signed IMAP/system-account direct
 
 ## Open Decision Themes
 
-- Thin Delta Chat Android fork vs custom shell over chatmail/core.
 - GPL/MPL compliance and distribution model.
+- Android fork intake, upstream merge strategy, package identity, and signing model.
 - First MVP provider list beyond Mail.ru / VK Mail.
 - Directory authority and canonical payload.
 - Invite policy and activation rules.

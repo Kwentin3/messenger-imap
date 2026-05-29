@@ -71,8 +71,8 @@ Primary sources:
 - Diagnostic evidence retention.
 - Audit retention.
 - External relationship reassignment chat/history behavior.
-- Thin Delta Chat Android fork vs custom Android shell.
 - GPL/MPL compliance path for future distribution.
+- Android thin fork intake and integration assumptions.
 
 ## 5. Recommended Next Blueprint
 
