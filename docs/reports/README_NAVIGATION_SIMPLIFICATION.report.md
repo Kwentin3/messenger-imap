@@ -26,6 +26,7 @@ Updated in `Kwentin3/messenger-imap`:
 Root README now includes:
 
 - [Android internal smoke release 0.1.0](https://github.com/Kwentin3/messenger-imap-android/releases/tag/android-internal-smoke-0.1.0);
+- [direct FOSS debug APK download](https://github.com/Kwentin3/messenger-imap-android/releases/download/android-internal-smoke-0.1.0/messenger-imap-android-foss-debug-2.50.0.apk);
 - [Android fork repo](https://github.com/Kwentin3/messenger-imap-android);
 - [Main project repo](https://github.com/Kwentin3/messenger-imap);
 - recommended APK name;
@@ -59,11 +60,18 @@ Branches were not deleted.
 Verified:
 
 - root README link to Android internal smoke release;
+- root README direct FOSS debug APK download link;
 - root README link to Android fork repo;
 - root README link to main project repo;
 - relative documentation links in root `README.md`;
 - relative documentation links in `docs/README.md`;
 - Android root README links.
+
+Direct APK download verification:
+
+- HTTP redirect chain reaches `200 OK`;
+- downloaded size: `35771911` bytes;
+- downloaded SHA-256: `E50768D6DB2D1B26A76FB53A37D16ADD374E76DA544B9D2C8408B500AB320410`.
 
 ## 7. Safety Confirmation
 

@@ -7,6 +7,7 @@ Android-first corporate IMAP/SMTP messenger based on a thin fork of Delta Chat A
 Current internal smoke build:
 
 - [Android Internal Smoke APK 0.1.0](https://github.com/Kwentin3/messenger-imap-android/releases/tag/android-internal-smoke-0.1.0)
+- Direct APK download: [messenger-imap-android-foss-debug-2.50.0.apk](https://github.com/Kwentin3/messenger-imap-android/releases/download/android-internal-smoke-0.1.0/messenger-imap-android-foss-debug-2.50.0.apk)
 - Recommended APK: `messenger-imap-android-foss-debug-2.50.0.apk`
 - SHA-256: `E50768D6DB2D1B26A76FB53A37D16ADD374E76DA544B9D2C8408B500AB320410`
 - Status: internal debug build, runtime smoke pending
@@ -18,6 +19,7 @@ Warning: this APK is for internal smoke testing only. It is not a production rel
 - [Main project repo](https://github.com/Kwentin3/messenger-imap)
 - [Android fork repo](https://github.com/Kwentin3/messenger-imap-android)
 - [Android internal smoke release 0.1.0](https://github.com/Kwentin3/messenger-imap-android/releases/tag/android-internal-smoke-0.1.0)
+- [Direct FOSS debug APK download](https://github.com/Kwentin3/messenger-imap-android/releases/download/android-internal-smoke-0.1.0/messenger-imap-android-foss-debug-2.50.0.apk)
 
 Repository roles:
 
