@@ -6,20 +6,23 @@ Android-first corporate IMAP/SMTP messenger based on a thin fork of Delta Chat A
 
 Current internal smoke build:
 
-- [Android Internal Smoke APK 0.1.0](https://github.com/Kwentin3/messenger-imap-android/releases/tag/android-internal-smoke-0.1.0)
-- Direct APK download: [messenger-imap-android-foss-debug-2.50.0.apk](https://github.com/Kwentin3/messenger-imap-android/releases/download/android-internal-smoke-0.1.0/messenger-imap-android-foss-debug-2.50.0.apk)
+- [Android Internal Smoke APK 0.1.1](https://github.com/Kwentin3/messenger-imap-android/releases/tag/android-internal-smoke-0.1.1)
+- Direct APK download: [messenger-imap-android-foss-debug-2.50.0.apk](https://github.com/Kwentin3/messenger-imap-android/releases/download/android-internal-smoke-0.1.1/messenger-imap-android-foss-debug-2.50.0.apk)
 - Recommended APK: `messenger-imap-android-foss-debug-2.50.0.apk`
-- SHA-256: `E50768D6DB2D1B26A76FB53A37D16ADD374E76DA544B9D2C8408B500AB320410`
-- Status: broken internal debug build, startup crash reported on Huawei during runtime smoke
+- SHA-256: `FB7FA4913A4E8161472B2C2A94D68F84927538D9A92782A336E2A5346F361110`
+- ABI coverage: `arm64-v8a`
+- Status: internal debug build, runtime smoke pending
 
-Warning: this APK is not accepted for smoke testing anymore. It installs but crashes on launch on a Huawei device. Do not treat it as a working build or production release.
+Warning: this APK is for internal smoke testing only. It is not a production release.
+
+Previous release [0.1.0](https://github.com/Kwentin3/messenger-imap-android/releases/tag/android-internal-smoke-0.1.0) is broken and rejected for runtime smoke. It installs but crashes on launch on a Huawei device.
 
 ## Repositories
 
 - [Main project repo](https://github.com/Kwentin3/messenger-imap)
 - [Android fork repo](https://github.com/Kwentin3/messenger-imap-android)
-- [Android internal smoke release 0.1.0](https://github.com/Kwentin3/messenger-imap-android/releases/tag/android-internal-smoke-0.1.0)
-- [Direct FOSS debug APK download](https://github.com/Kwentin3/messenger-imap-android/releases/download/android-internal-smoke-0.1.0/messenger-imap-android-foss-debug-2.50.0.apk)
+- [Android internal smoke release 0.1.1](https://github.com/Kwentin3/messenger-imap-android/releases/tag/android-internal-smoke-0.1.1)
+- [Direct FOSS debug APK download](https://github.com/Kwentin3/messenger-imap-android/releases/download/android-internal-smoke-0.1.1/messenger-imap-android-foss-debug-2.50.0.apk)
 
 Repository roles:
 
@@ -32,8 +35,9 @@ Repository roles:
 - Mail.ru / VK Mail baseline accepted.
 - Thin fork Delta Chat Android selected.
 - Android fork repository exists.
-- Internal smoke APK published through GitHub Releases.
-- Runtime smoke failed on Huawei: both FOSS and GPlay debug APKs installed and crashed on launch.
+- Corrected internal smoke APK `0.1.1` published through GitHub Releases.
+- Broken internal smoke APK `0.1.0` rejected after Huawei startup crash.
+- Runtime smoke for `0.1.1` is pending.
 - Control Plane, Corporate Directory, and Invite Onboarding Blueprints exist.
 - Control Plane backend is not implemented.
 - Directory/API integration is placeholder-level.

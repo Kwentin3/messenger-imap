@@ -14,6 +14,8 @@ Runtime smoke failed. The owner installed both published Android debug APK asset
 
 The release must be treated as broken. It is not a valid smoke build.
 
+Status update: replacement pre-release `android-internal-smoke-0.1.1` has been published with the native core build step completed and `lib/arm64-v8a/libnative-utils.so` present in the APK. Runtime smoke for `0.1.1` is still pending. See `docs/reports/ANDROID_INTERNAL_SMOKE_APK_RELEASE_0_1_1.report.md`.
+
 ## 2. Affected Assets
 
 - `messenger-imap-android-foss-debug-2.50.0.apk`
@@ -144,4 +146,4 @@ Do not commit raw logcat if it contains account names, tokens, addresses, or dev
 
 ## 10. Verdict
 
-`android-internal-smoke-0.1.0` is rejected for runtime smoke. A corrected build is required.
+`android-internal-smoke-0.1.0` is rejected for runtime smoke. A corrected `android-internal-smoke-0.1.1` build has been published and now requires owner runtime smoke on a real Android device.

@@ -8,6 +8,8 @@ Project: Corporate IMAP Messenger / messenger-imap
 
 README navigation was simplified so `main` is the intended primary branch and the root README is the project entry point. The README now shows the Android internal smoke APK link near the top.
 
+Status update: this report is historical for the broken `android-internal-smoke-0.1.0` release. The root README and `docs/README.md` now point to replacement pre-release `android-internal-smoke-0.1.1`. Do not use the `0.1.0` APK links below for runtime smoke.
+
 ## 2. Default Branch
 
 - Before: `bootstrap/project-import`

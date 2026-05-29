@@ -4,8 +4,8 @@ This directory contains the canonical project documentation.
 
 ## Quick Links
 
-- [Android internal smoke release 0.1.0](https://github.com/Kwentin3/messenger-imap-android/releases/tag/android-internal-smoke-0.1.0)
-- [Direct FOSS debug APK download](https://github.com/Kwentin3/messenger-imap-android/releases/download/android-internal-smoke-0.1.0/messenger-imap-android-foss-debug-2.50.0.apk) - known broken, crashes on Huawei during runtime smoke
+- [Android internal smoke release 0.1.1](https://github.com/Kwentin3/messenger-imap-android/releases/tag/android-internal-smoke-0.1.1)
+- [Direct FOSS debug APK download](https://github.com/Kwentin3/messenger-imap-android/releases/download/android-internal-smoke-0.1.1/messenger-imap-android-foss-debug-2.50.0.apk) - runtime smoke pending
 - [Android fork repository](https://github.com/Kwentin3/messenger-imap-android)
 - [Project Roadmap](roadmap/PROJECT_ROADMAP.md)
 - [Corporate Control Plane MVP Blueprint](blueprints/CORPORATE_CONTROL_PLANE_MVP_BLUEPRINT.md)

@@ -10,6 +10,8 @@ Android repo: https://github.com/Kwentin3/messenger-imap-android
 
 The Android build was refactored to fail fast when the Delta Chat native core wrapper library is missing. This prevents publishing APKs that install but crash on launch because `scripts/ndk-make.sh` was skipped.
 
+Status update: the replacement pre-release `android-internal-smoke-0.1.1` was built after `scripts/ndk-make.sh arm64-v8a`, passed `verifyNativeCoreLibraries`, and contains `lib/arm64-v8a/libnative-utils.so`. See `docs/reports/ANDROID_INTERNAL_SMOKE_APK_RELEASE_0_1_1.report.md`.
+
 ## 2. Root Cause Addressed
 
 The broken `android-internal-smoke-0.1.0` APKs were built with Gradle only:
@@ -94,13 +96,17 @@ The current local environment still lacks the complete native build toolchain, s
 
 ## 6. Remaining Action
 
-Build and publish replacement `android-internal-smoke-0.1.1` only after:
+Completed for replacement `android-internal-smoke-0.1.1`:
 
-1. Android NDK and Rust cross-compilation toolchain are configured.
-2. `scripts/ndk-make.sh` succeeds.
-3. `./gradlew assembleDebug` succeeds.
-4. APK inspection confirms `libnative-utils.so` is packaged.
-5. Runtime smoke passes on a real Android device.
+1. Android NDK and Rust cross-compilation toolchain configured.
+2. `scripts/ndk-make.sh arm64-v8a` succeeded.
+3. `./gradlew assembleFossDebug -PABI_FILTER=arm64-v8a` succeeded.
+4. APK inspection confirmed `libnative-utils.so` is packaged.
+
+Remaining action:
+
+1. Runtime smoke must pass on a real Android device.
+2. Broader ABI coverage still requires an all-ABI native build.
 
 ## 7. Safety Confirmation
 
