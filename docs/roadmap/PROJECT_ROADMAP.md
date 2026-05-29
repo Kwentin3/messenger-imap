@@ -43,9 +43,11 @@ Accepted project baseline:
 - Control Plane may be unavailable in whitelist/restricted mode.
 - Stale directory and stale policy mode are required.
 - Android-first.
+- MVP Android implementation path: thin fork of Delta Chat Android.
 - iOS is out of current scope.
 - Background reliability is deferred.
 - Delta Chat / Chatmail are upstream capability baselines, not vendor-copied into this repo.
+- The future Android fork repository is `Kwentin3/messenger-imap-android`; this repository remains product/meta/docs/Control Plane coordination.
 - Deployment must not happen without Deployment Blueprint and rollback/backup plan.
 - Existing Traefik and server services must not be disrupted.
 
@@ -93,7 +95,7 @@ Research:
 - No Mail.ru-only architecture.
 - No silent address book import.
 - No chatmail/core changes without Blueprint.
-- No Delta Chat fork changes without Blueprint.
+- No Delta Chat fork changes beyond documented Android fork intake and accepted implementation slices.
 - No deployment without Deployment Blueprint.
 - No direct server changes without runbook.
 - No Traefik changes without deployment plan and rollback path.
@@ -246,7 +248,7 @@ Purpose:
 
 Define:
 
-- thin fork vs shell decision input;
+- Android Client MVP Blueprint review under the accepted thin Delta Chat Android fork assumption;
 - app onboarding;
 - provider setup;
 - check transport;
@@ -259,7 +261,12 @@ Define:
 
 Note:
 
-Android Client Blueprint should not start until Control Plane and Directory assumptions are clear.
+Android Client Blueprint work should use the autonomous Android roadmap for execution sequencing after Control Plane, Directory, and Invite assumptions are clear.
+
+Related roadmap:
+
+- [Android Messenger Autonomous Execution Roadmap](ANDROID_MESSENGER_AUTONOMOUS_EXECUTION_ROADMAP.md)
+- [Android Messenger Autonomous Execution Roadmap Report](ANDROID_MESSENGER_AUTONOMOUS_EXECUTION_ROADMAP_REPORT.md)
 
 ### Stage 8. External Contacts & Guest Access Blueprint
 
@@ -353,7 +360,6 @@ Deployment Blueprint can start earlier as a draft only after Control Plane stack
 
 Implementation-blocking decisions:
 
-- thin Delta Chat Android fork vs custom shell over chatmail/core;
 - GPL/MPL compliance path;
 - backend stack for Control Plane;
 - database choice;
@@ -367,12 +373,16 @@ Implementation-blocking decisions:
 - provider list beyond Mail.ru / VK Mail;
 - external invite default policy.
 
+Resolved for MVP:
+
+- Android implementation path is thin Delta Chat Android fork, not custom shell over `chatmail/core`.
+
 ## 8. Do-Not-Start-Yet List
 
 Do not start these until the relevant Blueprint or owner decision exists:
 
-- Android UI implementation;
-- Delta Chat fork changes;
+- Android UI implementation outside the autonomous roadmap gates;
+- Delta Chat fork changes beyond documented Android fork intake and accepted implementation slices;
 - chatmail/core modifications;
 - deployment to server;
 - Traefik changes;
@@ -436,10 +446,10 @@ MVP should not include:
 
 ## 11. Near-Term Action Plan
 
-1. Review and accept Invite Onboarding & Distribution MVP Blueprint.
-2. Write Android Client MVP Blueprint.
-3. Decide fork vs shell path, or define a focused spike to decide it.
-4. Write Provider / Diagnostics Blueprint Slice after the Android boundary is clearer.
+1. Execute Android autonomous roadmap Phase 0 context audit.
+2. Review/update Android Client MVP Blueprint under the thin-fork assumption.
+3. Create Android Fork Intake Blueprint before creating or modifying the Android fork.
+4. Write Provider / Diagnostics Blueprint Slice after the Android fork boundary is clearer.
 5. Write Deployment Blueprint after Control Plane stack assumptions are known.
 
 ## 12. Success Criteria For Roadmap Phase
@@ -461,6 +471,8 @@ Roadmap phase is complete when:
 - [Corporate Control Plane MVP Blueprint](../blueprints/CORPORATE_CONTROL_PLANE_MVP_BLUEPRINT.md)
 - [Corporate Directory MVP Blueprint](../blueprints/CORPORATE_DIRECTORY_MVP_BLUEPRINT.md)
 - [Invite Onboarding & Distribution MVP Blueprint](../blueprints/INVITE_ONBOARDING_DISTRIBUTION_MVP_BLUEPRINT.md)
+- [Android Messenger Autonomous Execution Roadmap](ANDROID_MESSENGER_AUTONOMOUS_EXECUTION_ROADMAP.md)
+- [Android Messenger Autonomous Execution Roadmap Report](ANDROID_MESSENGER_AUTONOMOUS_EXECUTION_ROADMAP_REPORT.md)
 - [Infrastructure Assumptions](../infrastructure/INFRASTRUCTURE_ASSUMPTIONS.md)
 - [Server Audit Report](../infrastructure/SERVER_AUDIT_REPORT.md)
 - [Android Diagnostics MVP-0a Closure](../reports/2026-05-13/ANDROID_DIAGNOSTICS_MVP0A_CLOSURE.report.md)
