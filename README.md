@@ -6,14 +6,17 @@ Android-first corporate IMAP/SMTP messenger based on a thin fork of Delta Chat A
 
 Current internal smoke build:
 
-- [Android Internal Smoke APK 0.1.1](https://github.com/Kwentin3/messenger-imap-android/releases/tag/android-internal-smoke-0.1.1)
-- Direct APK download: [messenger-imap-android-foss-debug-2.50.0.apk](https://github.com/Kwentin3/messenger-imap-android/releases/download/android-internal-smoke-0.1.1/messenger-imap-android-foss-debug-2.50.0.apk)
+- [Android Internal Smoke APK 0.1.2](https://github.com/Kwentin3/messenger-imap-android/releases/tag/android-internal-smoke-0.1.2)
+- Direct APK download: [messenger-imap-android-foss-debug-2.50.0.apk](https://github.com/Kwentin3/messenger-imap-android/releases/download/android-internal-smoke-0.1.2/messenger-imap-android-foss-debug-2.50.0.apk)
 - Recommended APK: `messenger-imap-android-foss-debug-2.50.0.apk`
-- SHA-256: `FB7FA4913A4E8161472B2C2A94D68F84927538D9A92782A336E2A5346F361110`
+- SHA-256: `9510CEDBC9FA30099339A6B03DAAA6DBBFF1F8446406193B1BA1799F24A599EF`
 - ABI coverage: `arm64-v8a`
 - Status: internal debug build, runtime smoke pending
+- Includes: corporate onboarding entry and local fallback invite-code placeholder states
 
 Warning: this APK is for internal smoke testing only. It is not a production release.
+
+Previous release [0.1.1](https://github.com/Kwentin3/messenger-imap-android/releases/tag/android-internal-smoke-0.1.1) installed and launched successfully on the owner's Huawei device, but it does not include the current corporate onboarding closeout slices.
 
 Previous release [0.1.0](https://github.com/Kwentin3/messenger-imap-android/releases/tag/android-internal-smoke-0.1.0) is broken and rejected for runtime smoke. It installs but crashes on launch on a Huawei device.
 
@@ -21,8 +24,8 @@ Previous release [0.1.0](https://github.com/Kwentin3/messenger-imap-android/rele
 
 - [Main project repo](https://github.com/Kwentin3/messenger-imap)
 - [Android fork repo](https://github.com/Kwentin3/messenger-imap-android)
-- [Android internal smoke release 0.1.1](https://github.com/Kwentin3/messenger-imap-android/releases/tag/android-internal-smoke-0.1.1)
-- [Direct FOSS debug APK download](https://github.com/Kwentin3/messenger-imap-android/releases/download/android-internal-smoke-0.1.1/messenger-imap-android-foss-debug-2.50.0.apk)
+- [Android internal smoke release 0.1.2](https://github.com/Kwentin3/messenger-imap-android/releases/tag/android-internal-smoke-0.1.2)
+- [Direct FOSS debug APK download](https://github.com/Kwentin3/messenger-imap-android/releases/download/android-internal-smoke-0.1.2/messenger-imap-android-foss-debug-2.50.0.apk)
 
 Repository roles:
 
@@ -35,9 +38,11 @@ Repository roles:
 - Mail.ru / VK Mail baseline accepted.
 - Thin fork Delta Chat Android selected.
 - Android fork repository exists.
-- Corrected internal smoke APK `0.1.1` published through GitHub Releases.
+- Current internal smoke APK `0.1.2` published through GitHub Releases.
+- Android main contains corporate onboarding entry and fallback invite-code placeholder states.
+- Corrected internal smoke APK `0.1.1` installed and launched successfully on the owner's Huawei device.
 - Broken internal smoke APK `0.1.0` rejected after Huawei startup crash.
-- Runtime smoke for `0.1.1` is pending.
+- Runtime smoke for `0.1.2` is pending.
 - Control Plane, Corporate Directory, and Invite Onboarding Blueprints exist.
 - Control Plane backend is not implemented.
 - Directory/API integration is placeholder-level.
@@ -63,10 +68,15 @@ Repository roles:
 - Confirm the standard Delta Chat setup path is reachable.
 - Confirm the corporate onboarding entry is visible.
 - Open the corporate onboarding placeholder.
-- Open the fallback invite code entry.
-- Enter a dummy code.
-- Confirm the raw token is not displayed.
+- Press check with empty code.
+- Enter `INT-TEST-001` and confirm internal placeholder state.
+- Enter `EXT-TEST-001` and confirm external placeholder state.
+- Enter `BADCODE` and confirm invalid placeholder state.
+- Confirm the raw code is cleared and not repeated in status.
 - Confirm back navigation works.
+- Confirm `Create New Profile` opens the existing setup.
+- Confirm `I Already Have a Profile` opens the existing flow.
+- Confirm manual IMAP/SMTP remains reachable.
 
 ## Safety / Do Not Commit
 

@@ -38,6 +38,8 @@ This confirms that the startup crash seen in broken release `0.1.0` is not repro
   - dummy code does not expose raw token;
   - back navigation works.
 - Release `0.1.1` includes `lib/arm64-v8a/libnative-utils.so` per `docs/reports/ANDROID_INTERNAL_SMOKE_APK_RELEASE_0_1_1.report.md`.
+- Later release `android-internal-smoke-0.1.2` supersedes `0.1.1` for onboarding smoke because it includes the corporate onboarding entry and fallback invite-code placeholder states.
+- Runtime smoke for `0.1.2` remains pending until the owner installs and tests that release.
 
 ## Safety
 

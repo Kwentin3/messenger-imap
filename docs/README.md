@@ -4,8 +4,8 @@ This directory contains the canonical project documentation.
 
 ## Quick Links
 
-- [Android internal smoke release 0.1.1](https://github.com/Kwentin3/messenger-imap-android/releases/tag/android-internal-smoke-0.1.1)
-- [Direct FOSS debug APK download](https://github.com/Kwentin3/messenger-imap-android/releases/download/android-internal-smoke-0.1.1/messenger-imap-android-foss-debug-2.50.0.apk) - runtime smoke pending
+- [Android internal smoke release 0.1.2](https://github.com/Kwentin3/messenger-imap-android/releases/tag/android-internal-smoke-0.1.2)
+- [Direct FOSS debug APK download](https://github.com/Kwentin3/messenger-imap-android/releases/download/android-internal-smoke-0.1.2/messenger-imap-android-foss-debug-2.50.0.apk) - runtime smoke pending
 - [Android fork repository](https://github.com/Kwentin3/messenger-imap-android)
 - [Project Roadmap](roadmap/PROJECT_ROADMAP.md)
 - [Corporate Control Plane MVP Blueprint](blueprints/CORPORATE_CONTROL_PLANE_MVP_BLUEPRINT.md)
@@ -48,4 +48,4 @@ Recent delivery reports:
 
 - [PR #3 / PR #4 Merge And Invite Blueprint Delivery Report](reports/2026-05-26/PR3_PR4_MERGE_AND_INVITE_BLUEPRINT_DELIVERY.report.md)
 
-`docs/out/` is intentionally not imported into this repository. Output-buffer documents from the workspace were either omitted as duplicates or copied into canonical locations before import.
+`docs/out/` is a review/output buffer. Canonical documentation remains in the domain folders above.
