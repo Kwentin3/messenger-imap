@@ -98,6 +98,24 @@ scripts/ndk-make.sh
 7. Publish a new pre-release, for example `android-internal-smoke-0.1.1`.
 8. Mark `android-internal-smoke-0.1.0` as broken.
 
+## 7.1 Build Guard Refactor
+
+The Android fork now includes a Gradle build guard:
+
+- task: `verifyNativeCoreLibraries`;
+- required library: `libs/<abi>/libnative-utils.so`;
+- default expected ABIs: `armeabi-v7a`, `arm64-v8a`, `x86`, `x86_64`;
+- if `ndkArch` exists from a single-ABI `scripts/ndk-make.sh <abi>` run, only that ABI is required;
+- `preBuild` depends on the guard, so APK packaging fails before producing an installable broken APK.
+
+This prevents repeating the `android-internal-smoke-0.1.0` failure mode where Gradle produced APKs without the Delta Chat native core wrapper.
+
+Verification on the incomplete local native-build environment:
+
+- `.\gradlew.bat verifyNativeCoreLibraries --stacktrace` fails with the expected missing `libnative-utils.so` message.
+- `.\gradlew.bat assembleFossDebug --stacktrace` stops at `:verifyNativeCoreLibraries` before APK packaging.
+- no replacement APK was produced during this refactor.
+
 ## 8. Logcat Needed
 
 To confirm the exact exception on the Huawei device:
