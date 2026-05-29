@@ -12,7 +12,7 @@ The APK link was not visible in the user-facing root README because the README c
 
 The meta repository has an additional landing-page issue: its current default branch is `bootstrap/project-import`, not `main`. GitHub repository visitors see the default branch by default, so a merge to `main` must be paired with a default-branch change or an equivalent update to the default branch if the root page must update immediately.
 
-Local workspace correction: the README fix was prepared in temporary worktrees and pushed correctly, but the main local checkout was left on `docs/android-internal-smoke-apk-release`, so its local README still looked stale. The active meta checkout is now `d:\Users\Roman\Desktop\Проекты\messenger-imap` on `docs/root-readme-navigation-fix`; the active Android checkout is `C:\work\messenger-imap-android` on `docs/root-readme-apk-link-fix`.
+Local workspace correction: the README fix was prepared in temporary worktrees and pushed correctly, but the main local checkout was left on `docs/android-internal-smoke-apk-release`, so its local README still looked stale. The active meta checkout is now `d:\Users\Roman\Desktop\Проекты\messenger-imap` on `bootstrap/project-import`, which is the GitHub default branch. The active Android checkout remains `C:\work\messenger-imap-android` on `docs/root-readme-apk-link-fix`.
 
 ## 2. What Was Changed In `messenger-imap`
 
@@ -24,6 +24,7 @@ Local workspace correction: the README fix was prepared in temporary worktrees a
 - Safety / do-not-commit rules were added.
 - `docs/README.md` received a `Quick Links` section.
 - Root-cause and update reports were added under `docs/reports/`.
+- The same fix was applied to `bootstrap/project-import`, the branch currently shown by the GitHub repository landing page.
 
 ## 3. What Was Changed In `messenger-imap-android`
 
@@ -54,25 +55,29 @@ Meta root README:
 - Android internal smoke release;
 - main project / documentation repo;
 - Android fork repo;
-- Project Roadmap;
-- Corporate Control Plane MVP Blueprint;
-- Corporate Directory MVP Blueprint;
-- Invite Onboarding & Distribution MVP Blueprint;
-- Infrastructure Assumptions;
-- Server Audit Report;
+- Root PRD;
+- Android Messenger Client PRD;
+- Corporate Control Plane PRD;
+- Corporate Directory PRD;
+- Invite Onboarding & Distribution PRD;
 - Product Decisions Log.
+- Android Fork Strategy Decision;
+- Upstream Projects;
+- License Notes.
 
 Meta `docs/README.md`:
 
 - Android internal smoke release;
 - Android fork repository;
-- Project Roadmap;
-- Control Plane Blueprint;
-- Directory Blueprint;
-- Invite Blueprint;
-- Infrastructure Assumptions;
-- Server Audit Report;
+- Root PRD;
+- Android Messenger Client PRD;
+- Corporate Control Plane PRD;
+- Corporate Directory PRD;
+- Invite Onboarding & Distribution PRD;
 - Product Decisions Log.
+- Android Fork Strategy Decision;
+- Upstream Projects;
+- License Notes.
 
 Android root README:
 
@@ -85,20 +90,26 @@ Android root README:
 
 Relative markdown links were checked locally in:
 
-- `README.md` in `d:\Users\Roman\Desktop\Проекты\messenger-imap` on branch `docs/root-readme-navigation-fix`;
-- `docs/README.md` in `d:\Users\Roman\Desktop\Проекты\messenger-imap` on branch `docs/root-readme-navigation-fix`;
+- `README.md` in `d:\Users\Roman\Desktop\Проекты\messenger-imap` on branch `bootstrap/project-import`;
+- `docs/README.md` in `d:\Users\Roman\Desktop\Проекты\messenger-imap` on branch `bootstrap/project-import`;
 - `README.md` in `C:\work\messenger-imap-android` on branch `docs/root-readme-apk-link-fix`.
 
 The GitHub release link was also checked through GitHub release metadata.
 
-## 7. Documents Not Linked Because Missing From Main
+## 7. Documents Not Linked Because Missing From Default Branch
 
-These documents were not linked from root README because they are not present in the current `origin/main` baseline of the meta repository:
+These documents were not linked from the default-branch root README because they are not present in the current `origin/bootstrap/project-import` baseline of the meta repository:
 
+- `docs/roadmap/PROJECT_ROADMAP.md`
 - `docs/roadmap/ANDROID_MESSENGER_AUTONOMOUS_EXECUTION_ROADMAP.md`
 - `docs/decisions/IMPLEMENTATION_FORK_STRATEGY_DECISION.md`
+- `docs/blueprints/CORPORATE_CONTROL_PLANE_MVP_BLUEPRINT.md`
+- `docs/blueprints/CORPORATE_DIRECTORY_MVP_BLUEPRINT.md`
+- `docs/blueprints/INVITE_ONBOARDING_DISTRIBUTION_MVP_BLUEPRINT.md`
 - `docs/blueprints/ANDROID_FORK_INTAKE_BLUEPRINT.md`
 - `docs/blueprints/ANDROID_CLIENT_MVP_BLUEPRINT.md`
+- `docs/infrastructure/INFRASTRUCTURE_ASSUMPTIONS.md`
+- `docs/infrastructure/SERVER_AUDIT_REPORT.md`
 - `docs/reports/ANDROID_INTERNAL_SMOKE_APK_RELEASE.report.md`
 - `docs/reports/ANDROID_MESSENGER_AUTONOMOUS_EXECUTION_AUDIT.report.md`
 - `docs/reports/PROJECT_PRE_IMPLEMENTATION_ANAMNESIS_AND_READINESS_AUDIT.report.md`
@@ -108,13 +119,18 @@ These documents were not linked from root README because they are not present in
 - Meta repository PR: [Fix root README navigation and APK links](https://github.com/Kwentin3/messenger-imap/pull/15)
 - Android repository PR: [Add internal smoke APK link to root README](https://github.com/Kwentin3/messenger-imap-android/pull/3)
 
+Default branch update:
+
+- `bootstrap/project-import` receives the same root README/navigation fix so the repository landing page shows the APK link immediately after push.
+
 ## 9. Confirmation: APK Not Committed To Git
 
 No APK, AAB, build output, `.env`, secret, signing key, or keystore was added to either repository. APK binaries remain GitHub Release assets only.
 
 ## 10. Remaining Actions
 
-- Merge the meta README/navigation fix PR.
+- Push/verify the meta default branch update in `bootstrap/project-import`.
+- Keep or merge the meta README/navigation fix PR if `main` also needs the same README.
 - Merge the Android README APK-link fix PR.
-- Change the meta repository default branch to `main` or land the same README update into `bootstrap/project-import`.
+- Change the meta repository default branch to `main` later if `main` is intended to become the long-term landing branch.
 - Run runtime smoke on a real Android device.

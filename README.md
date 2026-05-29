@@ -32,20 +32,23 @@ Repository roles:
 - Android fork repository exists.
 - Internal smoke APK published.
 - Runtime smoke pending.
-- Control Plane, Directory, and Invite Blueprints exist.
+- Product PRD/domain docs exist in this default branch.
+- Later Control Plane, Directory, Invite, Android execution, and infrastructure docs are being consolidated through `main` and open documentation PRs.
 - Control Plane backend is not implemented.
 - Directory/API integration is placeholder-level.
 - Not production.
 
 ## Quick Documentation Links
 
-- [Project Roadmap](docs/roadmap/PROJECT_ROADMAP.md)
-- [Corporate Control Plane MVP Blueprint](docs/blueprints/CORPORATE_CONTROL_PLANE_MVP_BLUEPRINT.md)
-- [Corporate Directory MVP Blueprint](docs/blueprints/CORPORATE_DIRECTORY_MVP_BLUEPRINT.md)
-- [Invite Onboarding & Distribution MVP Blueprint](docs/blueprints/INVITE_ONBOARDING_DISTRIBUTION_MVP_BLUEPRINT.md)
-- [Infrastructure Assumptions](docs/infrastructure/INFRASTRUCTURE_ASSUMPTIONS.md)
-- [Server Audit Report](docs/infrastructure/SERVER_AUDIT_REPORT.md)
+- [Root PRD](docs/product/PRD_ROOT_CORPORATE_IMAP_MESSENGER.md)
+- [Android Messenger Client PRD](docs/product/domains/PRD_ANDROID_MESSENGER_CLIENT.md)
+- [Corporate Control Plane PRD](docs/product/domains/PRD_CORPORATE_CONTROL_PLANE.md)
+- [Corporate Directory PRD](docs/product/domains/PRD_CORPORATE_DIRECTORY.md)
+- [Invite Onboarding & Distribution PRD](docs/product/domains/PRD_INVITE_ONBOARDING_DISTRIBUTION.md)
 - [Product Decisions Log](docs/product/decisions/PRODUCT_DECISIONS_LOG.md)
+- [Android Fork Strategy Decision](docs/blueprints/ANDROID_FORK_STRATEGY_DECISION.md)
+- [Upstream Projects](docs/upstream/UPSTREAM_PROJECTS.md)
+- [License Notes](docs/upstream/LICENSE_NOTES.md)
 
 ## Runtime Smoke Checklist
 

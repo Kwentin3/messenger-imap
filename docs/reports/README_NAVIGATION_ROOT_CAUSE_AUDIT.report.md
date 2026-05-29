@@ -12,7 +12,7 @@ The APK link was not visible from the user-facing root README because the README
 
 There is a second repository-level visibility issue: the current default branch for `Kwentin3/messenger-imap` is `bootstrap/project-import`, not `main`. GitHub shows the default branch on the repository landing page. Therefore, even a merge to `main` will not automatically update the default landing page unless the default branch is changed to `main` or the same README update is landed into the default branch.
 
-Local workspace note: the README fix was originally prepared through temporary worktrees under `C:\work\...`, then those temporary worktrees were removed after the PRs were opened. That left the main local checkout `d:\Users\Roman\Desktop\Проекты\messenger-imap` on the older `docs/android-internal-smoke-apk-release` branch, which made the local root README appear stale. The local checkout has since been corrected to `docs/root-readme-navigation-fix`, where the root README contains the APK link.
+Local workspace note: the README fix was originally prepared through temporary worktrees under `C:\work\...`, then those temporary worktrees were removed after the PRs were opened. That left the main local checkout `d:\Users\Roman\Desktop\Проекты\messenger-imap` on the older `docs/android-internal-smoke-apk-release` branch, which made the local root README appear stale. The fix was then applied to the actual default branch `bootstrap/project-import` so the GitHub repository landing page can show the APK link.
 
 ## 2. Current README State In `messenger-imap/main`
 
@@ -48,6 +48,14 @@ Meta repository:
   - base: `main`
   - status: open
   - current correction PR containing the updated root README, `docs/README.md`, root-cause audit, and navigation update report.
+
+- Default branch direct update
+  - branch: `bootstrap/project-import`
+  - commit: `a300967` applies the root README/navigation fix;
+  - commit: `91c6526` records README navigation PR links;
+  - commit: `6848ed2` records the workspace correction;
+  - final cleanup commit fixes README links for the actual document set present in `bootstrap/project-import`;
+  - status: prepared for push to the branch currently shown by the GitHub repository landing page.
 
 - [PR #14: Update root README navigation and APK links](https://github.com/Kwentin3/messenger-imap/pull/14)
   - head: `docs/root-readme-navigation`
@@ -89,7 +97,7 @@ For `messenger-imap`, the situation is compounded by the default branch being `b
 
 For `messenger-imap-android`, `main` still has the upstream README. The project-specific APK block exists in `feature/release-metadata-warning` and `docs/root-readme-apk-link`, but neither branch is merged.
 
-For the local workspace, the earlier confusion came from checking the main checkout while it was still on `docs/android-internal-smoke-apk-release`, not on `docs/root-readme-navigation-fix`. The fix branch itself was already pushed, but the active folder did not show it until the branch was checked out in the main local directory.
+For the local workspace, the earlier confusion came from checking the main checkout while it was still on `docs/android-internal-smoke-apk-release`, not on the README fix branch. The fix branch itself was already pushed, but the active folder did not show it until the branch was checked out. The practical visibility fix is now to push the same README update to `bootstrap/project-import`, because that is the repository default branch.
 
 ## 6. What Needs To Be Corrected
 
@@ -102,6 +110,7 @@ For the local workspace, the earlier confusion came from checking the main check
 - Open pull requests to `main`.
 - After review, merge the PRs.
 - For the meta repository landing page, either change the default branch to `main` or land the README update into the current default branch `bootstrap/project-import`.
+- On `bootstrap/project-import`, only link files that actually exist in that branch. The newer roadmap, infrastructure, and accepted MVP Blueprint documents are not present there, so the default-branch README must not link them as local relative paths.
 
 ## 7. Safety Checks
 
@@ -120,8 +129,9 @@ Audit constraints:
 
 ## 8. Recommended Correction Plan
 
-1. Land the meta README/navigation fix into `main`.
-2. Land the Android README APK-link fix into `main`.
-3. Update the repository default branch for `Kwentin3/messenger-imap` to `main`, or separately land the same root README update into `bootstrap/project-import`.
-4. Keep APK binaries only in GitHub Releases.
-5. Run the Android runtime smoke checklist on a real device before claiming runtime verification.
+1. Push the meta README/navigation fix to `bootstrap/project-import`, the current default branch shown by GitHub.
+2. Keep PR #15 available for landing the same fix into `main`.
+3. Land the Android README APK-link fix into `main`.
+4. Later, update the repository default branch for `Kwentin3/messenger-imap` to `main` if `main` is intended to become the long-term landing branch.
+5. Keep APK binaries only in GitHub Releases.
+6. Run the Android runtime smoke checklist on a real device before claiming runtime verification.
