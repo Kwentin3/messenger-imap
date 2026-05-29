@@ -12,6 +12,8 @@ The APK link was not visible in the user-facing root README because the README c
 
 The meta repository has an additional landing-page issue: its current default branch is `bootstrap/project-import`, not `main`. GitHub repository visitors see the default branch by default, so a merge to `main` must be paired with a default-branch change or an equivalent update to the default branch if the root page must update immediately.
 
+Local workspace correction: the README fix was prepared in temporary worktrees and pushed correctly, but the main local checkout was left on `docs/android-internal-smoke-apk-release`, so its local README still looked stale. The active meta checkout is now `d:\Users\Roman\Desktop\Проекты\messenger-imap` on `docs/root-readme-navigation-fix`; the active Android checkout is `C:\work\messenger-imap-android` on `docs/root-readme-apk-link-fix`.
+
 ## 2. What Was Changed In `messenger-imap`
 
 - Root `README.md` was rewritten as the primary project entry point.
@@ -83,9 +85,9 @@ Android root README:
 
 Relative markdown links were checked locally in:
 
-- `README.md` in the meta repository branch `docs/root-readme-navigation-fix`;
-- `docs/README.md` in the meta repository branch `docs/root-readme-navigation-fix`;
-- `README.md` in the Android repository branch `docs/root-readme-apk-link-fix`.
+- `README.md` in `d:\Users\Roman\Desktop\Проекты\messenger-imap` on branch `docs/root-readme-navigation-fix`;
+- `docs/README.md` in `d:\Users\Roman\Desktop\Проекты\messenger-imap` on branch `docs/root-readme-navigation-fix`;
+- `README.md` in `C:\work\messenger-imap-android` on branch `docs/root-readme-apk-link-fix`.
 
 The GitHub release link was also checked through GitHub release metadata.
 
