@@ -1,17 +1,75 @@
-# Corporate IMAP Messenger
+# Corporate IMAP Messenger / messenger-imap
 
-Corporate IMAP Messenger is an Android-first corporate messenger concept that uses existing IMAP/SMTP providers as message transport and a Corporate Control Plane for organization management.
+Android-first corporate IMAP/SMTP messenger based on a thin fork of Delta Chat Android, with Corporate Control Plane, Corporate Directory, invite onboarding, provider profiles, diagnostics, and external contacts.
 
-The project started from a transport hypothesis: email infrastructure may remain reachable in restricted or whitelist mobile network contexts where ordinary messengers are unavailable. MVP-0a validated the first accepted baseline with a standalone Android Diagnostics APK and Mail.ru IMAP/SMTP foreground transport evidence.
+## Download Android APK
+
+Current internal smoke build:
+
+- [Android Internal Smoke APK 0.1.0](https://github.com/Kwentin3/messenger-imap-android/releases/tag/android-internal-smoke-0.1.0)
+- Recommended APK: `messenger-imap-android-foss-debug-2.50.0.apk`
+- SHA-256: `E50768D6DB2D1B26A76FB53A37D16ADD374E76DA544B9D2C8408B500AB320410`
+- Status: internal debug build, runtime smoke pending
+
+Warning: this APK is for internal smoke testing only. It is not a production release.
+
+## Repositories
+
+- [Main project repo](https://github.com/Kwentin3/messenger-imap)
+- [Android fork repo](https://github.com/Kwentin3/messenger-imap-android)
+- [Android internal smoke release 0.1.0](https://github.com/Kwentin3/messenger-imap-android/releases/tag/android-internal-smoke-0.1.0)
+
+Repository roles:
+
+- `messenger-imap` is the product, meta, documentation, and Control Plane coordination repository.
+- `messenger-imap-android` is the thin fork of Delta Chat Android for Android client implementation.
 
 ## Current Status
 
-- MVP-0a diagnostics: accepted.
-- First transport baseline: Mail.ru / VK Mail family.
-- Product direction: provider-agnostic, not Mail.ru-only.
-- Android Diagnostics prototype: available under `prototypes/android-diagnostics/`.
-- Product PRD package: available under `docs/product/`.
-- Delta Chat / Chatmail upstream projects: documented as references only, not vendor-copied.
+- MVP-0a diagnostics accepted.
+- Mail.ru / VK Mail baseline accepted.
+- Thin fork Delta Chat Android selected.
+- Android fork repository exists.
+- Internal smoke APK published through GitHub Releases.
+- Runtime smoke pending.
+- Control Plane, Corporate Directory, and Invite Onboarding Blueprints exist.
+- Control Plane backend is not implemented.
+- Directory/API integration is placeholder-level.
+- APK files are not stored in git.
+- Not production.
+
+## Quick Documentation Links
+
+- [Project Roadmap](docs/roadmap/PROJECT_ROADMAP.md)
+- [Corporate Control Plane MVP Blueprint](docs/blueprints/CORPORATE_CONTROL_PLANE_MVP_BLUEPRINT.md)
+- [Corporate Directory MVP Blueprint](docs/blueprints/CORPORATE_DIRECTORY_MVP_BLUEPRINT.md)
+- [Invite Onboarding & Distribution MVP Blueprint](docs/blueprints/INVITE_ONBOARDING_DISTRIBUTION_MVP_BLUEPRINT.md)
+- [Infrastructure Assumptions](docs/infrastructure/INFRASTRUCTURE_ASSUMPTIONS.md)
+- [Server Audit Report](docs/infrastructure/SERVER_AUDIT_REPORT.md)
+- [Product Decisions Log](docs/product/decisions/PRODUCT_DECISIONS_LOG.md)
+
+## Runtime Smoke Checklist
+
+- Download the FOSS debug APK.
+- Install on an Android device.
+- Launch the app.
+- Confirm there is no crash.
+- Confirm the standard Delta Chat setup path is reachable.
+- Confirm the corporate onboarding entry is visible.
+- Open the corporate onboarding placeholder.
+- Open the fallback invite code entry.
+- Enter a dummy code.
+- Confirm the raw token is not displayed.
+- Confirm back navigation works.
+
+## Safety / Do Not Commit
+
+- APKs are published in GitHub Releases, not committed to git.
+- No `.env`.
+- No secrets.
+- No signing keys.
+- No raw logs.
+- No APK/AAB/build outputs.
 
 ## Repository Layout
 
@@ -22,6 +80,7 @@ docs/
   product/      Product PRDs, decisions, and product context.
   reports/      Research, implementation, validation, and bootstrap reports.
   research/     Transport, provider, Delta Chat / Chatmail research, and evidence JSON.
+  roadmap/      Execution roadmap between PRD package and technical Blueprints.
   upstream/     Upstream project references and license notes.
 prototypes/
   android-diagnostics/  Standalone Android Diagnostics APK source and docs.
@@ -41,7 +100,3 @@ This repository intentionally does not include:
 - local account databases;
 - raw logcat or raw protocol logs;
 - real credentials, app passwords, tokens, or raw AUTH payloads.
-
-## Next Recommended Step
-
-Review the PRD package and decide the implementation route: thin Delta Chat Android fork, custom Android shell over chatmail/core, or another architecture. Then create the Android IMAP Messenger MVP Blueprint and Corporate Control Plane Blueprint.
