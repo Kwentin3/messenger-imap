@@ -103,7 +103,8 @@ These documents were not linked from root README because they are not present in
 
 ## 8. PRs Created
 
-PR URLs are recorded after branch publication.
+- Meta repository PR: [Fix root README navigation and APK links](https://github.com/Kwentin3/messenger-imap/pull/15)
+- Android repository PR: [Add internal smoke APK link to root README](https://github.com/Kwentin3/messenger-imap-android/pull/3)
 
 ## 9. Confirmation: APK Not Committed To Git
 
