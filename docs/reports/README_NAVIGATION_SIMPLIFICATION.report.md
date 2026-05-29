@@ -32,6 +32,7 @@ Root README now includes:
 - recommended APK name;
 - SHA-256;
 - runtime smoke pending status;
+- updated runtime smoke status after owner test: both FOSS and GPlay assets installed on Huawei and crashed on launch;
 - warning that the APK is not production;
 - current status and repository roles;
 - safety note that APKs are published through GitHub Releases, not committed to git.
@@ -72,6 +73,13 @@ Direct APK download verification:
 - HTTP redirect chain reaches `200 OK`;
 - downloaded size: `35771911` bytes;
 - downloaded SHA-256: `E50768D6DB2D1B26A76FB53A37D16ADD374E76DA544B9D2C8408B500AB320410`.
+
+Runtime smoke update:
+
+- Owner installed both release assets on a Huawei phone.
+- Both APKs installed successfully.
+- Both APKs crashed on launch.
+- Current APK release is therefore marked broken and must not be treated as a successful smoke build.
 
 ## 7. Safety Confirmation
 
