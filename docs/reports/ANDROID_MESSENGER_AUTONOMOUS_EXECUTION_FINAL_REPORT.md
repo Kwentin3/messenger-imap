@@ -14,6 +14,10 @@ Final Android commit: `8a51805d4`
 
 Baseline Android commit: `a3a8b3581f82456bb7fe3342485cef4593c31315`
 
+Meta PR: `https://github.com/Kwentin3/messenger-imap/pull/11`
+
+Android PR: `https://github.com/Kwentin3/messenger-imap-android/pull/1`
+
 ## Executive Summary
 
 The Android Messenger Autonomous Execution Roadmap was executed through Phase 15. The Android fork repository was created as a real fork of Delta Chat Android, wired to upstream, built successfully, audited, and extended with conservative app-layer corporate placeholders.
@@ -54,6 +58,20 @@ Runtime device smoke was not executed because `adb devices` returned no attached
 - Command: `.\gradlew.bat assembleDebug --stacktrace`
 - Final APK artifacts produced locally under `C:\work\messenger-imap-android\build\outputs\apk`.
 - APK artifacts committed: no.
+
+## Branches and PRs Created
+
+- Meta execution branch: `android/autonomous-execution`
+- Meta execution PR: `https://github.com/Kwentin3/messenger-imap/pull/11`
+- Android intake branch: `intake/upstream-build-baseline`
+- Android feature branches:
+  - `feature/corporate-onboarding-foundation`
+  - `feature/provider-transport-check`
+  - `feature/directory-readonly-sync`
+  - `feature/invite-deeplink-fallback`
+  - `feature/external-contact-badges`
+  - `feature/release-metadata-warning`
+- Android final PR: `https://github.com/Kwentin3/messenger-imap-android/pull/1`
 
 ## Implemented Android Slices
 
