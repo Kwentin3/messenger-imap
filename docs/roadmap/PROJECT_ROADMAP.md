@@ -19,12 +19,12 @@ The main risk now is scope creep: starting Android UI, Delta Chat fork work, dep
 The current key Blueprint artifact is:
 
 ```text
-docs/blueprints/INVITE_ONBOARDING_DISTRIBUTION_MVP_BLUEPRINT.md
+docs/blueprints/ANDROID_CLIENT_MVP_BLUEPRINT.md
 ```
 
-Corporate Control Plane and Corporate Directory are already merged baselines. Invite Onboarding & Distribution is the current drafted Blueprint because it connects invite authority, APK distribution handoff, email verification, provider setup, diagnostics gate, activation, and first directory sync.
+Corporate Control Plane, Corporate Directory, and Invite Onboarding & Distribution are already merged baselines. Android Client is the current drafted Blueprint because the client must now consume those authority contracts and define onboarding, provider setup, diagnostics, directory cache, stale mode, chat boundaries, and external contact UX.
 
-Current status: Invite Onboarding & Distribution MVP Blueprint drafted; review and acceptance are still pending.
+Current status: Android Client MVP Blueprint drafted; review and acceptance are still pending.
 
 ## 2. Accepted Baseline
 
@@ -217,7 +217,7 @@ Current artifact:
 
 Status: merged into `main` as current Directory Blueprint baseline.
 
-### Stage 6. Invite Onboarding & Distribution Blueprint - DRAFTED
+### Stage 6. Invite Onboarding & Distribution Blueprint - MERGED / BASELINE
 
 Purpose:
 
@@ -238,9 +238,9 @@ Current artifact:
 - [Invite Onboarding & Distribution MVP Blueprint](../blueprints/INVITE_ONBOARDING_DISTRIBUTION_MVP_BLUEPRINT.md)
 - [Invite Onboarding & Distribution MVP Blueprint Report](../blueprints/INVITE_ONBOARDING_DISTRIBUTION_MVP_BLUEPRINT_REPORT.md)
 
-Status: drafted, not yet accepted.
+Status: merged into `main` as current Invite Onboarding & Distribution Blueprint baseline.
 
-### Stage 7. Android Client MVP Blueprint
+### Stage 7. Android Client MVP Blueprint - DRAFTED
 
 Purpose:
 
@@ -259,7 +259,14 @@ Define:
 
 Note:
 
-Android Client Blueprint should not start until Control Plane and Directory assumptions are clear.
+Android Client Blueprint was intentionally started only after Control Plane, Directory, and Invite assumptions were clear enough to define the client contract.
+
+Current artifact:
+
+- [Android Client MVP Blueprint](../blueprints/ANDROID_CLIENT_MVP_BLUEPRINT.md)
+- [Android Client MVP Blueprint Report](../blueprints/ANDROID_CLIENT_MVP_BLUEPRINT_REPORT.md)
+
+Status: drafted, not yet accepted.
 
 ### Stage 8. External Contacts & Guest Access Blueprint
 
@@ -340,8 +347,8 @@ Ordered Blueprint sequence:
 
 1. Corporate Control Plane MVP Blueprint.
 2. Corporate Directory MVP Blueprint.
-3. Review and accept Invite Onboarding & Distribution MVP Blueprint.
-4. Android Client MVP Blueprint.
+3. Invite Onboarding & Distribution MVP Blueprint.
+4. Review and accept Android Client MVP Blueprint.
 5. External Contacts & Guest Access Blueprint.
 6. Provider / Diagnostics Blueprint Slice.
 7. Deployment Blueprint.
@@ -425,9 +432,9 @@ MVP should not include:
 | GPL compliance | Wrong fork/distribution path can block release | Legal/license review before modified Android distribution | Open |
 | Control Plane unavailable in whitelist | Invite, directory, release, and policy sync can be stale | Stale mode, delayed sync, future signed fallback later | Accepted PRD refine |
 | Stale directory misuse | Users may message outdated members/groups | Stale warnings, expired thresholds, managed roster enforcement | Directory Blueprint baseline |
-| Invite abuse | Wrong user may activate or attempt invite replay | Expiry, max uses, email verification, rate limits, audit | Invite Blueprint drafted |
+| Invite abuse | Wrong user may activate or attempt invite replay | Expiry, max uses, email verification, rate limits, audit | Invite Blueprint baseline |
 | Revoked member in historical chats | User confusion or accidental sends | Historical warning and current managed roster sends | Blueprint needed |
-| APK distribution friction | Users cannot install/update reliably | Release metadata, download route, emergency Android email fallback | Invite Blueprint drafted |
+| APK distribution friction | Users cannot install/update reliably | Release metadata, download route, emergency Android email fallback | Invite Blueprint baseline |
 | Signing key handling | Compromised APK trust chain | Define signing pipeline, keep signing keys out of repo/deploy host by default | Open |
 | Provider auth changes | Baseline provider may break | Provider profiles, diagnostics evidence, provider-agnostic design | Ongoing |
 | Background reliability | MVP may overpromise delivery | Keep background reliability deferred until MVP-0b | Deferred |
@@ -436,10 +443,10 @@ MVP should not include:
 
 ## 11. Near-Term Action Plan
 
-1. Review and accept Invite Onboarding & Distribution MVP Blueprint.
-2. Write Android Client MVP Blueprint.
-3. Decide fork vs shell path, or define a focused spike to decide it.
-4. Write Provider / Diagnostics Blueprint Slice after the Android boundary is clearer.
+1. Review and accept Android Client MVP Blueprint.
+2. Run fork-vs-shell implementation decision spike.
+3. Write Provider / Diagnostics Blueprint Slice after the Android boundary is clearer.
+4. Decide initial implementation plan slices after Blueprint acceptance.
 5. Write Deployment Blueprint after Control Plane stack assumptions are known.
 
 ## 12. Success Criteria For Roadmap Phase
@@ -461,6 +468,7 @@ Roadmap phase is complete when:
 - [Corporate Control Plane MVP Blueprint](../blueprints/CORPORATE_CONTROL_PLANE_MVP_BLUEPRINT.md)
 - [Corporate Directory MVP Blueprint](../blueprints/CORPORATE_DIRECTORY_MVP_BLUEPRINT.md)
 - [Invite Onboarding & Distribution MVP Blueprint](../blueprints/INVITE_ONBOARDING_DISTRIBUTION_MVP_BLUEPRINT.md)
+- [Android Client MVP Blueprint](../blueprints/ANDROID_CLIENT_MVP_BLUEPRINT.md)
 - [Infrastructure Assumptions](../infrastructure/INFRASTRUCTURE_ASSUMPTIONS.md)
 - [Server Audit Report](../infrastructure/SERVER_AUDIT_REPORT.md)
 - [Android Diagnostics MVP-0a Closure](../reports/2026-05-13/ANDROID_DIAGNOSTICS_MVP0A_CLOSURE.report.md)
