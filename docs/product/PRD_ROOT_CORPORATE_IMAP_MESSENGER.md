@@ -21,6 +21,7 @@ Related documents:
 - [Product PRD Review Addendum](PRODUCT_PRD_REVIEW_ADDENDUM.md)
 - [Product Decisions Log](decisions/PRODUCT_DECISIONS_LOG.md)
 - [Product Context Handoff](handoff/PRODUCT_CONTEXT_HANDOFF.md)
+- [Implementation Fork Strategy Decision](../decisions/IMPLEMENTATION_FORK_STRATEGY_DECISION.md)
 
 ## 1. Executive Summary
 
@@ -149,7 +150,8 @@ Accepted evidence does not mean:
 - Whitelist-ready provider status must be evidence-based.
 - Provider website reachability is not proof that IMAP/SMTP endpoints work.
 - Do not modify chatmail/core unless justified by a later technical design.
-- Delta Chat Android and chatmail/core capabilities should be reused where they fit, subject to fork/shell and licensing decisions.
+- MVP Android implementation path is a thin fork of Delta Chat Android.
+- Delta Chat Android and chatmail/core capabilities should be reused where they fit, subject to licensing and Blueprint boundaries.
 - Revocation can update product-visible directory state, but cannot guarantee erasure of information already seen by people or stored outside managed app state.
 
 ## 7. Product Domains
@@ -338,8 +340,8 @@ IMAP/SMTP app passwords or credentials must be protected. Reports must never inc
 
 ## 14. Open Decisions
 
-- Thin Delta Chat Android fork vs custom Android shell over chatmail/core.
 - GPL distribution acceptability and compliance model.
+- Android fork repository visibility, package identity, branding, signing, and upstream merge strategy.
 - First MVP provider set beyond Mail.ru / VK Mail baseline.
 - Directory authority model and trust boundary.
 - Control Plane stale/expired thresholds and blocked action policy.

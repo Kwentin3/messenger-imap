@@ -168,6 +168,6 @@ Recommended next steps:
 
 1. Review and accept the Invite Onboarding & Distribution MVP Blueprint.
 2. Prepare Android Client MVP Blueprint.
-3. Decide or scope the thin Delta Chat Android fork vs custom shell over chatmail/core spike.
+3. Historical next step: decide or scope the thin Delta Chat Android fork vs custom shell over chatmail/core spike. Resolved for MVP on 2026-05-29: thin Delta Chat Android fork.
 4. Keep Deployment Blueprint blocked until Control Plane stack assumptions are concrete.
 5. Leave old branches in place until the owner explicitly approves cleanup.

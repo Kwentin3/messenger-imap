@@ -35,6 +35,15 @@ Current Blueprint status as of 2026-05-26:
 - Invite Onboarding & Distribution MVP Blueprint is drafted for review.
 - The next recommended Blueprint after Invite review is Android Client MVP Blueprint.
 
+Implementation strategy decision as of 2026-05-29:
+
+- MVP Android implementation path is a thin fork of Delta Chat Android.
+- Future Android fork repository is `Kwentin3/messenger-imap-android`.
+- Current repository `Kwentin3/messenger-imap` remains product/meta/docs/control-plane coordination.
+- Custom Android shell over `chatmail/core` is rejected for MVP.
+- `chatmail/core` modifications require a separate Blueprint.
+- Control Plane backend working hypothesis is Node.js / TypeScript + PostgreSQL.
+
 ## 2. What Has Already Been Proven
 
 MVP-0a diagnostics are accepted.
@@ -92,6 +101,9 @@ Yandex, Rambler, and manual/custom IMAP/SMTP profiles remain candidate/custom pa
 - Diagnostic reports must be sanitized.
 - No silent unsafe address book import.
 - Do not modify chatmail/core unless justified by Blueprint.
+- Use thin Delta Chat Android fork for MVP Android implementation.
+- Do not vendor-copy Delta Chat Android into this repository.
+- Keep corporate Android changes thin and isolated where possible.
 - Do not promise production-grade background delivery in first MVP.
 
 ## 5. Current Document Structure
@@ -121,8 +133,8 @@ Blueprint package:
 
 ## 6. Main Unresolved Decisions
 
-- Thin Delta Chat Android fork vs custom Android shell over chatmail/core.
 - GPL/MPL compliance and distribution acceptability.
+- Android fork visibility, intake plan, upstream merge strategy, package identity, signing, and branding.
 - Exact first MVP provider set beyond Mail.ru / VK Mail.
 - Directory authority source and canonical payload.
 - Stale directory/control-plane thresholds and offline allowed actions.
@@ -142,7 +154,7 @@ Blueprint package:
 ## 7. What Not To Redo
 
 - Do not re-prove that Mail.ru foreground IMAP/SMTP transport is possible.
-- Do not start a Delta Chat fork just to create PRD docs.
+- Do not start Delta Chat Android fork changes beyond the documented intake slice.
 - Do not modify chatmail/core during product documentation work.
 - Do not create a Mail.ru-only architecture.
 - Do not claim all providers are whitelist-ready.
@@ -165,10 +177,11 @@ Blueprint package:
 ## 8. Next Recommended Work
 
 1. Review and accept [Invite Onboarding & Distribution MVP Blueprint](../../blueprints/INVITE_ONBOARDING_DISTRIBUTION_MVP_BLUEPRINT.md).
-2. Write Android Client MVP Blueprint using Control Plane, Directory, and Invite Blueprints as inputs.
-3. Decide thin Delta Chat Android fork vs custom shell over chatmail/core, or define a focused spike.
-4. Keep Deployment Blueprint blocked until Control Plane stack assumptions are concrete.
-5. Use `docs/infrastructure/SERVER_AUDIT_REPORT.md` as input for deployment planning only after deployment design starts.
+2. Review/update Android Client MVP Blueprint under the thin Delta Chat Android fork assumption.
+3. Create Android fork intake plan for `Kwentin3/messenger-imap-android`.
+4. Create Provider / Diagnostics Blueprint.
+5. Keep Deployment Blueprint blocked until Control Plane stack assumptions are concrete.
+6. Use `docs/infrastructure/SERVER_AUDIT_REPORT.md` as input for deployment planning only after deployment design starts.
 
 ## 9. MVP / Later / Non-goals Framing
 

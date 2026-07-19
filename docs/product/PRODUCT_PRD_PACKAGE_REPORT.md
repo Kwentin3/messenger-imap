@@ -66,8 +66,8 @@ Review addendum created:
 
 Чаще всего повторяются:
 
-- thin Delta Chat Android fork vs custom shell over chatmail/core;
 - GPL/MPL compliance и модель распространения;
+- Android thin fork intake, package identity, signing and upstream merge model;
 - первый MVP provider set после Mail.ru / VK Mail baseline;
 - directory authority model и canonical payload для hash;
 - stale/expired directory thresholds и поведение при недоступном Control Plane;
@@ -89,7 +89,7 @@ Review addendum created:
 - провести review PRD-пакета;
 - review and accept `docs/roadmap/PROJECT_ROADMAP.md`;
 - подготовить `docs/blueprints/CORPORATE_CONTROL_PLANE_MVP_BLUEPRINT.md` как следующий обязательный Blueprint;
-- принять решение по fork vs custom shell;
+- спланировать thin Delta Chat Android fork intake после принятого решения;
 - принять решение по GPL/MPL distribution acceptability;
 - подготовить Android IMAP Messenger MVP Blueprint;
 - подготовить Corporate Control Plane Blueprint;

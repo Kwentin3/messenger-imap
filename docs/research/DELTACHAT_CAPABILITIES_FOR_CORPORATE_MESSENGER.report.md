@@ -214,7 +214,7 @@ Recommended path before full Blueprint:
 
 ## Open questions
 
-- Should the product be a thin Delta Chat Android fork, a custom Android shell over chatmail/core, or a smaller custom IMAP/SMTP client?
+- Should the product be a thin Delta Chat Android fork, a custom Android shell over chatmail/core, or a smaller custom IMAP/SMTP client? Resolved for MVP on 2026-05-29: thin Delta Chat Android fork.
 - Is GPLv3+ acceptable for the intended distribution model?
 - What exact corporate address book source is authoritative?
 - Is manual vCard import enough for MVP, or is managed config required immediately?

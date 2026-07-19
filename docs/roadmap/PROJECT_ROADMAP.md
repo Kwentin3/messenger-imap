@@ -14,7 +14,7 @@ Repository: `https://github.com/Kwentin3/messenger-imap`
 
 Corporate IMAP Messenger has moved from research, transport diagnostics, and product PRD work into Blueprint planning.
 
-The main risk now is scope creep: starting Android UI, Delta Chat fork work, deployment, APK distribution, or backend implementation before the product architecture boundaries are clear. This roadmap fixes the execution order and keeps the project focused between PRD and implementation.
+The main risk now is scope creep: starting Android UI beyond the approved thin-fork intake, deployment, APK distribution, or backend implementation before the product architecture boundaries are clear. This roadmap fixes the execution order and keeps the project focused between PRD and implementation.
 
 The current key Blueprint artifact is:
 
@@ -43,6 +43,10 @@ Accepted project baseline:
 - Control Plane may be unavailable in whitelist/restricted mode.
 - Stale directory and stale policy mode are required.
 - Android-first.
+- MVP Android implementation path: thin fork of Delta Chat Android.
+- Future Android fork repository: `Kwentin3/messenger-imap-android`.
+- Current repository remains product/meta/docs/control-plane coordination: `Kwentin3/messenger-imap`.
+- Control Plane backend working hypothesis: Node.js / TypeScript + PostgreSQL.
 - iOS is out of current scope.
 - Background reliability is deferred.
 - Delta Chat / Chatmail are upstream capability baselines, not vendor-copied into this repo.
@@ -93,7 +97,7 @@ Research:
 - No Mail.ru-only architecture.
 - No silent address book import.
 - No chatmail/core changes without Blueprint.
-- No Delta Chat fork changes without Blueprint.
+- No Delta Chat Android fork changes beyond the documented intake slice without Blueprint.
 - No deployment without Deployment Blueprint.
 - No direct server changes without runbook.
 - No Traefik changes without deployment plan and rollback path.
@@ -246,7 +250,7 @@ Purpose:
 
 Define:
 
-- thin fork vs shell decision input;
+- thin-fork implementation assumption and remaining Android fork intake decisions;
 - app onboarding;
 - provider setup;
 - check transport;
@@ -353,9 +357,8 @@ Deployment Blueprint can start earlier as a draft only after Control Plane stack
 
 Implementation-blocking decisions:
 
-- thin Delta Chat Android fork vs custom shell over chatmail/core;
 - GPL/MPL compliance path;
-- backend stack for Control Plane;
+- backend stack confirmation for Control Plane; working hypothesis is Node.js / TypeScript + PostgreSQL;
 - database choice;
 - one active workspace vs multi-workspace UI in MVP;
 - email verification flow details;
@@ -371,8 +374,9 @@ Implementation-blocking decisions:
 
 Do not start these until the relevant Blueprint or owner decision exists:
 
-- Android UI implementation;
-- Delta Chat fork changes;
+- Android UI implementation beyond documented fork intake;
+- Delta Chat fork changes beyond documented Android fork intake slice;
+- deep upstream modifications without Blueprint;
 - chatmail/core modifications;
 - deployment to server;
 - Traefik changes;
@@ -422,7 +426,7 @@ MVP should not include:
 | Risk | Impact | Mitigation | Current stage |
 | --- | --- | --- | --- |
 | Scope creep | Blueprints and MVP become too broad to execute | Follow roadmap order and do-not-start-yet list | Current |
-| GPL compliance | Wrong fork/distribution path can block release | Legal/license review before modified Android distribution | Open |
+| GPL compliance | Wrong distribution path can block release | Thin fork selected; legal/license review and source distribution plan still required before modified APK distribution | Open |
 | Control Plane unavailable in whitelist | Invite, directory, release, and policy sync can be stale | Stale mode, delayed sync, future signed fallback later | Accepted PRD refine |
 | Stale directory misuse | Users may message outdated members/groups | Stale warnings, expired thresholds, managed roster enforcement | Directory Blueprint baseline |
 | Invite abuse | Wrong user may activate or attempt invite replay | Expiry, max uses, email verification, rate limits, audit | Invite Blueprint drafted |
@@ -437,10 +441,11 @@ MVP should not include:
 ## 11. Near-Term Action Plan
 
 1. Review and accept Invite Onboarding & Distribution MVP Blueprint.
-2. Write Android Client MVP Blueprint.
-3. Decide fork vs shell path, or define a focused spike to decide it.
+2. Review Android Client MVP Blueprint with the thin-fork assumption.
+3. Create/review Android fork intake plan for `Kwentin3/messenger-imap-android`.
 4. Write Provider / Diagnostics Blueprint Slice after the Android boundary is clearer.
-5. Write Deployment Blueprint after Control Plane stack assumptions are known.
+5. Confirm Control Plane backend stack assumption: Node.js / TypeScript + PostgreSQL.
+6. Write Deployment Blueprint after Control Plane stack assumptions are known.
 
 ## 12. Success Criteria For Roadmap Phase
 
@@ -458,6 +463,7 @@ Roadmap phase is complete when:
 - [Product Decisions Log](../product/decisions/PRODUCT_DECISIONS_LOG.md)
 - [Product Context Handoff](../product/handoff/PRODUCT_CONTEXT_HANDOFF.md)
 - [Product PRD Review Addendum](../product/PRODUCT_PRD_REVIEW_ADDENDUM.md)
+- [Implementation Fork Strategy Decision](../decisions/IMPLEMENTATION_FORK_STRATEGY_DECISION.md)
 - [Corporate Control Plane MVP Blueprint](../blueprints/CORPORATE_CONTROL_PLANE_MVP_BLUEPRINT.md)
 - [Corporate Directory MVP Blueprint](../blueprints/CORPORATE_DIRECTORY_MVP_BLUEPRINT.md)
 - [Invite Onboarding & Distribution MVP Blueprint](../blueprints/INVITE_ONBOARDING_DISTRIBUTION_MVP_BLUEPRINT.md)

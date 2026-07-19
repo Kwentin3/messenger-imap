@@ -26,7 +26,7 @@ The Blueprint must design:
 - Android-first messenger MVP;
 - provider-agnostic IMAP/SMTP transport;
 - use of Delta Chat / Chatmail as base;
-- decision between thin Delta Chat Android fork, custom shell over chatmail/core, or own minimal IMAP/SMTP messenger;
+- accepted thin Delta Chat Android fork path, with custom shell over chatmail/core rejected for MVP;
 - account onboarding;
 - provider presets and manual/custom provider profile;
 - basic one-to-one chat;
@@ -58,6 +58,6 @@ Required outputs:
 - storage and credential strategy;
 - MVP send/receive strategy;
 - background work deferred plan;
-- fork/customization plan;
+- thin-fork intake and customization plan;
 - licensing/compliance section;
 - risk list and next implementation tickets.

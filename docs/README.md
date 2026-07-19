@@ -26,6 +26,10 @@ This directory contains the canonical project documentation.
 - `roadmap/`: execution roadmap between PRD package and technical Blueprints.
 - `upstream/`: upstream project references and license notes.
 
+Key decision documents:
+
+- [Implementation Fork Strategy Decision](decisions/IMPLEMENTATION_FORK_STRATEGY_DECISION.md)
+
 Key infrastructure document:
 
 - [Infrastructure Assumptions](infrastructure/INFRASTRUCTURE_ASSUMPTIONS.md)
