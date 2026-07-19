@@ -162,7 +162,7 @@ Exit criteria:
 - blocking decisions listed;
 - no implementation started prematurely.
 
-### Stage 4. Corporate Control Plane MVP Blueprint - MERGED / BASELINE
+### Stage 4. Corporate Control Plane MVP Blueprint - ACCEPTED / MERGED
 
 Purpose:
 
@@ -192,7 +192,7 @@ Current artifact:
 
 Status: merged into `main` as current Control Plane Blueprint baseline.
 
-### Stage 5. Corporate Directory MVP Blueprint - MERGED / BASELINE
+### Stage 5. Corporate Directory MVP Blueprint - ACCEPTED / MERGED
 
 Purpose:
 
