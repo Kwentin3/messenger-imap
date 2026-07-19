@@ -13,6 +13,7 @@ Primary references:
 - [Infrastructure Assumptions](../../infrastructure/INFRASTRUCTURE_ASSUMPTIONS.md)
 - [Server Audit Report](../../infrastructure/SERVER_AUDIT_REPORT.md)
 - [Project Roadmap](../../roadmap/PROJECT_ROADMAP.md)
+- [Android Messenger Autonomous Execution Roadmap](../../roadmap/ANDROID_MESSENGER_AUTONOMOUS_EXECUTION_ROADMAP.md)
 
 ## 1. What We Are Building
 
@@ -28,12 +29,15 @@ Infrastructure context is now recorded for future Control Plane and deployment w
 
 The Project Roadmap is the controlling document between the PRD package and technical Blueprints. It fixes the stage order, MVP boundary, blockers, do-not-start-yet list, and near-term Blueprint sequence.
 
+The Android Messenger Autonomous Execution Roadmap is the controlling execution rail for Android fork work. It starts with context and repository audit, then fork intake planning, clean build proof, architecture audit, safe customization mapping, and only then corporate Android implementation slices.
+
 Current Blueprint status as of 2026-05-26:
 
 - Corporate Control Plane MVP Blueprint is merged into `main`.
 - Corporate Directory MVP Blueprint content is merged into `main`.
 - Invite Onboarding & Distribution MVP Blueprint is drafted for review.
-- The next recommended Blueprint after Invite review is Android Client MVP Blueprint.
+- The accepted Android implementation path is a thin fork of Delta Chat Android, with future Android repo `Kwentin3/messenger-imap-android`.
+- The next Android work should follow [Android Messenger Autonomous Execution Roadmap](../../roadmap/ANDROID_MESSENGER_AUTONOMOUS_EXECUTION_ROADMAP.md).
 
 ## 2. What Has Already Been Proven
 
@@ -121,8 +125,9 @@ Blueprint package:
 
 ## 6. Main Unresolved Decisions
 
-- Thin Delta Chat Android fork vs custom Android shell over chatmail/core.
-- GPL/MPL compliance and distribution acceptability.
+- GPL/MPL compliance and source distribution path before modified APK distribution.
+- Android package ID, app name, branding, signing, and release identity.
+- Exact Android fork upstream merge strategy and corporate module isolation.
 - Exact first MVP provider set beyond Mail.ru / VK Mail.
 - Directory authority source and canonical payload.
 - Stale directory/control-plane thresholds and offline allowed actions.
@@ -142,8 +147,8 @@ Blueprint package:
 ## 7. What Not To Redo
 
 - Do not re-prove that Mail.ru foreground IMAP/SMTP transport is possible.
-- Do not start a Delta Chat fork just to create PRD docs.
-- Do not modify chatmail/core during product documentation work.
+- Do not start a Delta Chat fork without Android fork intake planning and clean build gate.
+- Do not modify chatmail/core without a separate Blueprint.
 - Do not create a Mail.ru-only architecture.
 - Do not claim all providers are whitelist-ready.
 - Do not treat provider website access as IMAP/SMTP proof.
@@ -164,9 +169,9 @@ Blueprint package:
 
 ## 8. Next Recommended Work
 
-1. Review and accept [Invite Onboarding & Distribution MVP Blueprint](../../blueprints/INVITE_ONBOARDING_DISTRIBUTION_MVP_BLUEPRINT.md).
-2. Write Android Client MVP Blueprint using Control Plane, Directory, and Invite Blueprints as inputs.
-3. Decide thin Delta Chat Android fork vs custom shell over chatmail/core, or define a focused spike.
+1. Execute [Android Messenger Autonomous Execution Roadmap](../../roadmap/ANDROID_MESSENGER_AUTONOMOUS_EXECUTION_ROADMAP.md) Phase 0 context audit.
+2. Review/update Android Client MVP Blueprint using the thin Delta Chat Android fork assumption.
+3. Create Android Fork Intake Blueprint before creating or modifying `Kwentin3/messenger-imap-android`.
 4. Keep Deployment Blueprint blocked until Control Plane stack assumptions are concrete.
 5. Use `docs/infrastructure/SERVER_AUDIT_REPORT.md` as input for deployment planning only after deployment design starts.
 

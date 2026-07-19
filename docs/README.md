@@ -34,6 +34,8 @@ Key infrastructure document:
 Key roadmap document:
 
 - [Project Roadmap](roadmap/PROJECT_ROADMAP.md)
+- [Android Messenger Autonomous Execution Roadmap](roadmap/ANDROID_MESSENGER_AUTONOMOUS_EXECUTION_ROADMAP.md)
+- [Android Messenger Autonomous Execution Roadmap Report](roadmap/ANDROID_MESSENGER_AUTONOMOUS_EXECUTION_ROADMAP_REPORT.md)
 
 Key Blueprint documents:
 
